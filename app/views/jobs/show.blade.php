@@ -11,7 +11,13 @@
 <p><strong>Last Updated: </strong>{{ $job->updated_at }}</p>
 <p><strong>Customer Id: </strong>{{ $job->customer }}</p>
 <p><strong>Is Finished: </strong>{{ $job->finished }}</p>
-<p><strong>Items: </strong>{{ $job->items }}</p>
-<p><strong>Costs: </strong>{{ $job->costs }}</p>
+<p><strong>Items: </strong></p>
+@foreach($job->items as $item)
+<p>{{ $item->detail }}<br> {{ $item->text }}</p>
+@endforeach
+<p><strong>Costs: </strong> </p>
+@foreach($job->costs as $cost)
+<p>{{ $cost->qty }}x {{ $cost->text}} @ £{{ $cost->price }} each</p>
+@endforeach
 
 @stop

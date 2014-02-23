@@ -13,7 +13,24 @@ class Job extends Eloquent {
 
 	public $errors;
 
-	
+
+	public function getItemsAttribute()
+	{
+		return json_decode($this->attributes['items']);
+	}
+	public function setItemsAttribute($value)
+	{
+		$this->attributes['items'] = json_encode($value);
+	}
+	public function getCostsAttribute()
+	{
+		return json_decode($this->attributes['costs']);
+	}
+	public function setCostsAttribute($value)
+	{
+		$this->attributes['costs'] = json_encode($value);
+	}
+
 
 	public function isValid()
 	{
