@@ -20,7 +20,14 @@
 		{{ Form::label('due', 'Date Due:') }}
 		{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
 	</div>
-
+	<div>
+		<h2>Costs</h2>
+		<div>
+			{{ Form::label('cost-qty[]') }}
+			{{ Form::  }} //Finish This
+		</div>
+	</div>
+	
 	<div>{{ Form::submit('Add Job') }}</div>
 
 {{ Form::close() }}
