@@ -26,18 +26,47 @@ class JobController extends \BaseController {
 	public function store()
 	{
 
+
 		$job_input = Input::only('title', 'text', 'due');
 		if ( !$this->job->fill($job_input)->isValid() ) {
 			return Redirect::back()->withInput()->withErrors($this->job->errors);
 		}
-		$this->job->save();
 
 		$items_input = Input::get('items');
-		foreach ($items_input as $item) {
+		$items = array();
+		foreach ($items_input as $input) {
+			if ( empty($input['item_title']) && empty($input['item_text']) ) {
+				break;
+			}
 			$new_item = new Item;
-			$new_item->fill($item);
-			$new_item->job_id = $this->job->id;
-			$new_item->save();
+			if ( !$new_item->fill($input)->isValid() ){
+				return Redirect::back()->withInput()->withErrors($new_item->errors);
+			}
+			array_push($items, $new_item);
+		}
+
+		$costs_input = Input::get('costs');
+		$costs = array();
+		foreach ($costs_input as $input) {
+			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
+				break;
+			}
+			$new_cost = new Cost;
+			if ( !$new_cost->fill($input)->isValid() ) {
+				return Redirect::back()->withInput()->withErrors($new_cost->errors);
+			}
+			array_push($costs, $new_cost);
+		}
+
+		//If everything is okay save and returtn to index page
+		$this->job->save();
+		foreach ($items as $item) {
+			$item->job_id = $this->job->id;
+			$item->save();
+		}
+		foreach ($costs as $cost) {
+			$cost->job_id = $this->job->id;
+			$cost->save();
 		}
 
 		return Redirect::route('jobs.index');

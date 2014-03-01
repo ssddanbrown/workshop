@@ -16,13 +16,23 @@
 	@if(count($job->items) > 0)
 		<h2>Items</h2>
 		@foreach($job->items as $item)
-			<div class="row-4">
 				<p><strong>{{ $item->item_title }}</strong><br>
 				{{ $item->item_text }}</p>
-			</div>
 		@endforeach
+		<div class="row"></div>
 	@else
 		<p>No Items to display.</p>
+	@endif
+
+	@if(count($job->costs) > 0)
+		<h2>Costs</h2>
+		@foreach($job->costs as $cost)
+			<p><strong>{{ $cost->cost_qty }}</strong>
+				{{ $cost->cost_text }} at £{{ sprintf('%0.2f', $cost->cost_price) }} each.
+			</p>
+		@endforeach
+	@else
+		<p>No Costs to display.</p>
 	@endif
 
 </div>

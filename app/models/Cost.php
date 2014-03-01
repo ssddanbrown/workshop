@@ -1,14 +1,15 @@
 <?php
 
+class Cost extends Eloquent {
 
-class Item extends Eloquent {
-
-	protected $fillable = ['item_title', 'item_text'];
+	protected $fillable = ['cost_qty', 'cost_text', 'cost_price'];
 
 	public static $rules = [
-		'item_title' => 'required'
+		'cost_qty' => ['required', 'integer'],
+		'cost_text' => 'required',
+		'cost_price' => ['numeric', 'required']
 	];
-	
+
 	public $errors;
 
 	public function isValid()

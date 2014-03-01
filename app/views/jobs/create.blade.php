@@ -22,6 +22,7 @@
 		</div>
 		<div>
 			<h2>Customer Item</h2>
+			{{ $errors->first('item_title') }}
 			<div>
 				{{ Form::label('items[0][item_title]', 'Item Title: ') }}
 				{{ Form::text('items[0][item_title]')  }}
@@ -41,17 +42,20 @@
 		</div>
 		<div>
 			<h2>Costs</h2>
+			{{ $errors->first('cost_qty') }}
+			{{ $errors->first('cost_text') }}
+			{{ $errors->first('cost_price') }}
 			<div>
-				{{ Form::label('costs[0][qty]', 'Qty: ') }}
-				{{ Form::text('costs[0][qty]')  }}
+				{{ Form::label('costs[0][cost_qty]', 'Qty: ') }}
+				{{ Form::text('costs[0][cost_qty]')  }}
 			</div>
 			<div>
-				{{ Form::label('costs[0][text]', 'Description: ') }}
-				{{ Form::text('costs[0][text]') }}
+				{{ Form::label('costs[0][cost_text]', 'Description: ') }}
+				{{ Form::text('costs[0][cost_text]') }}
 			</div>
 			<div>
-				{{ Form::label('costs[0][price]', 'Price: ') }}
-				{{ Form::text('costs[0][price]') }}
+				{{ Form::label('costs[0][cost_price]', 'Price: ') }}
+				{{ Form::text('costs[0][cost_price]') }}
 			</div>
 		</div>
 		

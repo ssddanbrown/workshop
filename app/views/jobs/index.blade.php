@@ -10,7 +10,7 @@
 	@else
 		<p>No jobs to display....</p>
 	@endif
-
+	<p></p>
 	<p>{{ link_to("/jobs/create", 'Add New Job') }}</p>
 
 </div>
