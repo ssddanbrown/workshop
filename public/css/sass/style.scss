@@ -1,0 +1,27 @@
+/*
+Theme Name: HSCA
+Theme URI: http://danb.me
+Author: Daniel Brown
+Author URI: http://danb.me/
+Description: Custom theme for hsca
+Version: 1.0
+License: Us only pls
+License URI: http://www.danb.me
+Tags: hsca
+Text Domain: danbme
+
+*/
+
+@import "compass/reset";
+@import "compass/css3";
+@import "variables";
+@import "mixins";
+@import "structure";
+@import "html-elements";
+
+#head{
+	background-size: cover;
+	background-position: 50% 50%;
+	min-height: 400px;
+}
+

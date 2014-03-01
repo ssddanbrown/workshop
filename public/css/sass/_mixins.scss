@@ -1,0 +1,20 @@
+@mixin respond-to($size){
+	@if $size == 'xxl' {
+		@media screen and (max-width: $xxl) { @content; }
+	}
+	@else if $size == 'xl' {
+		@media screen and (max-width: $xl) { @content; }
+	}
+	@else if $size == 'l' {
+		@media screen and (max-width: $l) { @content; }
+	}
+	@else if $size == 'm' {
+		@media screen and (max-width: $m) { @content; }
+	}
+	@else if $size == 's' {
+		@media screen and (max-width: $s) { @content; }
+	}
+	@else if $size == 'xs' {
+		@media screen and (max-width: $xs) { @content; }
+	}
+}

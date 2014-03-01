@@ -1,6 +1,7 @@
 @extends('common.main')
 
 @section('content')
+<div class="row-12">
 	<h1>All Jobs</h1>
 	@if ( count($jobs) >= 1 )
 		@foreach ( $jobs as $job )
@@ -12,4 +13,5 @@
 
 	<p>{{ link_to("/jobs/create", 'Add New Job') }}</p>
 
+</div>
 @stop

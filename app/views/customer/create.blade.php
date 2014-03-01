@@ -1,15 +1,17 @@
 @extends('common.main')
 
 @section('content')
+<div class="row-12">
 
-<h1>Add New Customer</h1>
+	<h1>Add New Customer</h1>
  
-{{ Form::open(array('route' => 'customers.store')) }}
+	{{ Form::open(array('route' => 'customers.store')) }}
 
-	@include('customer.form')
+		@include('customer.form')
 
-	<div>{{ Form::submit('Add Customer') }}</div>
+		<div>{{ Form::submit('Add Customer') }}</div>
 
-{{ Form::close() }}
+	{{ Form::close() }}
 
+</div>
 @stop

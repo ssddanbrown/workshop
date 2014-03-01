@@ -1,6 +1,8 @@
 @extends('common.main')
 
 @section('content')
+<div class="row-12">
+
 	<h1>Customers</h1>
 	@if ( count($customers) >= 1 )
 		@foreach ( $customers as $customer )
@@ -11,5 +13,6 @@
 	@endif
 
 	<p>{{ link_to("/customers/create", 'New Customer') }}</p>
-
+	
+</div>
 @stop

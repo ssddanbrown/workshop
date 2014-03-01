@@ -1,0 +1,324 @@
+/*
+Theme Name: HSCA
+Theme URI: http://danb.me
+Author: Daniel Brown
+Author URI: http://danb.me/
+Description: Custom theme for hsca
+Version: 1.0
+License: Us only pls
+License URI: http://www.danb.me
+Tags: hsca
+Text Domain: danbme
+
+*/
+/* line 17, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, sass/_structure.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 10, sass/_structure.scss */
+.container, .row, .row-center {
+  display: block;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 17, sass/_structure.scss */
+.row, .row-center {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* line 22, sass/_structure.scss */
+.row-center {
+  text-align: center;
+}
+/* line 25, sass/_structure.scss */
+.row-center p {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* line 30, sass/_structure.scss */
+.row-12 {
+  width: 100%;
+}
+
+/* line 34, sass/_structure.scss */
+.row-11 {
+  width: 91.65%;
+}
+
+/* line 38, sass/_structure.scss */
+.row-10 {
+  width: 83.32%;
+}
+
+/* line 42, sass/_structure.scss */
+.row-9 {
+  width: 74.98%;
+}
+
+/* line 46, sass/_structure.scss */
+.row-8 {
+  width: 66.65%;
+}
+
+/* line 50, sass/_structure.scss */
+.row-7 {
+  width: 58.32%;
+}
+
+/* line 54, sass/_structure.scss */
+.row-6 {
+  width: 50%;
+}
+
+/* line 58, sass/_structure.scss */
+.row-5 {
+  width: 41.65%;
+}
+
+/* line 62, sass/_structure.scss */
+.row-4 {
+  width: 33%;
+}
+
+/* line 66, sass/_structure.scss */
+.row-3 {
+  width: 25%;
+}
+
+/* line 70, sass/_structure.scss */
+.row-2 {
+  width: 16.65%;
+}
+
+/* line 74, sass/_structure.scss */
+.row-1 {
+  width: 8.32%;
+}
+
+/* line 78, sass/_structure.scss */
+.row-sub, .row-12, .row-11, .row-10, .row-9, .row-8, .row-7, .row-6, .row-5, .row-4, .row-3, .row-2, .row-1 {
+  position: relative;
+  float: left;
+  text-align: left;
+  overflow: hidden;
+  padding: 0 12px;
+  vertical-align: top;
+}
+@media screen and (max-width: 600px) {
+  /* line 78, sass/_structure.scss */
+  .row-sub, .row-12, .row-11, .row-10, .row-9, .row-8, .row-7, .row-6, .row-5, .row-4, .row-3, .row-2, .row-1 {
+    width: 100%;
+  }
+}
+/* line 88, sass/_structure.scss */
+.row-sub p, .row-12 p, .row-11 p, .row-10 p, .row-9 p, .row-8 p, .row-7 p, .row-6 p, .row-5 p, .row-4 p, .row-3 p, .row-2 p, .row-1 p {
+  max-width: 620px;
+}
+/* line 91, sass/_structure.scss */
+.row-sub a, .row-12 a, .row-11 a, .row-10 a, .row-9 a, .row-8 a, .row-7 a, .row-6 a, .row-5 a, .row-4 a, .row-3 a, .row-2 a, .row-1 a {
+  display: inline-block;
+}
+/* line 94, sass/_structure.scss */
+.row-sub img, .row-12 img, .row-11 img, .row-10 img, .row-9 img, .row-8 img, .row-7 img, .row-6 img, .row-5 img, .row-4 img, .row-3 img, .row-2 img, .row-1 img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.6em 0 0.2em;
+}
+
+/* line 1, sass/_html-elements.scss */
+body {
+  background-color: white;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.45;
+  color: #333;
+  padding-bottom: 12px;
+}
+
+/* line 10, sass/_html-elements.scss */
+p {
+  margin-bottom: 1.3em;
+}
+
+/* line 14, sass/_html-elements.scss */
+a {
+  text-decoration: none;
+  color: #0099ff;
+}
+/* line 17, sass/_html-elements.scss */
+a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* line 23, sass/_html-elements.scss */
+h1, h2, h3, h4 {
+  margin: 0.6em 0 0.2em;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 750px;
+}
+
+/* line 30, sass/_html-elements.scss */
+h1 {
+  margin-top: 0.5em;
+  font-size: 3.998em;
+}
+@media screen and (max-width: 500px) {
+  /* line 30, sass/_html-elements.scss */
+  h1 {
+    font-size: 2.827em;
+  }
+}
+
+/* line 38, sass/_html-elements.scss */
+h2 {
+  font-size: 2.827em;
+}
+@media screen and (max-width: 500px) {
+  /* line 38, sass/_html-elements.scss */
+  h2 {
+    font-size: 1.999em;
+  }
+}
+
+/* line 45, sass/_html-elements.scss */
+h3 {
+  font-size: 1.999em;
+}
+@media screen and (max-width: 500px) {
+  /* line 45, sass/_html-elements.scss */
+  h3 {
+    font-size: 1.414em;
+  }
+}
+
+/* line 52, sass/_html-elements.scss */
+h4 {
+  font-size: 1.414em;
+}
+@media screen and (max-width: 500px) {
+  /* line 52, sass/_html-elements.scss */
+  h4 {
+    font-size: 1.2em;
+  }
+}
+
+/* line 59, sass/_html-elements.scss */
+small, .font_small {
+  font-size: 0.707em;
+}
+
+/* line 61, sass/_html-elements.scss */
+blockquote {
+  line-height: 1.0em;
+  font-style: italic;
+  padding-left: 16px;
+  margin-bottom: 1.3em;
+  border-left: 2px dotted #DDD;
+}
+
+/* line 69, sass/_html-elements.scss */
+input[type=text], textarea {
+  font-family: "Open Sans", sans-serif;
+  padding: 6px;
+  border-radius: 3px;
+  border: 1px solid #BBB;
+}
+
+/* line 75, sass/_html-elements.scss */
+input[type=submit] {
+  padding: 6px 12px;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #BBB;
+  border-bottom: 1px solid #AAA;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+/* line 83, sass/_html-elements.scss */
+input[type=submit]:active {
+  -webkit-box-shadow: inset 0 1px 1px 1px #aaaaaa;
+  -moz-box-shadow: inset 0 1px 1px 1px #aaaaaa;
+  box-shadow: inset 0 1px 1px 1px #aaaaaa;
+}
+
+/* line 22, sass/style.scss */
+#head {
+  background-size: cover;
+  background-position: 50% 50%;
+  min-height: 400px;
+}

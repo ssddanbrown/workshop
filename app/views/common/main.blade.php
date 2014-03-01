@@ -3,8 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Workshop</title>
+	{{ HTML::style('css/style.css') }}
 </head>
 <body>
-	@yield('content')
+	<div class="row">
+		@yield('content')
+	</div>
 </body>
 </html>
