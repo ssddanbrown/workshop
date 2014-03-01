@@ -12,14 +12,18 @@
 	<p><strong>Last Updated: </strong>{{ $job->updated_at }}</p>
 	<p><strong>Customer Id: </strong>{{ $job->customer }}</p>
 	<p><strong>Is Finished: </strong>{{ $job->finished }}</p>
-	<p><strong>Items: </strong></p>
-	@foreach($job->items as $item)
-	<p>{{ $item->detail }}<br> {{ $item->text }}</p>
-	@endforeach
-	<p><strong>Costs: </strong> </p>
-	@foreach($job->costs as $cost)
-	<p>{{ $cost->qty }}x {{ $cost->text}} @ £{{ $cost->price }} each</p>
-	@endforeach
+
+	@if(count($job->items) > 0)
+		<h2>Items</h2>
+		@foreach($job->items as $item)
+			<div class="row-4">
+				<p><strong>{{ $item->item_title }}</strong><br>
+				{{ $item->item_text }}</p>
+			</div>
+		@endforeach
+	@else
+		<p>No Items to display.</p>
+	@endif
 
 </div>
 @stop

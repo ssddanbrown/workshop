@@ -23,12 +23,20 @@
 		<div>
 			<h2>Customer Item</h2>
 			<div>
-				{{ Form::label('items[0][detail]', 'Details: ') }}
-				{{ Form::text('items[0][detail]')  }}
+				{{ Form::label('items[0][item_title]', 'Item Title: ') }}
+				{{ Form::text('items[0][item_title]')  }}
 			</div>
 			<div>
-				{{ Form::label('items[0][text]', 'Description: ') }}
-				{{ Form::text('items[0][text]') }}
+				{{ Form::label('items[0][item_text]', 'Item Description: ') }}
+				{{ Form::text('items[0][item_text]') }}
+			</div>
+			<div>
+				{{ Form::label('items[1][item_title]', 'Item Title: ') }}
+				{{ Form::text('items[1][item_title]')  }}
+			</div>
+			<div>
+				{{ Form::label('items[1][item_text]', 'Item Description: ') }}
+				{{ Form::text('items[1][item_text]') }}
 			</div>
 		</div>
 		<div>

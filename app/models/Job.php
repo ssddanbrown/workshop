@@ -3,9 +3,7 @@
 
 class Job extends Eloquent {
 
-	protected $table = 'jobs';
-
-	protected $fillable = ['title', 'text', 'finished', 'due', 'customer', 'items', 'costs'];
+	protected $fillable = ['title', 'text', 'finished', 'due', 'customer'];
 
 	public static $rules = [
 		'title' => 'required'
@@ -13,22 +11,9 @@ class Job extends Eloquent {
 
 	public $errors;
 
-
-	public function getItemsAttribute()
+	public function items()
 	{
-		return json_decode($this->attributes['items']);
-	}
-	public function setItemsAttribute($value)
-	{
-		$this->attributes['items'] = json_encode($value);
-	}
-	public function getCostsAttribute()
-	{
-		return json_decode($this->attributes['costs']);
-	}
-	public function setCostsAttribute($value)
-	{
-		$this->attributes['costs'] = json_encode($value);
+		return $this->hasMany('Item');
 	}
 
 
