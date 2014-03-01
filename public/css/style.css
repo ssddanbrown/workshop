@@ -1,16 +1,3 @@
-/*
-Theme Name: HSCA
-Theme URI: http://danb.me
-Author: Daniel Brown
-Author URI: http://danb.me/
-Description: Custom theme for hsca
-Version: 1.0
-License: Us only pls
-License URI: http://www.danb.me
-Tags: hsca
-Text Domain: danbme
-
-*/
 /* line 17, ../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -283,6 +270,11 @@ small, .font_small {
 }
 
 /* line 61, sass/_html-elements.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 65, sass/_html-elements.scss */
 blockquote {
   line-height: 1.0em;
   font-style: italic;
@@ -291,7 +283,7 @@ blockquote {
   border-left: 2px dotted #DDD;
 }
 
-/* line 69, sass/_html-elements.scss */
+/* line 73, sass/_html-elements.scss */
 input[type=text], textarea {
   font-family: "Open Sans", sans-serif;
   padding: 6px;
@@ -299,7 +291,7 @@ input[type=text], textarea {
   border: 1px solid #BBB;
 }
 
-/* line 75, sass/_html-elements.scss */
+/* line 79, sass/_html-elements.scss */
 input[type=submit] {
   padding: 6px 12px;
   font-family: "Open Sans", sans-serif;
@@ -309,16 +301,9 @@ input[type=submit] {
   outline: none;
   cursor: pointer;
 }
-/* line 83, sass/_html-elements.scss */
+/* line 87, sass/_html-elements.scss */
 input[type=submit]:active {
   -webkit-box-shadow: inset 0 1px 1px 1px #aaaaaa;
   -moz-box-shadow: inset 0 1px 1px 1px #aaaaaa;
   box-shadow: inset 0 1px 1px 1px #aaaaaa;
-}
-
-/* line 22, sass/style.scss */
-#head {
-  background-size: cover;
-  background-position: 50% 50%;
-  min-height: 400px;
 }
