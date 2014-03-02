@@ -3,7 +3,7 @@
 
 class Job extends Eloquent {
 
-	protected $fillable = ['title', 'text', 'finished', 'due', 'customer'];
+	protected $fillable = ['title', 'text', 'finished', 'due', 'customer_id'];
 
 	public static $rules = [
 		'title' => 'required'
@@ -11,6 +11,10 @@ class Job extends Eloquent {
 
 	public $errors;
 
+	public function customer()
+	{
+		return $this->belongsTo('Customer');
+	}
 	public function items()
 	{
 		return $this->hasMany('Item');

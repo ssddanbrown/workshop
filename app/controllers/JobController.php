@@ -19,16 +19,18 @@ class JobController extends \BaseController {
 
 	public function create()
 	{
-		return View::make('jobs.create');
+		$customers = Customer::orderBy('name')->lists('name', 'id');
+		return View::make('jobs.create', ['customers' => $customers]);
 	}
 
 
 	public function store()
 	{
 
-		$job_input = Input::only('title', 'text', 'due');
+		$errors = null;
+		$job_input = Input::only('title', 'text', 'due', 'customer_id');
 		if ( !$this->job->fill($job_input)->isValid() ) {
-			return Redirect::back()->withInput()->withErrors($this->job->errors);
+			$errors = $this->job->errors;
 		}
 
 		$items = array();
@@ -38,35 +40,33 @@ class JobController extends \BaseController {
 			}
 			$new_item = new Item;
 			if ( !$new_item->fill($input)->isValid() ){
-				return Redirect::back()->withInput()->withErrors($new_item->errors);
+				(!$errors) ? $errors = $new_item->errors : $errors->merge($new_item->errors->getMessages());
 			}
 			array_push($items, $new_item);
 		}
 
 		$costs = array();
-		foreach (Input::get('costs') as $input) {
+		foreach (Input::get('costs') as $key => $input) {
 			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
 				break;
 			}
 			$new_cost = new Cost;
 			if ( !$new_cost->fill($input)->isValid() ) {
-				return Redirect::back()->withInput()->withErrors($new_cost->errors);
+				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
 			}
-			array_push($costs, $new_cost);
+			array_push($items, $new_cost);
 		}
 
-		//If everything is okay save and returtn to index page
-		$this->job->save();
-		foreach ($items as $item) {
-			$item->job_id = $this->job->id;
-			$item->save();
-		}
-		foreach ($costs as $cost) {
-			$cost->job_id = $this->job->id;
-			$cost->save();
+		if ($errors != null) {
+			return Redirect::back()->withInput()->withErrors($errors);
+		} else {
+			//If everything is okay save and returtn to index page
+			$this->job->save();
+			foreach ($items as $item) { $this->job->items()->save($item); }
+			foreach ($costs as $cost) { $this->job->costs()->save($cost); }
+			return Redirect::route('jobs.index');
 		}
 
-		return Redirect::route('jobs.index');
 	}
 
 

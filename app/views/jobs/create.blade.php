@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="row-12">
-<?php print_r($errors); ?>
 
 	<h1>Add New Job</h1>
 	{{ Form::open(array('route' => 'jobs.store')) }}
@@ -20,6 +19,10 @@
 		<div>
 			{{ Form::label('due', 'Date Due:') }}
 			{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
+		</div>
+		<div>
+			{{ Form::label('customer_id', 'Customer:') }}
+			{{ Form::select('customer_id', $customers) }}
 		</div>
 
 		<div class="row">

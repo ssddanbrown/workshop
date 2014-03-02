@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration {
 			$table->text('text');
 			$table->boolean('finished');
 			$table->dateTime('due');
-			$table->integer('customer');
+			$table->integer('customer_id');
 			$table->timestamps();
 
 		});
