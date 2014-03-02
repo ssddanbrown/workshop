@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return Redirect::to('/customers');
+	return Redirect::to('/jobs');
 });
 
 Route::resource('customers', 'CustomerController');

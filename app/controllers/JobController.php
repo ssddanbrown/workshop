@@ -26,7 +26,6 @@ class JobController extends \BaseController {
 	public function store()
 	{
 
-
 		$job_input = Input::only('title', 'text', 'due');
 		if ( !$this->job->fill($job_input)->isValid() ) {
 			return Redirect::back()->withInput()->withErrors($this->job->errors);
