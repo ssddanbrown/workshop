@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="row">
-			<h2>Customer Item</h2>
+			<h2>Customer Items</h2>
 			{{ $errors->first('item_title') }}
 			<table>
 				<thead>
@@ -43,9 +43,9 @@
 						@endforeach
 
 					@else
-						<tr data-index="0" >
-							<td>{{ Form::text('items[0][item_title]')  }}</td>
-							<td>{{ Form::text('items[0][item_text]') }}</td>
+						<tr data-index="1" >
+							<td>{{ Form::text('items[1][item_title]')  }}</td>
+							<td>{{ Form::text('items[1][item_text]') }}</td>
 						</tr>
 					@endif
 				</tbody>
@@ -59,25 +59,37 @@
 			{{ $errors->first('cost_qty') }}
 			{{ $errors->first('cost_text') }}
 			{{ $errors->first('cost_price') }}
-			<div id="cost-container">
-				<div id="cost-model" class="cost row-6">
-					<div>
-						{{ Form::label('costs[0][cost_qty]', 'Qty: ') }}
-						{{ Form::text('costs[0][cost_qty]')  }}
-					</div>
-					<div>
-						{{ Form::label('costs[0][cost_text]', 'Description: ') }}
-						{{ Form::text('costs[0][cost_text]') }}
-					</div>
-					<div>
-						{{ Form::label('costs[0][cost_price]', 'Price: ') }}
-						{{ Form::text('costs[0][cost_price]') }}
-					</div>
-					<p></p>
-				</div>
-			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>{{ Form::label('costs[][cost_qty]', 'Qty: ') }}</th>
+						<th>{{ Form::label('costs[][cost_text]', 'Description: ') }}</th>
+						<th>{{ Form::label('costs[][cost_price]', 'Price: ') }}</th>
+					</tr>
+				</thead>
+				<tbody id="cost-container">
+					@if( count(Form::old('costs')) > 1 )
+
+					@foreach(Form::old('costs') as $key => $cost)
+						<tr data-index="{{ $key }}">
+							<td>{{ Form::text('costs['.$key.'][cost_qty]')  }}</td>
+							<td>{{ Form::text('costs['.$key.'][cost_text]') }}</td>
+							<td>{{ Form::text('costs['.$key.'][cost_price]') }}</td>
+						</tr>
+					@endforeach
+						
+					@else
+						<tr data-index="1">
+							<td>{{ Form::text('costs[1][cost_qty]')  }}</td>
+							<td>{{ Form::text('costs[1][cost_text]') }}</td>
+							<td>{{ Form::text('costs[1][cost_price]') }}</td>
+						</tr>
+					@endif
+				</tbody>
+			</table>
+
 		</div>
-		<a href="javascript:addForm('cost');" class="button-add">Add Cost</a>
+		<a href="javascript:addCost();" class="button-add">Add Cost</a>
 		<p></p>
 		
 		<div>{{ Form::submit('Add Job') }}</div>
@@ -100,14 +112,24 @@
 		inner += '<td><input type="text" name="items['+ biggestIndex +'][item_text]" /></td>';
 		element.innerHTML = inner;
 		container.appendChild(element);
-		// var model = document.getElementById(name + '-container').lastChild;
-		// var html = model.innerHTML;
-		// var index = model.getAttribute('data-index');
-		// html = html.replace(/\[index\]/g, "[" + index + "]");
-		// var element = document.createElement('div');
-		// element.className = name + " row-6";
-		// element.innerHTML = html;
-		// document.getElementById(name + '-container').appendChild(element);
+	}
+
+	var addCost = function(){
+		container = document.getElementById('cost-container');
+		var containerChildren = container.children;
+		var biggestIndex = 0;
+		for (var i = 0; i < containerChildren.length; i++) {
+			var index = containerChildren[i].getAttribute('data-index');
+			index = parseInt(index, 10);
+			if (index >= biggestIndex) { biggestIndex = index + 1;};
+		};
+		var element = document.createElement('tr');
+		element.dataset.index = biggestIndex;
+		var inner = '<td><input type="text" name="costs['+ biggestIndex +'][cost_qty]" /></td>'
+		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_text]" /></td>'
+		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_price]" /></td>'
+		element.innerHTML = inner;
+		container.appendChild(element);
 	}
 	</script>
 
