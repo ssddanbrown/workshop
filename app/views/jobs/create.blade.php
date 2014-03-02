@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="row-12">
+<?php print_r($errors); ?>
 
 	<h1>Add New Job</h1>
 	{{ Form::open(array('route' => 'jobs.store')) }}
@@ -20,26 +21,39 @@
 			{{ Form::label('due', 'Date Due:') }}
 			{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
 		</div>
-		<div>
+
+		<div class="row">
 			<h2>Customer Item</h2>
 			{{ $errors->first('item_title') }}
-			<div id="item-container" class="row">
-				<div id="item-model" class="item row-6">
-					<div>
-						{{ Form::label('items[0][item_title]', 'Item Title: ') }}
-						{{ Form::text('items[0][item_title]')  }}
-					</div>
-					<div>
-						{{ Form::label('items[0][item_text]', 'Item Description: ') }}
-						{{ Form::text('items[0][item_text]') }}
-					</div>
-					<p></p>
-				</div>
-			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>{{ Form::label('items[][item_title]', 'Item Title') }}</th>
+						<th>{{ Form::label('items[][item_text]', 'Item Description') }}</th>
+					</tr>
+				</thead>
+				<tbody id="item-container">
+					@if( count(Form::old('items')) > 1 )
+
+						@foreach(Form::old('items') as $key => $item)
+							<tr data-index="{{ $key }}">
+								<td>{{ Form::text('items['.$key.'][item_title]')  }}</td>
+								<td>{{ Form::text('items['.$key.'][item_text]') }}</td>
+							</tr>
+						@endforeach
+
+					@else
+						<tr data-index="0" >
+							<td>{{ Form::text('items[0][item_title]')  }}</td>
+							<td>{{ Form::text('items[0][item_text]') }}</td>
+						</tr>
+					@endif
+				</tbody>
+			</table>
 
 		</div>
-		<a href="javascript:addForm('item');" class="button-add">Add Item</a>
-		<?php dd(Cache::get('title')); ?>
+		<a href="javascript:addItem();" class="button-add">Add Item</a>
+
 		<div class="row">
 			<h2>Costs</h2>
 			{{ $errors->first('cost_qty') }}
@@ -71,14 +85,29 @@
 	{{ Form::close() }}
 
 	<script>
-	var addForm = function(name){
-		var index = document.getElementById(name + '-container').children.length;
-		var html = document.getElementById(name + '-model').innerHTML;
-		html = html.replace(/\[0\]/g, "[" + index + "]");
-		var element = document.createElement('div');
-		element.className = name + " row-6";
-		element.innerHTML = html;
-		document.getElementById(name + '-container').appendChild(element);
+	var addItem = function(){
+		container = document.getElementById('item-container');
+		var containerChildren = container.children;
+		var biggestIndex = 0;
+		for (var i = 0; i < containerChildren.length; i++) {
+			var index = containerChildren[i].getAttribute('data-index');
+			index = parseInt(index, 10);
+			if (index >= biggestIndex) { biggestIndex = index + 1; }
+		};
+		var element = document.createElement('tr');
+		element.dataset.index = biggestIndex;
+		var inner = '<td><input type="text" name="items['+ biggestIndex +'][item_title]" /></td>';
+		inner += '<td><input type="text" name="items['+ biggestIndex +'][item_text]" /></td>';
+		element.innerHTML = inner;
+		container.appendChild(element);
+		// var model = document.getElementById(name + '-container').lastChild;
+		// var html = model.innerHTML;
+		// var index = model.getAttribute('data-index');
+		// html = html.replace(/\[index\]/g, "[" + index + "]");
+		// var element = document.createElement('div');
+		// element.className = name + " row-6";
+		// element.innerHTML = html;
+		// document.getElementById(name + '-container').appendChild(element);
 	}
 	</script>
 

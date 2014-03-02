@@ -28,7 +28,7 @@ class CustomerController extends \BaseController {
 		$input = Input::all();
 		
 		if ( !$this->customer->fill($input)->isValid() ) {
-			return Redirect::back()->withInput()->withErrors($this->customer->$errors);
+			return Redirect::back()->withInput()->withErrors($this->customer->errors);
 		}
 		
 		$this->customer->save();
@@ -56,7 +56,7 @@ class CustomerController extends \BaseController {
 		$input = Input::all();
 		$this->customer = $this->customer->find($id);
 		if ( !$this->customer->fill($input)->isValid() ) {
-			return Redirect::back()->withInput()->withErrors($this->customer->$errors);
+			return Redirect::back()->withInput()->withErrors($this->customer->errors);
 		}
 		
 		$this->customer->save();

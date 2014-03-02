@@ -31,9 +31,8 @@ class JobController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($this->job->errors);
 		}
 
-		$items_input = Input::get('items');
 		$items = array();
-		foreach ($items_input as $input) {
+		foreach (Input::get('items') as $input) {
 			if ( empty($input['item_title']) && empty($input['item_text']) ) {
 				break;
 			}
@@ -44,9 +43,8 @@ class JobController extends \BaseController {
 			array_push($items, $new_item);
 		}
 
-		$costs_input = Input::get('costs');
 		$costs = array();
-		foreach ($costs_input as $input) {
+		foreach (Input::get('costs') as $input) {
 			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
 				break;
 			}
