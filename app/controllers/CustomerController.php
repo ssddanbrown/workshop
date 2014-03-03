@@ -68,7 +68,7 @@ class CustomerController extends \BaseController {
 		$customer = $this->customer->find($id);
 		$customer->delete();
 
-		return Redirect::to('/customers');
+		return Redirect::route('customers.index');
 	}
 
 }
