@@ -5,5 +5,20 @@
 @import "structure";
 @import "html-elements";
 
-
+.table-grid{
+	width: 100%;
+	border: 1px solid #DDD;
+	border-collapse: separate;
+	border-radius: 4px;
+	th{
+		padding: $-s $-m;
+	}
+	td{
+		padding: $-s $-m;
+		border-top: 1px solid #DDD;
+	}
+	tbody tr:nth-child(2n+1) {
+		background-color: #EEE;
+	}
+}
 
