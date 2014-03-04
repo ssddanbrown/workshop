@@ -6,6 +6,11 @@
 	<div class="row"><h1>Job View</h1></div>
 	<div class="row">
 		<div class="row-2">
+			{{ Form::open(array( 'method' => 'GET', 'route' => array('jobs.edit', $job->id) )) }}
+				{{ Form::submit('Edit Job') }}
+			{{ Form::close() }}
+		</div>
+		<div class="row-2">
 			{{ Form::open(array( 'method' => 'DELETE', 'route' => array('jobs.destroy', $job->id) )) }}
 				{{ Form::submit('Delete Job') }}
 			{{ Form::close() }}

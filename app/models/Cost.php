@@ -5,7 +5,7 @@ class Cost extends Eloquent {
 	protected $fillable = ['cost_qty', 'cost_text', 'cost_price'];
 
 	public static $rules = [
-		'cost_qty' => ['required', 'integer'],
+		'cost_qty' => ['required', 'numeric'],
 		'cost_text' => 'required',
 		'cost_price' => ['numeric', 'required']
 	];
