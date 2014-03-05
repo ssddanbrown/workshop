@@ -22,3 +22,20 @@
 	}
 }
 
+.detail{
+	padding: $-m 0;
+	border-bottom: 1px solid #DDD;
+	div{
+		font-size: 0.8em;
+		font-weight: bold;
+		max-width: 250px;
+		color: #555;
+	}
+	p{
+		margin: 0;
+	}
+	&:last-child{
+		border-bottom: 0;
+	}
+}
+

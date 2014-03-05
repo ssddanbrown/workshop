@@ -3,8 +3,11 @@
 @section('content')
 <div class="row">
 	
-	<div class="row"><h1>Job View</h1></div>
-	<div class="row">
+	<div class="row-12">
+		<h1>Job View</h1>
+	</div>
+
+	<div class="row-12">
 		<div class="row-2">
 			{{ Form::open(array( 'method' => 'GET', 'route' => array('jobs.edit', $job->id) )) }}
 				{{ Form::submit('Edit Job') }}
@@ -16,26 +19,62 @@
 			{{ Form::close() }}
 		</div>
 	</div>
+
 	<div class="row-6">
-		<h2>Job Details</h2>
-		<p><strong>Title: </strong>{{ $job->title }}</p>
-		<p><strong>Job Notes: </strong>{{ $job->text }}</p>
-		<p><strong>ID: </strong>{{ $job->id }}</p>
-		<p><strong>Date Added: </strong>{{ $job->created_at }}</p>
-		<p><strong>Date Due: </strong>{{ $job->due }}</p>
-		<p><strong>Last Updated: </strong>{{ $job->updated_at }}</p>
-		<p><strong>Is Finished: </strong>{{ $job->finished }}</p>
+		<h2>Details</h2>
+		<div class="detail">
+			<div>TITLE</div>
+			<p>{{ $job->title }}</p>
+		</div>
+		<div class="detail">
+			<div>NOTES</div>
+			<p>{{ $job->text }}</p>
+		</div>
+		<div class="detail">
+			<div>ID</div>
+			<p>{{ $job->id }}</p>
+		</div>
+		<div class="detail">
+			<div>DATE ADDED</div>
+			<p>{{ $job->created_at }}</p>
+		</div>
+		<div class="detail">
+			<div>DATE DUE</div>
+			<p>{{ $job->due }}</p>
+		</div>
+		<div class="detail">
+			<div>LAST UPDATED</div>
+			<p>{{ $job->updated_at }}</p>
+		</div>
+		<div class="detail">
+			<div>STATUS</div>
+			<p>{{ $job->finished }}</p>
+		</div>
 	</div>
+
 	<div class="row-6">
-		<h2>Customer Details</h2>
+		<h2>Customer</h2>
 		@if($job->customer != null)
-			<p><strong>Name: </strong>{{ $job->customer->name }}</p>
-			<p><strong>Email: </strong>{{ $job->customer->email }}</p>
-			<p><strong>Phone: </strong>{{ $job->customer->phone }}</p>
+			<div class="detail">
+				<div>NAME</div>
+				<p>{{ $job->customer->name }}</p>
+			</div>
+			<div class="detail">
+				<div>EMAIL</div>
+				<p>{{ $job->customer->email }}</p>
+			</div>
+			<div class="detail">
+				<div>PHONE</div>
+				<p>{{ $job->customer->phone }}</p>
+			</div>
+			<div class="detail">
+				<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id) }}</p>
+			</div>
 		@else
-			<p>No Customer Added</p>
+			<p>No customer added.</p>
 		@endif
 	</div>
+
 	<div class="row"></div>
 
 	<!-- List All Customer Items -->

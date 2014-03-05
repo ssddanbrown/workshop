@@ -337,3 +337,24 @@ table th, table td {
 .table-grid tbody tr:nth-child(2n+1) {
   background-color: #EEE;
 }
+
+/* line 25, sass/style.scss */
+.detail {
+  padding: 12px 0;
+  border-bottom: 1px solid #DDD;
+}
+/* line 28, sass/style.scss */
+.detail div {
+  font-size: 0.8em;
+  font-weight: bold;
+  max-width: 250px;
+  color: #555;
+}
+/* line 34, sass/style.scss */
+.detail p {
+  margin: 0;
+}
+/* line 37, sass/style.scss */
+.detail:last-child {
+  border-bottom: 0;
+}

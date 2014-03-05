@@ -13,6 +13,11 @@ class Customer extends Eloquent {
 
 	public $errors;
 
+	public function jobs()
+	{
+		return $this->hasMany('Job');
+	}
+
 
 	public function isValid()
 	{
