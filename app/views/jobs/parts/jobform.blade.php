@@ -37,7 +37,7 @@
 					</tr>
 				@endforeach
 
-			@elseif( count($job->items) > 0)
+			@elseif( isset($job) && count($job->items) > 0)
 
 				@foreach($job->items as $item)
 					<tr data-index="{{ $item->id }}">
@@ -82,7 +82,7 @@
 					</tr>
 				@endforeach
 				
-			@elseif( count($job->costs) > 0 )
+			@elseif( isset($job) && count($job->costs) > 0 )
 				
 				@foreach( $job->costs as $cost)
 					<tr data-index="{{ $cost->id }}">
