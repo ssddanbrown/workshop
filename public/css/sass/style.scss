@@ -17,8 +17,17 @@
 		padding: $-s $-m;
 		border-top: 1px solid #DDD;
 	}
-	tbody tr:nth-child(2n+1) {
-		background-color: #EEE;
+	tr:hover, thead tr{
+		background-color: #EEEEEE;
+		td, th{
+			border-bottom: 1px solid #BBB;
+		}
+	}
+	tbody tr:nth-child(2n) {
+		background-color: #F5F5F5;
+		&:hover{
+			background-color: #EEEEEE;
+		}
 	}
 }
 
@@ -39,3 +48,43 @@
 	}
 }
 
+.subheader{
+	h3{
+		margin: 0;
+	}
+	.button{
+		margin: 3px 0 0 0;
+	}
+	padding: $-s 0;
+}
+
+.button{
+	border: 1px solid #BBB;
+	border-radius: 4px;
+	padding: $-s $-m;
+	margin: $-m 0;
+	color: #333;
+	font-size: 0.8em;
+	font-weight: bold;
+	background-repeat: repeat-x;
+	outline: none;
+	cursor: pointer;
+	@include background-image(linear-gradient(#EEE, #DDD));
+	@include text-shadow(0 1px 0 rgba(255,255,255,0.9));
+	&:hover{
+		text-decoration: none;
+		@include background-image(linear-gradient(#EDEDED, #CDCDCD));
+	}
+	&:active{
+		@include box-shadow(inset 0 1px 1px 0 #BBB);
+	}
+}
+
+.right{
+	float: right;
+	display: inline-block;
+}
+.left{
+	float: left;
+	display: inline-block;
+}

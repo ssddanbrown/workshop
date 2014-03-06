@@ -2,7 +2,16 @@
 
 @section('content')
 <div class="row-12">
-	<h1>All Jobs</h1>
+	
+	<div class="row">
+		<h1 class="left">All Jobs</h1>
+		
+	</div>
+
+	<div class="row subheader">
+		<h3 class="left">Outstanding Jobs</h3>
+		{{ link_to("/jobs/create", 'New Job', array('class'=>'button right') ) }}
+	</div>
 
 	@if ( count($jobs) >= 1 )
 		<table class="table-grid" >
@@ -34,8 +43,6 @@
 	@else
 		<p>No jobs to display....</p>
 	@endif
-	<p></p>
-	<p>{{ link_to("/jobs/create", 'Add New Job') }}</p>
 
 </div>
 @stop

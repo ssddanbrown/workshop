@@ -20,39 +20,44 @@
 		</div>
 	</div>
 
-	<div class="row-6">
-		<h2>Details</h2>
-		<div class="detail">
-			<div>TITLE</div>
-			<p>{{ $job->title }}</p>
+	<div class="row-8">
+		<div class="row"><h2>Details</h2></div>
+		<div class="row-6 fill">
+			<div class="detail">
+				<div>TITLE</div>
+				<p>{{ $job->title }}</p>
+			</div>
+			<div class="detail">
+				<div>NOTES</div>
+				<p>{{ $job->text }}</p>
+			</div>
+			<div class="detail">
+				<div>ID</div>
+				<p>{{ $job->id }}</p>
+			</div>
+			<div class="detail">
+				<div>STATUS</div>
+				<p>{{ $job->finished }}</p>
+			</div>
 		</div>
-		<div class="detail">
-			<div>NOTES</div>
-			<p>{{ $job->text }}</p>
-		</div>
-		<div class="detail">
-			<div>ID</div>
-			<p>{{ $job->id }}</p>
-		</div>
-		<div class="detail">
-			<div>DATE ADDED</div>
-			<p>{{ $job->created_at }}</p>
-		</div>
-		<div class="detail">
-			<div>DATE DUE</div>
-			<p>{{ $job->due }}</p>
-		</div>
-		<div class="detail">
-			<div>LAST UPDATED</div>
-			<p>{{ $job->updated_at }}</p>
-		</div>
-		<div class="detail">
-			<div>STATUS</div>
-			<p>{{ $job->finished }}</p>
+
+		<div class="row-6 fill">
+			<div class="detail">
+				<div>DATE ADDED</div>
+				<p>{{ $job->created_at }}</p>
+			</div>
+			<div class="detail">
+				<div>DATE DUE</div>
+				<p>{{ $job->due }}</p>
+			</div>
+			<div class="detail">
+				<div>LAST UPDATED</div>
+				<p>{{ $job->updated_at }}</p>
+			</div>
 		</div>
 	</div>
 
-	<div class="row-6">
+	<div class="row-4">
 		<h2>Customer</h2>
 		@if($job->customer != null)
 			<div class="detail">
