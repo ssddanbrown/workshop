@@ -25,8 +25,8 @@
 						@else
 							<td>No Customer</td>
 						@endif
-						<td>{{ DateFormatter::humanTime( date_create($job->due)->getTimestamp() ) }}</td>
-						<td>{{ DateFormatter::humanTime( date_create($job->created_at)->getTimestamp() ) }}</td>
+						<td>{{ $job->humanTime('due'); }}</td>
+						<td>{{ $job->humanTime('created_at'); }}</td>
 					</tr>
 				@endforeach
 			</tbody>
