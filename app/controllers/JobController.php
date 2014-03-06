@@ -155,4 +155,17 @@ class JobController extends \BaseController {
 		return Redirect::route('jobs.index');
 	}
 
+	public function toggleStatus($id)
+	{
+		$job = $this->job->find($id);
+		if( $job->finished == false){
+			$job->finished = true;
+		} else {
+			$job->finished = false;
+		}
+		$job->save();
+
+		return Redirect::back();
+	}
+
 }

@@ -18,4 +18,7 @@ Route::get('/', function()
 
 Route::resource('customers', 'CustomerController');
 
+
+Route::get('jobs/{jobs}/status', array('uses' 	=> 'JobController@toggleStatus',
+										'as'	=>	'jobs.toggle') );
 Route::resource('jobs', 'JobController');
