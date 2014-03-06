@@ -5,7 +5,17 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
+.right{
+	float: right;
+	display: inline-block;
+}
+.left{
+	float: left;
+	display: inline-block;
+}
+.inline{
+	display: inline-block;
+}
 // Containers
 .container{
 	display: block;

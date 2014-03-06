@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="row-12">
-	<h1>All Customers</h1>
+
+	<h1>Customers</h1>
+
+	<div class="row subheader">
+		<h3>All Current Customers</h3>
+		{{ link_to("/customers/create", 'New Customer', array('class'=>'button right') ) }}
+	</div>
 
 	@if ( count($customers) >= 1 )
 		<table class="table-grid">
@@ -28,8 +34,6 @@
 	@else
 		<p>No customers to display....</p>
 	@endif
-
-	<p>{{ link_to("/customers/create", 'New Customer') }}</p>
 	
 </div>
 @stop

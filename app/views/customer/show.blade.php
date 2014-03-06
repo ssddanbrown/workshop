@@ -5,9 +5,18 @@
 	<div class="row-12">
 		<h1>Customer Record</h1>
 	</div>
+
+	<div class="row-12">
+		{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
+		{{ Form::open( array('method' => 'DELETE', 'route' => array('customers.destroy', $customer->id ), 'class' => 'inline' )) }}
+			{{ Form::submit('Delete Customer', array('class' => 'button') )}}
+		{{ Form::close() }}
+	</div>
 	
 	<div class="row-6">
-		<h2>Details</h2>
+		<div class="row subheader">
+			<h3>Details</h3>
+		</div>
 		<div class="detail">
 			<div>NAME</div>
 			<p>{{ $customer->name }}</p>
@@ -26,7 +35,9 @@
 		</div>
 	</div>
 	<div class="row-6">
-		<h2>Jobs</h2>
+		<div class="row subheader">
+			<h3>Jobs</h3>
+		</div>
 		<div class="detail">
 			<div>OUTSTANDING</div>
 			@if( count($customer->jobs) >= 1 )
@@ -42,11 +53,5 @@
 			<p>No finished jobs</p>
 		</div>
 	</div>
-	<div class="row"></div>
-	<p>{{ link_to("customers/{$customer->id}/edit", 'Edit Customer') }}</p>
-	<p></p>
-	{{ Form::open( array('method' => 'DELETE', 'route' => array('customers.destroy', $customer->id ) ) ) }}
-		{{ Form::submit('Delete Customer') }}
-	{{ Form::close() }}
 	
 @stop

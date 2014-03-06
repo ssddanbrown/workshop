@@ -70,7 +70,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
-/* line 10, sass/_structure.scss */
+/* line 8, sass/_structure.scss */
+.right {
+  float: right;
+  display: inline-block;
+}
+
+/* line 12, sass/_structure.scss */
+.left {
+  float: left;
+  display: inline-block;
+}
+
+/* line 16, sass/_structure.scss */
+.inline {
+  display: inline-block;
+}
+
+/* line 20, sass/_structure.scss */
 .container, .row, .row-center {
   display: block;
   width: 100%;
@@ -79,83 +96,83 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: relative;
 }
 
-/* line 17, sass/_structure.scss */
+/* line 27, sass/_structure.scss */
 .row, .row-center {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* line 22, sass/_structure.scss */
+/* line 32, sass/_structure.scss */
 .row-center {
   text-align: center;
 }
-/* line 25, sass/_structure.scss */
+/* line 35, sass/_structure.scss */
 .row-center p {
   max-width: 620px;
   margin: 0 auto;
 }
 
-/* line 30, sass/_structure.scss */
+/* line 40, sass/_structure.scss */
 .row-12 {
   width: 100%;
 }
 
-/* line 34, sass/_structure.scss */
+/* line 44, sass/_structure.scss */
 .row-11 {
   width: 91.65%;
 }
 
-/* line 38, sass/_structure.scss */
+/* line 48, sass/_structure.scss */
 .row-10 {
   width: 83.32%;
 }
 
-/* line 42, sass/_structure.scss */
+/* line 52, sass/_structure.scss */
 .row-9 {
   width: 74.98%;
 }
 
-/* line 46, sass/_structure.scss */
+/* line 56, sass/_structure.scss */
 .row-8 {
   width: 66.65%;
 }
 
-/* line 50, sass/_structure.scss */
+/* line 60, sass/_structure.scss */
 .row-7 {
   width: 58.32%;
 }
 
-/* line 54, sass/_structure.scss */
+/* line 64, sass/_structure.scss */
 .row-6 {
   width: 50%;
 }
 
-/* line 58, sass/_structure.scss */
+/* line 68, sass/_structure.scss */
 .row-5 {
   width: 41.65%;
 }
 
-/* line 62, sass/_structure.scss */
+/* line 72, sass/_structure.scss */
 .row-4 {
   width: 33%;
 }
 
-/* line 66, sass/_structure.scss */
+/* line 76, sass/_structure.scss */
 .row-3 {
   width: 25%;
 }
 
-/* line 70, sass/_structure.scss */
+/* line 80, sass/_structure.scss */
 .row-2 {
   width: 16.65%;
 }
 
-/* line 74, sass/_structure.scss */
+/* line 84, sass/_structure.scss */
 .row-1 {
   width: 8.32%;
 }
 
-/* line 78, sass/_structure.scss */
+/* line 88, sass/_structure.scss */
 .row-sub, .row-12, .row-11, .row-10, .row-9, .row-8, .row-7, .row-6, .row-5, .row-4, .row-3, .row-2, .row-1 {
   position: relative;
   float: left;
@@ -165,26 +182,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   vertical-align: top;
 }
 @media screen and (max-width: 600px) {
-  /* line 78, sass/_structure.scss */
+  /* line 88, sass/_structure.scss */
   .row-sub, .row-12, .row-11, .row-10, .row-9, .row-8, .row-7, .row-6, .row-5, .row-4, .row-3, .row-2, .row-1 {
     width: 100%;
   }
 }
-/* line 88, sass/_structure.scss */
+/* line 98, sass/_structure.scss */
 .row-sub p, .row-12 p, .row-11 p, .row-10 p, .row-9 p, .row-8 p, .row-7 p, .row-6 p, .row-5 p, .row-4 p, .row-3 p, .row-2 p, .row-1 p {
   max-width: 620px;
 }
-/* line 91, sass/_structure.scss */
+/* line 101, sass/_structure.scss */
 .row-sub a, .row-12 a, .row-11 a, .row-10 a, .row-9 a, .row-8 a, .row-7 a, .row-6 a, .row-5 a, .row-4 a, .row-3 a, .row-2 a, .row-1 a {
   display: inline-block;
 }
-/* line 94, sass/_structure.scss */
+/* line 104, sass/_structure.scss */
 .row-sub img, .row-12 img, .row-11 img, .row-10 img, .row-9 img, .row-8 img, .row-7 img, .row-6 img, .row-5 img, .row-4 img, .row-3 img, .row-2 img, .row-1 img {
   max-width: 100%;
   height: auto;
   margin: 0.6em 0 0.2em;
 }
-/* line 99, sass/_structure.scss */
+/* line 109, sass/_structure.scss */
 .row-sub.fill, .fill.row-12, .fill.row-11, .fill.row-10, .fill.row-9, .fill.row-8, .fill.row-7, .fill.row-6, .fill.row-5, .fill.row-4, .fill.row-3, .fill.row-2, .fill.row-1 {
   padding: 0 12px 0 0;
 }
@@ -295,28 +312,11 @@ input[type=text], textarea {
   border: 1px solid #BBB;
 }
 
-/* line 79, sass/_html-elements.scss */
-input[type=submit] {
-  padding: 6px 12px;
-  font-family: "Open Sans", sans-serif;
-  border: 1px solid #BBB;
-  border-bottom: 1px solid #AAA;
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-}
-/* line 87, sass/_html-elements.scss */
-input[type=submit]:active {
-  -webkit-box-shadow: inset 0 1px 1px 1px #aaaaaa;
-  -moz-box-shadow: inset 0 1px 1px 1px #aaaaaa;
-  box-shadow: inset 0 1px 1px 1px #aaaaaa;
-}
-
-/* line 95, sass/_html-elements.scss */
+/* line 82, sass/_html-elements.scss */
 table th {
   font-weight: bold;
 }
-/* line 98, sass/_html-elements.scss */
+/* line 85, sass/_html-elements.scss */
 table th, table td {
   padding: 0 6px;
 }
@@ -382,20 +382,24 @@ table th, table td {
 /* line 52, sass/style.scss */
 .subheader h3 {
   margin: 0;
+  display: inline-block;
+  float: left;
 }
-/* line 55, sass/style.scss */
+/* line 57, sass/style.scss */
 .subheader .button {
   margin: 3px 0 0 0;
 }
 
-/* line 61, sass/style.scss */
+/* line 63, sass/style.scss */
 .button {
   border: 1px solid #BBB;
+  display: inline-block;
   border-radius: 4px;
   padding: 6px 12px;
   margin: 12px 0;
   color: #333;
   font-size: 0.8em;
+  line-height: 1.45;
   font-weight: bold;
   background-repeat: repeat-x;
   outline: none;
@@ -407,7 +411,7 @@ table th, table td {
   background-image: linear-gradient(#eeeeee, #dddddd);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
-/* line 74, sass/style.scss */
+/* line 78, sass/style.scss */
 .button:hover {
   text-decoration: none;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(100%, #cdcdcd));
@@ -416,21 +420,9 @@ table th, table td {
   background-image: -o-linear-gradient(#ededed, #cdcdcd);
   background-image: linear-gradient(#ededed, #cdcdcd);
 }
-/* line 78, sass/style.scss */
-.button:active {
+/* line 82, sass/style.scss */
+.button:active, .button.active {
   -webkit-box-shadow: inset 0 1px 1px 0 #bbbbbb;
   -moz-box-shadow: inset 0 1px 1px 0 #bbbbbb;
   box-shadow: inset 0 1px 1px 0 #bbbbbb;
-}
-
-/* line 83, sass/style.scss */
-.right {
-  float: right;
-  display: inline-block;
-}
-
-/* line 87, sass/style.scss */
-.left {
-  float: left;
-  display: inline-block;
 }

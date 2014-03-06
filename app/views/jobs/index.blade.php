@@ -3,13 +3,10 @@
 @section('content')
 <div class="row-12">
 	
-	<div class="row">
-		<h1 class="left">All Jobs</h1>
-		
-	</div>
+	<h1 class="left">All Jobs</h1>
 
 	<div class="row subheader">
-		<h3 class="left">Outstanding Jobs</h3>
+		<h3>Outstanding Jobs</h3>
 		{{ link_to("/jobs/create", 'New Job', array('class'=>'button right') ) }}
 	</div>
 

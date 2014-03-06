@@ -76,19 +76,6 @@ input[type=text], textarea{
 	border-radius: 3px;
 	border: 1px solid #BBB;
 }
-input[type=submit]{
-	padding: $-s $-m;
-	font-family: $sans;
-	border: 1px solid #BBB;
-	border-bottom: 1px solid #AAA;
-	border-radius: 3px;
-	outline: none;
-	cursor: pointer;
-	&:active{
-		@include box-shadow(inset 0 1px 1px 1px #AAA);
-	}
-}
-
 
 // Table Elements
 table{

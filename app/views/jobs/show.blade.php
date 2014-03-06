@@ -3,25 +3,23 @@
 @section('content')
 <div class="row">
 	
-	<div class="row-12">
-		<h1>Job View</h1>
-	</div>
+	<h1>Job View</h1>
 
 	<div class="row-12">
-		<div class="row-2">
-			{{ Form::open(array( 'method' => 'GET', 'route' => array('jobs.edit', $job->id) )) }}
-				{{ Form::submit('Edit Job') }}
+			{{ link_to_route( 'jobs.edit', 'Edit Job', $job->id, array('class'=>'button') ) }}
+			{{ Form::open( array( 
+				'method' 	=> 'DELETE',
+				'route' 	=> array('jobs.destroy', $job->id),
+				'class'		=> 'inline'
+			 )) }}
+				{{ Form::submit('Delete Job', array('class'=>'button')) }}
 			{{ Form::close() }}
-		</div>
-		<div class="row-2">
-			{{ Form::open(array( 'method' => 'DELETE', 'route' => array('jobs.destroy', $job->id) )) }}
-				{{ Form::submit('Delete Job') }}
-			{{ Form::close() }}
-		</div>
 	</div>
 
 	<div class="row-8">
-		<div class="row"><h2>Details</h2></div>
+		<div class="row subheader">
+			<h3>Details</h3>
+		</div>
 		<div class="row-6 fill">
 			<div class="detail">
 				<div>TITLE</div>
@@ -58,7 +56,9 @@
 	</div>
 
 	<div class="row-4">
-		<h2>Customer</h2>
+		<div class="row subheader">
+			<h3>Customer</h3>
+		</div>
 		@if($job->customer != null)
 			<div class="detail">
 				<div>NAME</div>
@@ -84,7 +84,9 @@
 
 	<!-- List All Customer Items -->
 	<div class="row-6">
-		<h2>Items</h2>
+		<div class="row subheader">
+			<h3>Items</h3>
+		</div>
 		@if(count($job->items) > 0)
 			@foreach($job->items as $item)
 					<p><strong>{{ $item->item_title }}</strong><br>
@@ -98,7 +100,9 @@
 
 	<!-- List All Costs -->
 	<div class="row-6">
-		<h2>Costs</h2>
+		<div class="row subheader">
+			<h3>Costs</h3>
+		</div>
 		@if(count($job->costs) > 0)
 			@foreach($job->costs as $cost)
 				<p><strong>{{ $cost->cost_qty }}</strong>

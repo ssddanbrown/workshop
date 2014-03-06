@@ -51,6 +51,8 @@
 .subheader{
 	h3{
 		margin: 0;
+		display: inline-block;
+		float: left;
 	}
 	.button{
 		margin: 3px 0 0 0;
@@ -60,11 +62,13 @@
 
 .button{
 	border: 1px solid #BBB;
+	display: inline-block;
 	border-radius: 4px;
 	padding: $-s $-m;
 	margin: $-m 0;
 	color: #333;
 	font-size: 0.8em;
+	line-height: 1.45;
 	font-weight: bold;
 	background-repeat: repeat-x;
 	outline: none;
@@ -75,16 +79,7 @@
 		text-decoration: none;
 		@include background-image(linear-gradient(#EDEDED, #CDCDCD));
 	}
-	&:active{
+	&:active, &.active{
 		@include box-shadow(inset 0 1px 1px 0 #BBB);
 	}
-}
-
-.right{
-	float: right;
-	display: inline-block;
-}
-.left{
-	float: left;
-	display: inline-block;
 }
