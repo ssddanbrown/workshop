@@ -18,7 +18,8 @@ Route::get('/', function()
 
 Route::resource('customers', 'CustomerController');
 
-
+Route::get('jobs/archive', array('uses' => 'JobController@archiveIndex',
+									'as' => 'jobs.archive') );
 Route::post('jobs/{jobs}/status', array('uses' 	=> 'JobController@toggleStatus',
-									'as'	=>	'jobs.toggle') );
+										'as'	=>	'jobs.toggle') );
 Route::resource('jobs', 'JobController');

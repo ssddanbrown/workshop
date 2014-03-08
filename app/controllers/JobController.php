@@ -12,8 +12,14 @@ class JobController extends \BaseController {
 
 	public function index()
 	{
-		$jobs = $this->job->all();
+		$jobs = $this->job->whereFinished(false)->get();
 		return View::make('jobs.index', ['jobs' => $jobs]);
+	}
+
+	public function archiveIndex()
+	{
+		$jobs = $this->job->whereFinished(true)->get();
+		return View::make('jobs.archive', ['jobs' => $jobs]);
 	}
 
 
