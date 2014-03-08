@@ -80,3 +80,15 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| All Other Requirements
+|--------------------------------------------------------------------------
+|
+| Additional form macros
+|
+*/
+
+
+require app_path().'/libraries/macros.php';

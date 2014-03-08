@@ -8,9 +8,7 @@
 
 	<div class="row-12">
 		{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
-		{{ Form::open( array('method' => 'DELETE', 'route' => array('customers.destroy', $customer->id ), 'class' => 'inline' )) }}
-			{{ Form::submit('Delete Customer', array('class' => 'button') )}}
-		{{ Form::close() }}
+		{{ Form::delete('customers.destroy', 'Delete Customer', $customer->id) }}
 	</div>
 	
 	<div class="row-6">

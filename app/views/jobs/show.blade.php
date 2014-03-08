@@ -6,14 +6,14 @@
 	<h1>Job View</h1>
 
 	<div class="row-12">
+		<div class="left">
+			{{ Form::toggleFinished($job, ['Mark As Complete', 'Mark Uncomplete']) }}
+		</div>
+		<div class="right">
 			{{ link_to_route( 'jobs.edit', 'Edit Job', $job->id, array('class'=>'button') ) }}
-			{{ Form::open( array( 
-				'method' 	=> 'DELETE',
-				'route' 	=> array('jobs.destroy', $job->id),
-				'class'		=> 'inline'
-			 )) }}
-				{{ Form::submit('Delete Job', array('class'=>'button')) }}
-			{{ Form::close() }}
+			{{ Form::delete('jobs.destroy', 'Delete Job', $job->id) }}
+		</div>
+
 	</div>
 
 	<div class="row-8">

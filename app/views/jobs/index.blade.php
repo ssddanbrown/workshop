@@ -34,13 +34,7 @@
 						@endif
 						<td>{{ $job->humanTime('due'); }}</td>
 						<td>{{ $job->humanTime('created_at'); }}</td>
-						@if($job->finished)
-							<td>{{ link_to_route('jobs.toggle', 'Not Done', $job->id,
-							array('class'=>'button') ) }}</td>
-						@else
-							<td>{{ link_to_route('jobs.toggle', 'Done', $job->id,
-							array('class'=>'button') ) }}</td>
-						@endif
+						<td>{{ Form::toggleFinished($job) }}</td>
 					</tr>
 				@endforeach
 			</tbody>
