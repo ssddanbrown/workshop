@@ -16,7 +16,7 @@
 	@endif
 
 	<div class="row">
-		{{ link_to_route('jobs.index', 'View Outstanding Jobs') }}
+		{{ link_to_route('jobs.index', 'View Outstanding Jobs', null, array('class'=>'link') ) }}
 	</div>
 
 @stop

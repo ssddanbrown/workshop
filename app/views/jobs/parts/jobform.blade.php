@@ -71,7 +71,9 @@
 
 
 <div class="row-12">
-	<h2>Costs</h2>
+	<div class="row subheader">
+		<h3>Costs</h3>
+	</div>
 	{{ $errors->first('cost_qty') }}
 	{{ $errors->first('cost_text') }}
 	{{ $errors->first('cost_price') }}

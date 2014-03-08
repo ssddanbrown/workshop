@@ -15,7 +15,7 @@ class CreateCustomerTable extends Migration {
 		Schema::create('customers', function($table){
 
 			$table->increments('id');
-			$table->string('name', 100);
+			$table->string('last_name', 100);
 			$table->string('email', 100);
 			$table->string('phone', 100);
 			$table->timestamps();

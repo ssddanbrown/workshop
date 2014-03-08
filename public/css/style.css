@@ -347,39 +347,44 @@ table.edit th, table.edit td {
 /* line 13, sass/style.scss */
 .table-grid th {
   padding: 6px 12px;
+  border-bottom: 1px solid #BBB;
 }
-/* line 16, sass/style.scss */
+/* line 17, sass/style.scss */
 .table-grid td {
   padding: 6px 12px;
-  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
 }
-/* line 19, sass/style.scss */
+/* line 20, sass/style.scss */
 .table-grid td .button {
   margin: 0;
 }
-/* line 23, sass/style.scss */
-.table-grid tr:hover, .table-grid thead tr {
+/* line 24, sass/style.scss */
+.table-grid thead tr {
   background-color: #EEEEEE;
 }
-/* line 25, sass/style.scss */
-.table-grid tr:hover td, .table-grid tr:hover th, .table-grid thead tr td, .table-grid thead tr th {
-  border-bottom: 1px solid #BBB;
+/* line 27, sass/style.scss */
+.table-grid tr:hover {
+  background-color: #EEEEEE;
 }
 /* line 29, sass/style.scss */
+.table-grid tr:hover td, .table-grid tr:hover th {
+  border-bottom: 1px solid #BBB;
+}
+/* line 33, sass/style.scss */
 .table-grid tbody tr:nth-child(2n) {
   background-color: #F5F5F5;
 }
-/* line 31, sass/style.scss */
+/* line 35, sass/style.scss */
 .table-grid tbody tr:nth-child(2n):hover {
   background-color: #EEEEEE;
 }
 
-/* line 37, sass/style.scss */
+/* line 41, sass/style.scss */
 .detail {
   padding: 12px 0;
   border-bottom: 1px solid #DDD;
 }
-/* line 40, sass/style.scss */
+/* line 44, sass/style.scss */
 .detail label, .detail div {
   display: block;
   font-size: 0.8em;
@@ -388,63 +393,78 @@ table.edit th, table.edit td {
   color: #555;
   text-transform: uppercase;
 }
-/* line 48, sass/style.scss */
+/* line 52, sass/style.scss */
 .detail p {
   margin: 0;
 }
-/* line 51, sass/style.scss */
+/* line 55, sass/style.scss */
 .detail:last-child {
   border-bottom: 0;
 }
 
-/* line 56, sass/style.scss */
+/* line 60, sass/style.scss */
 .header {
   margin-top: 32px;
   margin-bottom: 13px;
 }
-/* line 59, sass/style.scss */
+/* line 63, sass/style.scss */
 .header h1 {
   float: left;
   margin: 0;
   display: inline-block;
   margin-right: 10px;
 }
-/* line 65, sass/style.scss */
+/* line 69, sass/style.scss */
 .header .buttons {
   float: right;
   margin-top: 13px;
   display: inline-block;
 }
 
-/* line 72, sass/style.scss */
+/* line 76, sass/style.scss */
 .subheader {
   padding: 6px 0;
 }
-/* line 73, sass/style.scss */
+/* line 77, sass/style.scss */
 .subheader h3 {
   margin: 0;
   display: inline-block;
   float: left;
 }
-/* line 78, sass/style.scss */
+/* line 82, sass/style.scss */
 .subheader .button {
   margin: 3px 0 0 0;
 }
 
-/* line 84, sass/style.scss */
+/* line 88, sass/style.scss */
+.button-template, .button, .link {
+  display: inline-block;
+  font-size: 0.8em;
+  margin: 12px 0;
+  line-height: 1.45;
+  outline: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+/* line 97, sass/style.scss */
+.button-template:active, .button:active, .link:active, .button-template.active, .active.button, .active.link {
+  -webkit-box-shadow: inset 0 1px 1px 0 #bbbbbb;
+  -moz-box-shadow: inset 0 1px 1px 0 #bbbbbb;
+  box-shadow: inset 0 1px 1px 0 #bbbbbb;
+}
+/* line 100, sass/style.scss */
+.button-template:hover, .button:hover, .link:hover {
+  text-decoration: none;
+}
+
+/* line 105, sass/style.scss */
 .button {
   border: 1px solid #BBB;
   display: inline-block;
-  border-radius: 4px;
-  padding: 6px 12px;
-  margin: 12px 0;
   color: #333;
-  font-size: 0.8em;
-  line-height: 1.45;
   font-weight: bold;
   background-repeat: repeat-x;
-  outline: none;
-  cursor: pointer;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
   background-image: -webkit-linear-gradient(#eeeeee, #dddddd);
   background-image: -moz-linear-gradient(#eeeeee, #dddddd);
@@ -452,18 +472,27 @@ table.edit th, table.edit td {
   background-image: linear-gradient(#eeeeee, #dddddd);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
-/* line 99, sass/style.scss */
+/* line 114, sass/style.scss */
 .button:hover {
-  text-decoration: none;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(100%, #cdcdcd));
   background-image: -webkit-linear-gradient(#ededed, #cdcdcd);
   background-image: -moz-linear-gradient(#ededed, #cdcdcd);
   background-image: -o-linear-gradient(#ededed, #cdcdcd);
   background-image: linear-gradient(#ededed, #cdcdcd);
 }
-/* line 103, sass/style.scss */
-.button:active, .button.active {
-  -webkit-box-shadow: inset 0 1px 1px 0 #bbbbbb;
-  -moz-box-shadow: inset 0 1px 1px 0 #bbbbbb;
-  box-shadow: inset 0 1px 1px 0 #bbbbbb;
+
+/* line 120, sass/style.scss */
+.link {
+  font-size: 0.8em;
+  color: #0099ff;
+  border: 1px solid #0099ff;
+}
+/* line 126, sass/style.scss */
+.link:after {
+  content: ' >';
+}
+/* line 129, sass/style.scss */
+.link:hover {
+  background-color: #0099ff;
+  color: #FFFFFF;
 }

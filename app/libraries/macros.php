@@ -11,7 +11,7 @@ Form::macro('delete', function($route, $text = 'Delete', $route_var, $classes = 
 		. Form::close();
 });
 
-Form::macro('toggleFinished', function($job, $text = ['Done', 'Not Done'], $classes = 'inline'){
+Form::macro('toggleFinished', function($job, $text = ['Mark Complete', 'Mark Uncomplete'], $classes = 'inline'){
 
 	if ( $job->finished ) {
 		$button_text = $text[1];

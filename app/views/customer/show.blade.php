@@ -17,7 +17,7 @@
 		</div>
 		<div class="detail">
 			<div>NAME</div>
-			<p>{{ $customer->name }}</p>
+			<p>{{ $customer->name() }}</p>
 		</div>
 		<div class="detail">
 			<div>EMAIL</div>

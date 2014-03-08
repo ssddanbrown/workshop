@@ -12,15 +12,19 @@
 	border-radius: 4px;
 	th{
 		padding: $-s $-m;
+		border-bottom: 1px solid #BBB;
 	}
 	td{
 		padding: $-s $-m;
-		border-top: 1px solid #DDD;
+		border-bottom: 1px solid #DDD;
 		.button{
 			margin: 0;
 		}
 	}
-	tr:hover, thead tr{
+	thead tr{
+		background-color: #EEEEEE;
+	}
+	tr:hover{
 		background-color: #EEEEEE;
 		td, th{
 			border-bottom: 1px solid #BBB;
@@ -81,26 +85,49 @@
 	padding: $-s 0;
 }
 
+.button-template{
+	display: inline-block;
+	font-size: 0.8em;
+	margin: $-m 0;
+	line-height: 1.45;
+	outline: none;
+	padding: $-s $-m;
+	cursor: pointer;
+	border-radius: 4px;
+	&:active, &.active{
+		@include box-shadow(inset 0 1px 1px 0 #BBB);
+	}
+	&:hover{
+		text-decoration: none;
+	}
+}
+
 .button{
+	@extend .button-template;
 	border: 1px solid #BBB;
 	display: inline-block;
-	border-radius: 4px;
-	padding: $-s $-m;
-	margin: $-m 0;
 	color: #333;
-	font-size: 0.8em;
-	line-height: 1.45;
 	font-weight: bold;
 	background-repeat: repeat-x;
-	outline: none;
-	cursor: pointer;
 	@include background-image(linear-gradient(#EEE, #DDD));
 	@include text-shadow(0 1px 0 rgba(255,255,255,0.9));
 	&:hover{
-		text-decoration: none;
 		@include background-image(linear-gradient(#EDEDED, #CDCDCD));
 	}
-	&:active, &.active{
-		@include box-shadow(inset 0 1px 1px 0 #BBB);
+
+}
+
+.link{
+	@extend .button-template;
+	
+	font-size: 0.8em;
+	color: $second;
+	border: 1px solid $second;
+	&:after{
+		content: ' >';
+	}
+	&:hover{
+		background-color: $second;
+		color: #FFFFFF;
 	}
 }

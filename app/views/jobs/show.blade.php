@@ -6,7 +6,7 @@
 	<div class="row-12 header">
 		<h1>Job Information</h1>
 		<div class="buttons">
-			{{ Form::toggleFinished($job, ['Mark As Complete', 'Mark Uncomplete']) }}
+			{{ Form::toggleFinished($job) }}
 			{{ link_to_route( 'jobs.edit', 'Edit Job', $job->id, array('class'=>'button') ) }}
 			{{ Form::delete('jobs.destroy', 'Delete Job', $job->id) }}
 		</div>
@@ -58,7 +58,7 @@
 		@if($job->customer != null)
 			<div class="detail">
 				<div>NAME</div>
-				<p>{{ $job->customer->name }}</p>
+				<p>{{ $job->customer->name() }}</p>
 			</div>
 			<div class="detail">
 				<div>EMAIL</div>
@@ -69,7 +69,7 @@
 				<p>{{ $job->customer->phone }}</p>
 			</div>
 			<div class="detail">
-				<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id) }}</p>
+				<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id, array('class'=>'link') ) }}</p>
 			</div>
 		@else
 			<p>No customer added.</p>

@@ -15,13 +15,16 @@
 				<td>{{ $job->id }}</td>
 				<td>{{ link_to_route('jobs.show', $job->title, $job->id) }}</td>
 				@if( $job->customer != null )
-					<td>{{ $job->customer->name }}</td>
+					<td>{{ $job->customer->name() }}</td>
 				@else
 					<td>No Customer</td>
 				@endif
 				<td>{{ $job->humanTime('due'); }}</td>
 				<td>{{ $job->humanTime('created_at'); }}</td>
-				<td>{{ Form::toggleFinished($job) }}</td>
+				<td>
+					{{ Form::toggleFinished($job) }}
+					{{ link_to_route('jobs.edit', 'Edit', $job->id, array('class'=>'button') ) }}	
+				</td>
 			</tr>
 		@endforeach
 	</tbody>

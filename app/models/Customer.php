@@ -5,10 +5,10 @@ class Customer extends Eloquent {
 
 	protected $table = 'customers';
 
-	protected $fillable = ['name', 'email', 'phone'];
+	protected $fillable = ['first_name', 'last_name', 'email', 'phone'];
 
 	public static $rules = [
-		'name' => 'required'
+		'last_name' => 'required'
 	];
 
 	public $errors;
@@ -16,6 +16,11 @@ class Customer extends Eloquent {
 	public function jobs()
 	{
 		return $this->hasMany('Job');
+	}
+
+	public function name()
+	{
+		return $this->first_name . ' ' . $this->last_name;
 	}
 
 

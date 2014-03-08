@@ -25,7 +25,7 @@ class JobController extends \BaseController {
 
 	public function create()
 	{
-		$customers = Customer::orderBy('name')->lists('name', 'id');
+		$customers = Customer::orderBy('last_name')->lists('first_name', 'id');
 		return View::make('jobs.create', ['customers' => $customers]);
 	}
 
@@ -86,7 +86,7 @@ class JobController extends \BaseController {
 	public function edit($id)
 	{
 		$job = $this->job->find($id);
-		$customers = Customer::orderBy('name')->lists('name', 'id');
+		$customers = Customer::orderBy('last_name')->lists('first_name', 'id');
 		return View::make('jobs.edit', ['job' => $job, 'customers' => $customers]);
 	}
 

@@ -5,7 +5,7 @@
 	<div class="row-12 header">
 		<h1>Customers</h1>
 		<div class="buttons">
-			{{ link_to("/customers/create", 'New Customer', array('class'=>'button right') ) }}
+			{{ link_to_route('customers.create', 'New Customer',null, array('class'=>'button right') ) }}
 		</div>	
 	</div>
 
@@ -24,7 +24,7 @@
 					@foreach ( $customers as $customer )
 						<tr>
 							<td>{{ $customer->id }}</td>
-							<td>{{ link_to_route('customers.show', $customer->name, $customer->id) }}</td>
+							<td>{{ link_to_route('customers.show', $customer->name(), $customer->id) }}</td>
 							<td>{{ $customer->email }}</td>
 							<td>{{ $customer->phone }}</td>
 						</tr>
