@@ -2,14 +2,14 @@
 
 @section('content')
 	
-	<div class="row-12">
+	<div class="row-12 header">
 		<h1>Customer Record</h1>
+		<div class="buttons">
+			{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
+			{{ Form::delete('customers.destroy', 'Delete Customer', $customer->id) }}
+		</div>
 	</div>
 
-	<div class="row-12">
-		{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
-		{{ Form::delete('customers.destroy', 'Delete Customer', $customer->id) }}
-	</div>
 	
 	<div class="row-6">
 		<div class="row subheader">

@@ -3,20 +3,16 @@
 @section('content')
 <div class="row">
 	
-	<h1>Job View</h1>
-
-	<div class="row-12">
-		<div class="left">
+	<div class="row-12 header">
+		<h1>Job Information</h1>
+		<div class="buttons">
 			{{ Form::toggleFinished($job, ['Mark As Complete', 'Mark Uncomplete']) }}
-		</div>
-		<div class="right">
 			{{ link_to_route( 'jobs.edit', 'Edit Job', $job->id, array('class'=>'button') ) }}
 			{{ Form::delete('jobs.destroy', 'Delete Job', $job->id) }}
 		</div>
-
 	</div>
 
-	<div class="row-8">
+	<div class="row-6">
 		<div class="row subheader">
 			<h3>Details</h3>
 		</div>
@@ -55,7 +51,7 @@
 		</div>
 	</div>
 
-	<div class="row-4">
+	<div class="row-3">
 		<div class="row subheader">
 			<h3>Customer</h3>
 		</div>
@@ -80,23 +76,25 @@
 		@endif
 	</div>
 
-	<div class="row"></div>
-
 	<!-- List All Customer Items -->
-	<div class="row-6">
+	<div class="row-3">
 		<div class="row subheader">
 			<h3>Items</h3>
 		</div>
 		@if(count($job->items) > 0)
 			@foreach($job->items as $item)
-					<p><strong>{{ $item->item_title }}</strong><br>
-					{{ $item->item_text }}</p>
+				<div class="detail">
+					<div>{{ $item->item_title }}</div>
+					<p>{{ $item->item_text }}</p>
+				</div>
 			@endforeach
 			<div class="row"></div>
 		@else
 			<p>No Items to display.</p>
 		@endif
 	</div>
+
+	<div class="row"></div>
 
 	<!-- List All Costs -->
 	<div class="row-6">

@@ -51,6 +51,22 @@
 	}
 }
 
+.header{
+	margin-top: 32px;
+	margin-bottom: 13px;
+	h1{
+		float: left;
+		margin: 0;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.buttons{
+		float: right;
+		margin-top: 13px;
+		display: inline-block;
+	}
+}
+
 .subheader{
 	h3{
 		margin: 0;
