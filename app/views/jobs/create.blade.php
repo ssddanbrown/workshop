@@ -1,18 +1,20 @@
 @extends('common.main')
 
 @section('content')
-<div class="row-12">
 
-	<h1>Add New Job</h1>
 	{{ Form::open(array('route' => 'jobs.store')) }}
 
+		<div class="row-12 header">
+			<h1>Add New Job</h1>
+			<div class="buttons">
+				{{ Form::submit('Add Job', array('class'=>'button') ) }}
+			</div>
+		</div>
+
 		@include('jobs.parts.jobform')
-		
-		<div>{{ Form::submit('Add Job') }}</div>
 
 	{{ Form::close() }}
 
 	@include('jobs.parts.addformjs')
 
-</div>
 @stop

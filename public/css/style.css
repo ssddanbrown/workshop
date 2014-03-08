@@ -305,20 +305,36 @@ blockquote {
 }
 
 /* line 73, sass/_html-elements.scss */
-input[type=text], textarea {
+input[type=text], input[type=datetime], textarea, select {
   font-family: "Open Sans", sans-serif;
   padding: 6px;
   border-radius: 3px;
   border: 1px solid #BBB;
 }
 
-/* line 82, sass/_html-elements.scss */
+/* line 79, sass/_html-elements.scss */
+select {
+  background-color: #EFEFEF;
+}
+
+/* line 84, sass/_html-elements.scss */
 table th {
   font-weight: bold;
 }
-/* line 85, sass/_html-elements.scss */
+/* line 87, sass/_html-elements.scss */
 table th, table td {
   padding: 0 6px;
+}
+/* line 91, sass/_html-elements.scss */
+table.edit th {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #555;
+}
+/* line 97, sass/_html-elements.scss */
+table.edit th, table.edit td {
+  padding: 0;
 }
 
 /* line 8, sass/style.scss */
@@ -364,56 +380,58 @@ table th, table td {
   border-bottom: 1px solid #DDD;
 }
 /* line 40, sass/style.scss */
-.detail div {
+.detail label, .detail div {
+  display: block;
   font-size: 0.8em;
   font-weight: bold;
   max-width: 250px;
   color: #555;
+  text-transform: uppercase;
 }
-/* line 46, sass/style.scss */
+/* line 48, sass/style.scss */
 .detail p {
   margin: 0;
 }
-/* line 49, sass/style.scss */
+/* line 51, sass/style.scss */
 .detail:last-child {
   border-bottom: 0;
 }
 
-/* line 54, sass/style.scss */
+/* line 56, sass/style.scss */
 .header {
   margin-top: 32px;
   margin-bottom: 13px;
 }
-/* line 57, sass/style.scss */
+/* line 59, sass/style.scss */
 .header h1 {
   float: left;
   margin: 0;
   display: inline-block;
   margin-right: 10px;
 }
-/* line 63, sass/style.scss */
+/* line 65, sass/style.scss */
 .header .buttons {
   float: right;
   margin-top: 13px;
   display: inline-block;
 }
 
-/* line 70, sass/style.scss */
+/* line 72, sass/style.scss */
 .subheader {
   padding: 6px 0;
 }
-/* line 71, sass/style.scss */
+/* line 73, sass/style.scss */
 .subheader h3 {
   margin: 0;
   display: inline-block;
   float: left;
 }
-/* line 76, sass/style.scss */
+/* line 78, sass/style.scss */
 .subheader .button {
   margin: 3px 0 0 0;
 }
 
-/* line 82, sass/style.scss */
+/* line 84, sass/style.scss */
 .button {
   border: 1px solid #BBB;
   display: inline-block;
@@ -434,7 +452,7 @@ table th, table td {
   background-image: linear-gradient(#eeeeee, #dddddd);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
-/* line 97, sass/style.scss */
+/* line 99, sass/style.scss */
 .button:hover {
   text-decoration: none;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(100%, #cdcdcd));
@@ -443,7 +461,7 @@ table th, table td {
   background-image: -o-linear-gradient(#ededed, #cdcdcd);
   background-image: linear-gradient(#ededed, #cdcdcd);
 }
-/* line 101, sass/style.scss */
+/* line 103, sass/style.scss */
 .button:active, .button.active {
   -webkit-box-shadow: inset 0 1px 1px 0 #bbbbbb;
   -moz-box-shadow: inset 0 1px 1px 0 #bbbbbb;

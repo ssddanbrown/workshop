@@ -1,18 +1,21 @@
 @extends('common.main')
 
 @section('content')
-<div class="row-12">
-
-	<h1>Edit Job</h1>
+	
 	{{ Form::model( $job, array( 'method' => 'PUT', 'route' => array('jobs.update', $job->id) ) ) }}
+
+		<div class="row-12 header">
+			<h1>Edit Job</h1>
+			<div class="buttons">
+				{{ Form::submit('Save Job', array('class'=>'button') ) }}
+			</div>
+		</div>
 
 		@include('jobs.parts.jobform')
 		
-		<div>{{ Form::submit('Save Job') }}</div>
 
 	{{ Form::close() }}
 
 	@include('jobs.parts.addformjs')
 
-</div>
 @stop

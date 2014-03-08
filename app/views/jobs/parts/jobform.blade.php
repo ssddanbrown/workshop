@@ -1,26 +1,34 @@
-<div>
-	{{ Form::label('title', 'Title:') }}
-	{{ Form::text('title') }}
-	{{ $errors->first('title') }}
-</div>
-<div>
-	{{ Form::label('text', 'Job Notes:') }}
-	{{ Form::text('text') }}
-	{{ $errors->first('text') }}
-</div>
-<div>
-	{{ Form::label('due', 'Date Due:') }}
-	{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
-</div>
-<div>
-	{{ Form::label('customer_id', 'Customer:') }}
+
+<div class="row-6">
+	<div class="row subheader">
+		<h3>Details</h3>
+	</div>
+	<div class="detail">
+		{{ Form::label('title', 'Title') }}
+		{{ Form::text('title') }}
+		{{ $errors->first('title') }}
+	</div>
+	<div class="detail">
+		{{ Form::label('text', 'Job Notes') }}
+		{{ Form::text('text') }}
+		{{ $errors->first('text') }}
+	</div>
+	<div class="detail">
+		{{ Form::label('due', 'Date Due') }}
+		{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
+	</div>
+	<div class="detail">
+	{{ Form::label('customer_id', 'Customer') }}
 	{{ Form::select('customer_id', $customers) }}
+	</div>
 </div>
 
-<div class="row">
-	<h2>Customer Items</h2>
+<div class="row-6">
+	<div class="row subheader">
+		<h3>Items</h3>
+	</div>
 	{{ $errors->first('item_title') }}
-	<table>
+	<table class="edit">
 		<thead>
 			<tr>
 				<th>{{ Form::label('items[][item_title]', 'Item Title') }}</th>
@@ -54,16 +62,16 @@
 			@endif
 		</tbody>
 	</table>
-
+<a href="javascript:addForm('item');" class="button">Add Item</a>
 </div>
-<a href="javascript:addForm('item');" class="button-add">Add Item</a>
 
-<div class="row">
+
+<div class="row-12">
 	<h2>Costs</h2>
 	{{ $errors->first('cost_qty') }}
 	{{ $errors->first('cost_text') }}
 	{{ $errors->first('cost_price') }}
-	<table>
+	<table class="edit">
 		<thead>
 			<tr>
 				<th>{{ Form::label('costs[][cost_qty]', 'Qty: ') }}</th>
@@ -103,7 +111,5 @@
 			@endif
 		</tbody>
 	</table>
-
+	<a href="javascript:addForm('cost');" class="button">Add Cost</a>
 </div>
-<a href="javascript:addForm('cost');" class="button-add">Add Cost</a>
-<p></p>

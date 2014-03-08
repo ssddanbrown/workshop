@@ -70,13 +70,15 @@ blockquote {
   	border-left: 2px dotted #DDD;
 }
 
-input[type=text], textarea{
+input[type=text],input[type=datetime], textarea, select{
 	font-family: $sans;
 	padding: $-s;
 	border-radius: 3px;
 	border: 1px solid #BBB;
 }
-
+select{
+	background-color: #EFEFEF;
+}
 // Table Elements
 table{
 	th{
@@ -84,5 +86,16 @@ table{
 	}
 	th, td{
 		padding: 0 $-s;
+	}
+	&.edit{
+		th{
+			text-transform: uppercase;
+			font-size: 0.8em;
+			font-weight: bold;
+			color: #555;
+		}
+		th, td{
+			padding: 0;
+		}
 	}
 }
