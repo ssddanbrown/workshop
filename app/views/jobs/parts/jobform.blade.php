@@ -15,7 +15,11 @@
 	</div>
 	<div class="detail">
 		{{ Form::label('due', 'Date Due') }}
-		{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
+		@if( isset($job) )
+			{{ Form::input('datetime', 'due') }}
+		@else
+			{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
+		@endif
 	</div>
 	<div class="detail">
 	{{ Form::label('customer_id', 'Customer') }}
