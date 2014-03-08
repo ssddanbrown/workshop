@@ -40,15 +40,25 @@
 			<div>OUTSTANDING</div>
 			@if( count($customer->jobs) >= 1 )
 				@foreach( $customer->jobs as $job )
-					{{ link_to_route('jobs.show', $job->title, $job->id) }}
+					@if(!$job->finished)
+						<p>{{ link_to_route('jobs.show', $job->title, $job->id) }}</p>
+					@endif
 				@endforeach
 			@else
 				<p>No oustanding jobs.</p>
 			@endif
 		</div>
 		<div class="detail">
-			<div>FINISHED</div>
-			<p>No finished jobs</p>
+			<div>COMPLETE</div>
+			@if( count($customer->jobs) >= 1 )
+				@foreach( $customer->jobs as $job )
+					@if($job->finished)
+						<p>{{ link_to_route('jobs.show', $job->title, $job->id) }}</p>
+					@endif
+				@endforeach
+			@else
+				<p>No oustanding jobs.</p>
+			@endif
 		</div>
 	</div>
 	
