@@ -1,7 +1,7 @@
 
 {{ Form::hidden('customer_id') }}
 
-<div class="row-6">
+<div class="row-4">
 	<div class="row subheader">
 		<h3>Details</h3>
 	</div>
@@ -25,7 +25,32 @@
 	</div>
 </div>
 
-<div class="row-6">
+<div class="row-4">
+		<div class="row subheader">
+		<h3>Customer</h3>
+	</div>
+	@if( isset($customer) )
+		<div class="detail">
+			<div>NAME</div>
+			<p>{{ $customer->name() }}</p>
+		</div>
+		<div class="detail">
+			<div>EMAIL</div>
+			<p>{{ $customer->email }}</p>
+		</div>
+		<div class="detail">
+			<div>PHONE</div>
+			<p>{{ $customer->phone }}</p>
+		</div>
+	@else
+		<p>No customer Set</p>
+	@endif
+	@if( isset($job) )
+		{{ link_to_route('jobs.editcustomer', 'Change Customer', $job->id, array('class'=>'button')) }}
+	@endif
+</div>
+
+<div class="row-4">
 	<div class="row subheader">
 		<h3>Items</h3>
 	</div>
