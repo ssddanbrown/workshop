@@ -41,7 +41,7 @@
 			@if( count($customer->jobs) >= 1 )
 				@foreach( $customer->jobs as $job )
 					@if(!$job->finished)
-						<p>{{ link_to_route('jobs.show', $job->title, $job->id) }}</p>
+						<p>{{ link_to_route('jobs.show', $job->title, $job->id, array('class'=>'link')) }}</p>
 					@endif
 				@endforeach
 			@else
@@ -53,7 +53,7 @@
 			@if( count($customer->jobs) >= 1 )
 				@foreach( $customer->jobs as $job )
 					@if($job->finished)
-						<p>{{ link_to_route('jobs.show', $job->title, $job->id) }}</p>
+						<p>{{ link_to_route('jobs.show', $job->title, $job->id, array('class'=>'link')) }}</p>
 					@endif
 				@endforeach
 			@else
