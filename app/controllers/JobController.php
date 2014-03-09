@@ -25,8 +25,18 @@ class JobController extends \BaseController {
 
 	public function create()
 	{
-		$customers = Customer::orderBy('last_name')->lists('first_name', 'id');
-		return View::make('jobs.create', ['customers' => $customers]);
+		$customers = $this->customerList();
+		return View::make('jobs.create-customer', ['customers' => $customers]);
+	}
+	public function customerToJob()
+	{
+		Input::flashOnly('customer_id');
+		return Redirect::route('jobs.createjob');
+	}
+	public function createJob()
+	{
+		Session::reflash(Input::old('customer_id'));
+		return View::make('jobs.create');
 	}
 
 
@@ -35,8 +45,13 @@ class JobController extends \BaseController {
 
 		$errors = null;
 		$job_input = Input::only('title', 'text', 'due', 'customer_id');
+
 		if ( !$this->job->fill($job_input)->isValid() ) {
 			$errors = $this->job->errors;
+		}
+
+		if( Customer::find($this->job->customer_id) == null ){
+			$this->job->customer_id = 0;
 		}
 
 		$items = array();
@@ -86,7 +101,7 @@ class JobController extends \BaseController {
 	public function edit($id)
 	{
 		$job = $this->job->find($id);
-		$customers = Customer::orderBy('last_name')->lists('first_name', 'id');
+		$customers = $this->customerList();
 		return View::make('jobs.edit', ['job' => $job, 'customers' => $customers]);
 	}
 
@@ -172,6 +187,11 @@ class JobController extends \BaseController {
 		$job->save();
 
 		return Redirect::back();
+	}
+
+	private function customerList()
+	{
+		return Customer::orderBy('last_name')->paginate(5);
 	}
 
 }

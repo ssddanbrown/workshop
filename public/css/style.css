@@ -355,7 +355,7 @@ table.edit th, table.edit td {
   border-bottom: 1px solid #DDD;
 }
 /* line 20, sass/style.scss */
-.table-grid td .button {
+.table-grid td .button, .table-grid td .radio {
   margin: 0;
 }
 /* line 24, sass/style.scss */
@@ -432,12 +432,12 @@ table.edit th, table.edit td {
   float: left;
 }
 /* line 82, sass/style.scss */
-.subheader .button {
+.subheader .button, .subheader .radio {
   margin: 3px 0 0 0;
 }
 
 /* line 88, sass/style.scss */
-.button-template, .button, .link {
+.button-template, .button, .radio, .link {
   display: inline-block;
   font-size: 0.8em;
   margin: 12px 0;
@@ -448,18 +448,18 @@ table.edit th, table.edit td {
   border-radius: 4px;
 }
 /* line 97, sass/style.scss */
-.button-template:active, .button:active, .link:active, .button-template.active, .active.button, .active.link {
+.button-template:active, .button:active, .radio:active, .link:active, .button-template.active, .active.button, .active.radio, .active.link {
   -webkit-box-shadow: inset 0 1px 1px 0 #bbbbbb;
   -moz-box-shadow: inset 0 1px 1px 0 #bbbbbb;
   box-shadow: inset 0 1px 1px 0 #bbbbbb;
 }
 /* line 100, sass/style.scss */
-.button-template:hover, .button:hover, .link:hover {
+.button-template:hover, .button:hover, .radio:hover, .link:hover {
   text-decoration: none;
 }
 
 /* line 105, sass/style.scss */
-.button {
+.button, .radio {
   border: 1px solid #BBB;
   display: inline-block;
   color: #333;
@@ -473,7 +473,7 @@ table.edit th, table.edit td {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 /* line 114, sass/style.scss */
-.button:hover {
+.button:hover, .radio:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(100%, #cdcdcd));
   background-image: -webkit-linear-gradient(#ededed, #cdcdcd);
   background-image: -moz-linear-gradient(#ededed, #cdcdcd);
@@ -487,12 +487,36 @@ table.edit th, table.edit td {
   color: #0099ff;
   border: 1px solid #0099ff;
 }
-/* line 126, sass/style.scss */
+/* line 125, sass/style.scss */
 .link:after {
   content: ' >';
 }
-/* line 129, sass/style.scss */
+/* line 128, sass/style.scss */
 .link:hover {
   background-color: #0099ff;
   color: #FFFFFF;
+}
+
+/* line 134, sass/style.scss */
+.radio {
+  padding: 0;
+}
+/* line 137, sass/style.scss */
+.radio label {
+  cursor: pointer;
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+/* line 144, sass/style.scss */
+.pagination {
+  text-align: center;
+}
+/* line 146, sass/style.scss */
+.pagination li {
+  display: inline-block;
+}
+/* line 148, sass/style.scss */
+.pagination li a, .pagination li span {
+  padding: 0 6px;
 }

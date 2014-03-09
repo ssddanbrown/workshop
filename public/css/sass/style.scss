@@ -119,7 +119,6 @@
 
 .link{
 	@extend .button-template;
-	
 	font-size: 0.8em;
 	color: $second;
 	border: 1px solid $second;
@@ -129,5 +128,25 @@
 	&:hover{
 		background-color: $second;
 		color: #FFFFFF;
+	}
+}
+
+.radio{
+	@extend .button;
+	padding: 0;
+	label{
+		cursor: pointer;
+		padding: $-s $-m;
+		display: inline-block;
+	}
+}
+
+.pagination{
+	text-align: center;
+	li{
+		display: inline-block;
+		a,span{
+			padding: 0 $-s;
+		}
 	}
 }

@@ -1,4 +1,6 @@
 
+{{ Form::hidden('customer_id') }}
+
 <div class="row-6">
 	<div class="row subheader">
 		<h3>Details</h3>
@@ -20,10 +22,6 @@
 		@else
 			{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
 		@endif
-	</div>
-	<div class="detail">
-	{{ Form::label('customer_id', 'Customer') }}
-	{{ Form::select('customer_id', $customers) }}
 	</div>
 </div>
 
