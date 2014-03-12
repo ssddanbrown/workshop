@@ -23,6 +23,10 @@ class Job extends Eloquent {
 	{
 		return $this->hasMany('Cost');
 	}
+	public function notes()
+	{
+		return $this->hasMany('Note');
+	}
 
 
 	public function isValid()

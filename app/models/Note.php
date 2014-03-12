@@ -3,7 +3,7 @@
 
 class Note extends Eloquent {
 
-	protected $fillable = [];
+	protected $fillable = ['media', 'text'];
 
 	public function job()
 	{
