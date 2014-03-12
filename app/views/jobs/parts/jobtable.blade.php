@@ -23,7 +23,8 @@
 				<td>{{ $job->humanTime('created_at'); }}</td>
 				<td>
 					{{ Form::toggleFinished($job) }}
-					{{ link_to_route('jobs.edit', 'Edit', $job->id, array('class'=>'button') ) }}	
+					{{ link_to_route('jobs.edit', 'Edit', $job->id, array('class'=>'button') ) }}
+					{{ Form::delete('jobs.destroy', 'Delete', $job->id) }}
 				</td>
 			</tr>
 		@endforeach
