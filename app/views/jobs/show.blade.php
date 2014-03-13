@@ -121,6 +121,7 @@
 				<div class="detail">
 					<div>{{ $note->created_at }}</div>
 					<p>{{ $note->text }}</p>
+					{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
 				</div>
 			@endforeach
 		@else

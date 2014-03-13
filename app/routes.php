@@ -33,7 +33,8 @@ Route::get('jobs/create/job', array(
 
 Route::get('jobs/{jobs}/edit/customer', array(
 	'uses' =>'JobController@editCustomer',
-	'as' => 'jobs.editcustomer'));
+	'as' => 'jobs.editcustomer'
+	));
 Route::put('jobs/{jobs}/edit/customer', array(
 	'uses' => 'JobController@updateCustomer',
 	'as' => 'jobs.update.customer'
@@ -50,7 +51,11 @@ Route::post('jobs/{jobs}/status', array(
 Route::resource('jobs', 'JobController');
 
 // Note Routes
-Route::post('jobs/note', array(
+Route::post('note', array(
 	'uses' => 'NoteController@store',
 	'as'	=> 'notes.store'
+	));
+Route::delete('note/{notes}', array(
+	'uses' => 'NoteController@destroy',
+	'as' => 'notes.destroy'
 	));

@@ -39,7 +39,10 @@ class NoteController extends \BaseController {
 
 	public function destroy($id)
 	{
-		//
+		$note = $this->note->find($id);
+		$note->delete();
+
+		return Redirect::back();
 	}
 
 }

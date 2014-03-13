@@ -188,6 +188,7 @@ class JobController extends \BaseController {
 		$job = $this->job->find($id);
 		$job->items()->delete();
 		$job->costs()->delete();
+		$job->notes()->delete();
 		$job->delete();
 
 		return Redirect::route('jobs.index');
