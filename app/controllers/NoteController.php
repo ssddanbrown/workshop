@@ -2,28 +2,26 @@
 
 class NoteController extends \BaseController {
 
+	protected $note;
 
-	public function index()
+	public function __construct(Note $note)
 	{
-		//
+		$this->note = $note;
 	}
-
-
-	public function create()
-	{
-		//
-	}
-
 
 	public function store()
 	{
-		//
-	}
+		$input = Input::all();
 
+		$this->note->fill($input);
 
-	public function show($id)
-	{
-		//
+		if(Job::find(Input::get('job_id')) == null){
+			//TODO add custom validation with error messages
+			dd('cat');
+		}
+
+		$this->note->save();
+		return Redirect::back();
 	}
 
 

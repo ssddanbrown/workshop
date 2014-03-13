@@ -25,7 +25,7 @@ class Job extends Eloquent {
 	}
 	public function notes()
 	{
-		return $this->hasMany('Note');
+		return $this->hasMany('Note')->orderBy('created_at', 'DESC');
 	}
 
 

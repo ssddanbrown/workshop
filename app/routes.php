@@ -48,3 +48,9 @@ Route::post('jobs/{jobs}/status', array(
 	'as'	=>	'jobs.toggle') );
 
 Route::resource('jobs', 'JobController');
+
+// Note Routes
+Route::post('jobs/note', array(
+	'uses' => 'NoteController@store',
+	'as'	=> 'notes.store'
+	));

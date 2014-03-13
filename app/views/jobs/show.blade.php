@@ -97,7 +97,7 @@
 	<div class="row"></div>
 
 	<!-- List All Costs -->
-	<div class="row-6">
+	<div class="row-12">
 		<div class="row subheader">
 			<h3>Costs</h3>
 		</div>
@@ -110,6 +110,35 @@
 		@else
 			<p>No Costs to display.</p>
 		@endif
+	</div>
+
+	<div class="row-8">
+		<div class="row subheader">
+			<h3>Notes</h3>
+		</div>
+		@if( count($job->notes) > 0 )
+			@foreach( $job->notes as $note )
+				<div class="detail">
+					<div>{{ $note->created_at }}</div>
+					<p>{{ $note->text }}</p>
+				</div>
+			@endforeach
+		@else
+			<p>No notes added</p>
+		@endif
+	</div>
+	<div class="row-4">
+		{{ Form::open( array('route' => 'notes.store') ) }}
+		<div class="row subheader">
+			<h3>Add Note</h3>
+			{{ Form::submit('Save Note', array('class'=>'button right') ) }}
+		</div>
+		{{ Form::hidden('job_id', $job->id) }}
+		<div class="detail">
+			{{ Form::label('text', 'Note Text') }}
+			{{ Form::textarea('text') }}
+		</div>
+		{{ Form::close() }}
 	</div>
 
 </div>
