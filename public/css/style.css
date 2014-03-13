@@ -203,7 +203,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 /* line 109, sass/_structure.scss */
 .row-sub.fill, .fill.row-12, .fill.row-11, .fill.row-10, .fill.row-9, .fill.row-8, .fill.row-7, .fill.row-6, .fill.row-5, .fill.row-4, .fill.row-3, .fill.row-2, .fill.row-1 {
-  padding: 0 12px 0 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* line 1, sass/_html-elements.scss */
@@ -519,4 +520,21 @@ table.edit th, table.edit td {
 /* line 148, sass/style.scss */
 .pagination li a, .pagination li span {
   padding: 0 6px;
+}
+
+/* line 154, sass/style.scss */
+.note {
+  border-bottom: 1px solid #DDD;
+}
+/* line 156, sass/style.scss */
+.note .detail {
+  border-bottom: none;
+}
+/* line 159, sass/style.scss */
+.note:hover .button, .note:hover .radio {
+  visibility: visible;
+}
+/* line 162, sass/style.scss */
+.note .button, .note .radio {
+  visibility: hidden;
 }

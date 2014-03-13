@@ -150,3 +150,16 @@
 		}
 	}
 }
+
+.note{
+	border-bottom: 1px solid #DDD;
+	.detail{
+		border-bottom: none;
+	}
+	&:hover .button{
+		visibility: visible;
+	}
+	.button{
+		visibility: hidden;
+	}
+}

@@ -118,10 +118,16 @@
 		</div>
 		@if( count($job->notes) > 0 )
 			@foreach( $job->notes as $note )
-				<div class="detail">
-					<div>{{ $note->created_at }}</div>
-					<p>{{ $note->text }}</p>
-					{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
+				<div class="note">
+					<div class="row-9 fill detail">
+						<div>{{ $note->created_at }}</div>
+						<p>{{ $note->text }}</p>
+					</div>
+					<div class="row-3 fill">
+						{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
+						{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
+					</div>
+					<div class="row"></div>
 				</div>
 			@endforeach
 		@else
@@ -132,12 +138,12 @@
 		{{ Form::open( array('route' => 'notes.store') ) }}
 		<div class="row subheader">
 			<h3>Add Note</h3>
-			{{ Form::submit('Save Note', array('class'=>'button right') ) }}
 		</div>
 		{{ Form::hidden('job_id', $job->id) }}
 		<div class="detail">
 			{{ Form::label('text', 'Note Text') }}
 			{{ Form::textarea('text') }}
+			{{ Form::submit('Save Note', array('class'=>'button right') ) }}
 		</div>
 		{{ Form::close() }}
 	</div>

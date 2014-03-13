@@ -27,13 +27,18 @@ class NoteController extends \BaseController {
 
 	public function edit($id)
 	{
-		//
+		$note = $this->note->find($id);
+		return View::make('jobs.editnote', ['note' => $note]);
 	}
 
 
 	public function update($id)
 	{
-		//
+		$this->note = $this->note->find($id);
+		$input = Input::all();
+		$this->note->fill($input);
+		$this->note->save();
+		return Redirect::route('jobs.show', $this->note->job_id);
 	}
 
 
