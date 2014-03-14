@@ -100,7 +100,7 @@
 	{{ $errors->first('cost_qty') }}
 	{{ $errors->first('cost_text') }}
 	{{ $errors->first('cost_price') }}
-	<table class="edit">
+	<table class="table-grid">
 		<thead>
 			<tr>
 				<th>{{ Form::label('costs[][cost_qty]', 'Qty: ') }}</th>

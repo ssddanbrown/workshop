@@ -16,7 +16,7 @@
 		<div class="row subheader">
 			<h3>Details</h3>
 		</div>
-		<div class="row-6 fill">
+		<div class="row-5 fill">
 			<div class="detail">
 				<div>TITLE</div>
 				<p>{{ $job->title }}</p>
@@ -34,19 +34,19 @@
 				<p>{{ $job->finished }}</p>
 			</div>
 		</div>
-
-		<div class="row-6 fill">
+		<div class="row-1 fill"><p></p></div>
+		<div class="row-5 fill">
 			<div class="detail">
 				<div>DATE ADDED</div>
-				<p>{{ $job->created_at }}</p>
+				<p>{{ Format::humanTime($job->created_at) }}</p>
 			</div>
 			<div class="detail">
 				<div>DATE DUE</div>
-				<p>{{ $job->due }}</p>
+				<p>{{ Format::humanTime($job->due) }}</p>
 			</div>
 			<div class="detail">
 				<div>LAST UPDATED</div>
-				<p>{{ $job->updated_at }}</p>
+				<p>{{ Format::humanTime($job->updated_at) }}</p>
 			</div>
 		</div>
 	</div>
@@ -120,7 +120,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td>Job Total:</td>
+					<td><strong>Job Total:</strong></td>
 					<td>{{ Format::price($job->total) }}</td>
 				</tr>
 			</table>
