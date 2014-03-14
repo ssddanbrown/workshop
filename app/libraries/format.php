@@ -16,6 +16,13 @@ Class Format {
 		$currency = '£';
 		return $currency . sprintf('%0.2f', $price);
 	}
+
+	public static function date( $timestamp )
+	{
+		$timestamp = date_create($timestamp);
+		$format = 'j/m/y H:i';
+		return $timestamp->format($format);
+	}
 	
 	public static function humanTime( $from, $to = '' )
 	{

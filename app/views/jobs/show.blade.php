@@ -137,7 +137,7 @@
 			@foreach( $job->notes as $note )
 				<div class="note">
 					<div class="row-9 fill detail">
-						<div>{{ $note->created_at }}</div>
+						<div>{{ Format::date($note->created_at) . ' - ' . Format::humanTime($note->created_at) }}</div>
 						<p>{{ $note->text }}</p>
 					</div>
 					<div class="row-3 fill">
