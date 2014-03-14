@@ -19,8 +19,8 @@
 				@else
 					<td>No Customer</td>
 				@endif
-				<td>{{ $job->humanTime('due'); }}</td>
-				<td>{{ $job->humanTime('created_at'); }}</td>
+				<td>{{ Format::humanTime($job->due) }}</td>
+				<td>{{ Format::humanTime($job->created_at) }}</td>
 				<td>
 					{{ Form::toggleFinished($job) }}
 					{{ link_to_route('jobs.edit', 'Edit', $job->id, array('class'=>'button') ) }}

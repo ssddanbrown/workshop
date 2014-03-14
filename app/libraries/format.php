@@ -22,6 +22,8 @@ Class Format {
 		if ( empty( $to ) )
 		$to = time();
 
+		$from = date_create($from)->getTimestamp();
+
 		if ($from <= $to) {
 			$extra = ' Ago';
 		} else {

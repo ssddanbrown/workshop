@@ -60,13 +60,6 @@ class Job extends Eloquent {
 		$this->errors = $validation->messages();
 		return false;
 	}
-
-
-
-	public function humanTime($field)
-	{
-		return Format::humanTime( date_create($this->$field)->getTimestamp() );
-	}
 	
 
 }
