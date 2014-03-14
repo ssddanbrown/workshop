@@ -12,6 +12,11 @@ class Cost extends Eloquent {
 
 	public $errors;
 
+	public function total($return_formatted = false){
+
+			return $this->cost_qty * $this->cost_price;
+	}
+
 	public function isValid()
 	{
 		$validation = Validator::make($this->attributes, static::$rules);

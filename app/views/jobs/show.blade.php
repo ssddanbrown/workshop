@@ -102,11 +102,28 @@
 			<h3>Costs</h3>
 		</div>
 		@if(count($job->costs) > 0)
+			<table class="table-grid">
+				<thead>
+					<th>Quantity</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Total</th>
+				</thead>
 			@foreach($job->costs as $cost)
-				<p><strong>{{ $cost->cost_qty }}</strong>
-					{{ $cost->cost_text }} at £{{ sprintf('%0.2f', $cost->cost_price) }} each.
-				</p>
+				<tr>
+					<td>{{ $cost->cost_qty }}</td>
+					<td>{{ $cost->cost_text }}</td>
+					<td>{{ Format::price($cost->cost_price) }}</td>
+					<td>{{ Format::price($cost->total()) }}</td>
+				</tr>
 			@endforeach
+				<tr>
+					<td></td>
+					<td></td>
+					<td>Job Total:</td>
+					<td>{{ Format::price($job->total) }}</td>
+				</tr>
+			</table>
 		@else
 			<p>No Costs to display.</p>
 		@endif

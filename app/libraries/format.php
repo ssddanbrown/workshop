@@ -9,7 +9,13 @@ function _n( $single, $plural, $var)
 	}
 }
 
-Class DateFormatter {
+Class Format {
+
+	public static function price( $price )
+	{
+		$currency = '£';
+		return $currency . sprintf('%0.2f', $price);
+	}
 	
 	public static function humanTime( $from, $to = '' )
 	{
