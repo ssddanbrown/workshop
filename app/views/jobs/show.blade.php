@@ -107,6 +107,7 @@
 					<th>Quantity</th>
 					<th>Description</th>
 					<th>Price</th>
+					<th>Discount</th>
 					<th>Total</th>
 				</thead>
 			@foreach($job->costs as $cost)
@@ -114,10 +115,12 @@
 					<td>{{ $cost->cost_qty }}</td>
 					<td>{{ $cost->cost_text }}</td>
 					<td>{{ Format::price($cost->cost_price) }}</td>
+					<td>{{ $cost->discount }}%</td>
 					<td>{{ Format::price($cost->total()) }}</td>
 				</tr>
 			@endforeach
 				<tr>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td><strong>Job Total:</strong></td>

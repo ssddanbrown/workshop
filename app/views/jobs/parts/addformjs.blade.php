@@ -18,9 +18,10 @@ var addForm = function(type){
 	element.dataset.index = biggestIndex;
 
 	if (type=='cost') {
-		inner = '<td><input type="text" name="costs['+ biggestIndex +'][cost_qty]" /></td>'
-		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_text]" /></td>'
-		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_price]" /></td>'
+		inner = '<td><input type="text" name="costs['+ biggestIndex +'][cost_qty]" /></td>';
+		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_text]" /></td>';
+		inner += '<td><input type="text" name="costs['+ biggestIndex +'][cost_price]" /></td>';
+		inner += '<td><input type="text" name="costs['+ biggestIndex +'][discount]" /></td>';
 		container = document.getElementById('cost-container');
 	} else if(type=='item'){
 		inner = '<td><input type="text" name="items['+ biggestIndex +'][item_title]" /></td>';

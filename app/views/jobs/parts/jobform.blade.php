@@ -100,12 +100,14 @@
 	{{ $errors->first('cost_qty') }}
 	{{ $errors->first('cost_text') }}
 	{{ $errors->first('cost_price') }}
+	{{ $errors->first('discount') }}
 	<table class="table-grid">
 		<thead>
 			<tr>
-				<th>{{ Form::label('costs[][cost_qty]', 'Qty: ') }}</th>
-				<th>{{ Form::label('costs[][cost_text]', 'Description: ') }}</th>
-				<th>{{ Form::label('costs[][cost_price]', 'Price: ') }}</th>
+				<th>{{ Form::label('costs[][cost_qty]', 'Qty') }}</th>
+				<th>{{ Form::label('costs[][cost_text]', 'Description') }}</th>
+				<th>{{ Form::label('costs[][cost_price]', 'Price') }}</th>
+				<th>{{ Form::label('costs[][discount]', 'Discount') }}</th>
 			</tr>
 		</thead>
 		<tbody id="cost-container">
@@ -116,6 +118,7 @@
 						<td>{{ Form::text('costs['.$key.'][cost_qty]')  }}</td>
 						<td>{{ Form::text('costs['.$key.'][cost_text]') }}</td>
 						<td>{{ Form::text('costs['.$key.'][cost_price]') }}</td>
+						<td>{{ Form::text('costs['.$key.'][discount]') }}</td>
 					</tr>
 				@endforeach
 				
@@ -126,6 +129,7 @@
 						<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
 						<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
 						<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
+						<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
 					</tr>
 				@endforeach
 
@@ -135,6 +139,7 @@
 					<td>{{ Form::text('costs[1][cost_qty]')  }}</td>
 					<td>{{ Form::text('costs[1][cost_text]') }}</td>
 					<td>{{ Form::text('costs[1][cost_price]') }}</td>
+					<td>{{ Form::text('costs[1][discount]') }}</td>
 				</tr>
 
 			@endif
