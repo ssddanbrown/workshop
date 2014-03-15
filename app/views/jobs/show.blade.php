@@ -73,6 +73,7 @@
 			</div>
 		@else
 			<p>No customer added.</p>
+			{{ link_to_route('jobs.editcustomer', 'Assign Customer', $job->id, array('class'=>'button')) }}
 		@endif
 	</div>
 
@@ -144,8 +145,8 @@
 						<p>{{ $note->text }}</p>
 					</div>
 					<div class="row-3 fill">
-						{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
 						{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
+						{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
 					</div>
 					<div class="row"></div>
 				</div>
