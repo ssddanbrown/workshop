@@ -5,7 +5,8 @@ class TemplateController extends \BaseController {
 
 	public function index()
 	{
-		//
+		$templates = Template::all();
+		return View::make('templates.index', ['templates' => $templates]);
 	}
 
 

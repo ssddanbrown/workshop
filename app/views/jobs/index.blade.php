@@ -10,7 +10,7 @@
 	</div>
 	
 	<div class="row-12">
-		@if ( count($jobs) >= 1 )
+		@if ( count($jobs) > 0 )
 			@include('jobs.parts.jobtable')
 		@else
 			<p>No jobs to display....</p>
