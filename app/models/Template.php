@@ -2,7 +2,7 @@
 
 class Template extends Eloquent {
 
-	protected $fillable = ['title', 'text', 'job_time'];
+	protected $fillable = ['title', 'text'];
 
 	public static $rules = [
 		'title' => 'required'

@@ -12,7 +12,7 @@ class TemplateController extends \BaseController {
 
 	public function create()
 	{
-		//
+		return View::make('templates.create');
 	}
 
 
