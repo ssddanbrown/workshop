@@ -13,7 +13,8 @@ class Cost extends Eloquent {
 
 	public $errors;
 
-	public function total($return_formatted = false){
+	public function total($return_formatted = false)
+	{
 
 			return ($this->cost_qty * $this->cost_price) * ((100 - $this->discount)/100);
 	}

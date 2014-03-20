@@ -52,6 +52,7 @@ class TemplateController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($errors);
 		} else {
 			//If everything is okay save and return to index page
+			$this->template->setTotal($costs);
 			$this->template->save();
 			foreach ($costs as $cost) { $this->template->costs()->save($cost); }
 			return Redirect::route('templates.index');

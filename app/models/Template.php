@@ -6,9 +6,9 @@ class Template extends Eloquent {
 
 	public static $rules = [
 		'title' => 'required',
-		'days' => 'numeric',
-		'hours' => 'numeric',
-		'mins' => ['numeric', 'required_without_all:hours,days']
+		'days' => 'integer',
+		'hours' => 'integer',
+		'mins' => ['integer', 'required_without_all:hours,days']
 	];
 
 	public $errors;
@@ -19,33 +19,29 @@ class Template extends Eloquent {
 		return $this->hasMany('Cost');
 	}
 
-	public function mergeTimes(){
+	// Utilities
+	public function mergeTimes()
+	{
 		$time = 0;
 		$time += $this->mins * 60;
 		$time += $this->hours * 60 * 60;
 		$time += $this->days * 60 * 60 * 24;
-		$this->job_time = $time;
-		unset($this->days, $this->hours, $this->mins );
 		return $time;
 	}
 
-	//Model Events
-	public static function boot()
+	public function setTotal($costs)
 	{
-		parent::boot();
-		
-		//On Save Event
-		Template::saving(function($template)
-		{
-			$total = 0;
-			if ( count($template->costs) > 0 ) {
-				foreach($template->costs as $cost){
-					$total = $total + $cost->total();
-				}
+		if(!isset($costs)){
+			$costs = $this->costs;
+		}
+		$total = 0;
+		if (count($costs) > 0) {
+			foreach($costs as $cost){
+				$total += $cost->total();
 			}
-			$template->total = $total;
-		});
-		//End on save event
+		}
+		$this->total = $total;
+		return $total;
 	}
 
 	//Validation

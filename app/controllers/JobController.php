@@ -83,6 +83,7 @@ class JobController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($errors);
 		} else {
 			//If everything is okay save and returtn to index page
+			$this->job->setTotal($costs);
 			$this->job->save();
 			foreach ($items as $item) { $this->job->items()->save($item); }
 			foreach ($costs as $cost) { $this->job->costs()->save($cost); }
@@ -167,6 +168,9 @@ class JobController extends \BaseController {
 			foreach ($items_delete as $item) { $item->delete(); }
 			foreach ($costs as $cost) { $this->job->costs()->save($cost); }
 			foreach ($costs_delete as $cost) { $cost->delete(); }
+			// Change to update model event
+			$this->job->setTotal();
+			///////////////////////////////
 			$this->job->save();
 			return Redirect::route('jobs.show', $this->job->id);
 		}

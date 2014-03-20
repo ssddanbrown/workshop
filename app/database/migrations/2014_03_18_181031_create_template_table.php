@@ -17,7 +17,9 @@ class CreateTemplateTable extends Migration {
 			$table->increments('id');
 			$table->text('title');
 			$table->text('text');
-			$table->integer('job_time');
+			$table->integer('days');
+			$table->integer('hours');
+			$table->integer('mins');
 			$table->decimal('total', 16, 2);
 			$table->timestamps();
 

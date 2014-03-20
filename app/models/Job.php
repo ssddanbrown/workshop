@@ -28,24 +28,19 @@ class Job extends Eloquent {
 		return $this->hasMany('Note')->orderBy('created_at', 'DESC');
 	}
 
-	//Model Evevents
-	public static function boot()
+	public function setTotal($costs = null)
 	{
-		parent::boot();
-
-		//On Save Event
-		Job::saving(function($job)
-		{
-			$total = 0;
-			if ( count($job->costs) > 0 ) {
-				foreach($job->costs as $cost){
-					$total = $total + $cost->total();
-				}
+		if(is_null($costs)){
+			$costs = $this->costs;
+		}
+		$total = 0;
+		if (count($costs) > 0) {
+			foreach($costs as $cost){
+				$total += $cost->total();
 			}
-			$job->total = $total;
-		});
-		//End on save event
-
+		}
+		$this->total = $total;
+		return $total;
 	}
 
 	//Validation
