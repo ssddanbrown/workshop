@@ -11,30 +11,29 @@ class Template extends Eloquent {
 	public $errors;
 
 	// Relationships
-	// public function costs()
-	// {
-	// 	return $this->hasMany('Cost');
-	// }
+	public function costs()
+	{
+		return $this->hasMany('Cost');
+	}
 
-	// //Model Evevents
-	// public static function boot()
-	// {
-	// 	parent::boot();
-
-	// 	//On Save Event
-	// 	Job::saving(function($job)
-	// 	{
-	// 		$total = 0;
-	// 		if ( count($job->costs) > 0 ) {
-	// 			foreach($job->costs as $cost){
-	// 				$total = $total + $cost->total();
-	// 			}
-	// 		}
-	// 		$job->total = $total;
-	// 	});
-	// 	//End on save event
-
-	// }
+	//Model Evevents
+	public static function boot()
+	{
+		parent::boot();
+		
+		//On Save Event
+		Job::saving(function($job)
+		{
+			$total = 0;
+			if ( count($job->costs) > 0 ) {
+				foreach($job->costs as $cost){
+					$total = $total + $cost->total();
+				}
+			}
+			$job->total = $total;
+		});
+		//End on save event
+	}
 
 	//Validation
 	public function isValid()

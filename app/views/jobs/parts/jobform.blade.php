@@ -54,42 +54,7 @@
 	<div class="row subheader">
 		<h3>Items</h3>
 	</div>
-	{{ $errors->first('item_title') }}
-	<table class="edit">
-		<thead>
-			<tr>
-				<th>{{ Form::label('items[][item_title]', 'Item Title') }}</th>
-				<th>{{ Form::label('items[][item_text]', 'Item Description') }}</th>
-			</tr>
-		</thead>
-		<tbody id="item-container">
-			@if( count(Form::old('items')) > 0 )
-
-				@foreach(Form::old('items') as $key => $item)
-					<tr data-index="{{ $key }}">
-						<td>{{ Form::text('items['.$key.'][item_title]')  }}</td>
-						<td>{{ Form::text('items['.$key.'][item_text]') }}</td>
-					</tr>
-				@endforeach
-
-			@elseif( isset($job) && count($job->items) > 0)
-
-				@foreach($job->items as $item)
-					<tr data-index="{{ $item->id }}">
-						<td>{{ Form::text('items['.$item->id.'][item_title]', $item->item_title)  }}</td>
-						<td>{{ Form::text('items['.$item->id.'][item_text]', $item->item_text) }}</td>
-					</tr>
-				@endforeach
-
-			@else
-				<tr data-index="1" >
-					<td>{{ Form::text('items[1][item_title]')  }}</td>
-					<td>{{ Form::text('items[1][item_text]') }}</td>
-				</tr>
-			@endif
-		</tbody>
-	</table>
-<a href="javascript:addForm('item');" class="button">Add Item</a>
+	@include('jobs.parts.item-edit-table')
 </div>
 
 
@@ -97,53 +62,5 @@
 	<div class="row subheader">
 		<h3>Costs</h3>
 	</div>
-	{{ $errors->first('cost_qty') }}
-	{{ $errors->first('cost_text') }}
-	{{ $errors->first('cost_price') }}
-	{{ $errors->first('discount') }}
-	<table class="table-grid">
-		<thead>
-			<tr>
-				<th>{{ Form::label('costs[][cost_qty]', 'Qty') }}</th>
-				<th>{{ Form::label('costs[][cost_text]', 'Description') }}</th>
-				<th>{{ Form::label('costs[][cost_price]', 'Price') }}</th>
-				<th>{{ Form::label('costs[][discount]', 'Discount') }}</th>
-			</tr>
-		</thead>
-		<tbody id="cost-container">
-			@if( count(Form::old('costs')) > 0 )
-
-				@foreach(Form::old('costs') as $key => $cost)
-					<tr data-index="{{ $key }}">
-						<td>{{ Form::text('costs['.$key.'][cost_qty]')  }}</td>
-						<td>{{ Form::text('costs['.$key.'][cost_text]') }}</td>
-						<td>{{ Form::text('costs['.$key.'][cost_price]') }}</td>
-						<td>{{ Form::text('costs['.$key.'][discount]') }}</td>
-					</tr>
-				@endforeach
-				
-			@elseif( isset($job) && count($job->costs) > 0 )
-				
-				@foreach( $job->costs as $cost)
-					<tr data-index="{{ $cost->id }}">
-						<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
-						<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
-						<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
-						<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
-					</tr>
-				@endforeach
-
-			@else
-
-				<tr data-index="1">
-					<td>{{ Form::text('costs[1][cost_qty]')  }}</td>
-					<td>{{ Form::text('costs[1][cost_text]') }}</td>
-					<td>{{ Form::text('costs[1][cost_price]') }}</td>
-					<td>{{ Form::text('costs[1][discount]') }}</td>
-				</tr>
-
-			@endif
-		</tbody>
-	</table>
-	<a href="javascript:addForm('cost');" class="button">Add Cost</a>
+	@include('jobs.parts.cost-edit-table')
 </div>

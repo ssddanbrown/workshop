@@ -11,7 +11,7 @@
 			</div>
 		</div>
 
-		<div class="row-4">
+		<div class="row-6">
 			<div class="row subheader">
 				<h3>Details</h3>
 			</div>
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		
-		<div class="row-4">
+		<div class="row-6">
 			<div class="row subheader">
 				<h3>Time</h3>
 			</div>
@@ -51,7 +51,16 @@
 			</div>
 		</div>
 
+		<div class="row-12">
+			<div class="row subheader">
+				<h3>Costs</h3>
+			</div>
+			@include('jobs.parts.cost-edit-table')
+		</div>
+
 
 	{{ Form::close() }}
+
+	@include('jobs.parts.addformjs')
 
 @stop
