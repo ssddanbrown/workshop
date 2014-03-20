@@ -13,7 +13,7 @@
 		@foreach($templates as $template)
 			<div class="row-4">
 				<h2>{{ $template->title }}</h2>
-				<p>{{ $templates->text }}</p>
+				<p>{{ $template->text }}</p>
 			</div>
 		@endforeach
 	@else

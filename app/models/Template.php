@@ -2,10 +2,13 @@
 
 class Template extends Eloquent {
 
-	protected $fillable = ['title', 'text'];
+	protected $fillable = ['title', 'text', 'days', 'hours', 'mins'];
 
 	public static $rules = [
-		'title' => 'required'
+		'title' => 'required',
+		'days' => 'numeric',
+		'hours' => 'numeric',
+		'mins' => ['numeric', 'required_without_all:hours,days']
 	];
 
 	public $errors;
@@ -16,21 +19,31 @@ class Template extends Eloquent {
 		return $this->hasMany('Cost');
 	}
 
-	//Model Evevents
+	public function mergeTimes(){
+		$time = 0;
+		$time += $this->mins * 60;
+		$time += $this->hours * 60 * 60;
+		$time += $this->days * 60 * 60 * 24;
+		$this->job_time = $time;
+		unset($this->days, $this->hours, $this->mins );
+		return $time;
+	}
+
+	//Model Events
 	public static function boot()
 	{
 		parent::boot();
 		
 		//On Save Event
-		Job::saving(function($job)
+		Template::saving(function($template)
 		{
 			$total = 0;
-			if ( count($job->costs) > 0 ) {
-				foreach($job->costs as $cost){
+			if ( count($template->costs) > 0 ) {
+				foreach($template->costs as $cost){
 					$total = $total + $cost->total();
 				}
 			}
-			$job->total = $total;
+			$template->total = $total;
 		});
 		//End on save event
 	}
