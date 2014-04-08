@@ -1,6 +1,6 @@
 /bootstrap/compiled.php
 /vendor
-public/.sass-cache
+public_html/.sass-cache
 composer.phar
 composer.lock
 .env.local.php
