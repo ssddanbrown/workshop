@@ -157,7 +157,7 @@ class JobController extends \BaseController {
 			if ( !$new_cost->fill($input)->isValid() ) {
 				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
 			}
-			array_push($items, $new_cost);
+			array_push($costs, $new_cost);
 		}
 
 		if ($errors != null) {

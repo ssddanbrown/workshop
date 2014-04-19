@@ -29,9 +29,9 @@ class Template extends Eloquent {
 		return $time;
 	}
 
-	public function setTotal($costs)
+	public function setTotal($costs = null)
 	{
-		if(!isset($costs)){
+		if(is_null($costs)){
 			$costs = $this->costs;
 		}
 		$total = 0;

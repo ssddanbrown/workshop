@@ -2,12 +2,12 @@
 
 @section('content')
 
-	{{ Form::open(array('route' => 'templates.store')) }}
+	{{ Form::model( $template, array( 'method' => 'PUT', 'route' => array('templates.update', $template->id ) ) ) }}
 
 		<div class="row-12 header">
-			<h1>New Template</h1>
+			<h1>Edit Template</h1>
 			<div class="buttons">
-				{{ Form::submit('Add Template', array('class'=>'button')) }}
+				{{ Form::submit('Save Template', array('class'=>'button')) }}
 			</div>
 		</div>
 

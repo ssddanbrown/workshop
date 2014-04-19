@@ -26,7 +26,20 @@
 			
 		@elseif( isset($job) && count($job->costs) > 0 )
 			
-			@foreach( $job->costs as $cost)
+			<!-- Section repeated below -->
+			@foreach( $job->costs as $cost )
+				<tr data-index="{{ $cost->id }}">
+					<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
+					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
+					<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
+					<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
+				</tr>
+			@endforeach
+
+		@elseif( isset($template) && count($template->costs) > 0 )
+			
+			<!-- Repeats section above -->
+			@foreach( $template->costs as $cost )
 				<tr data-index="{{ $cost->id }}">
 					<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>

@@ -14,10 +14,11 @@
 			<div class="row-4">
 				<h2>{{ $template->title }}</h2>
 				<p>{{ $template->text }}</p>
+				{{ link_to_route('templates.edit', 'Edit', $template->id, array('class' => 'link') ) }}
 			</div>
 		@endforeach
 	@else
-		<div class="row-12"><p>No templates to display....</p></div>	
+		<div class="row-12"><p>No templates to display....</p></div>
 	@endif
 
 @stop
