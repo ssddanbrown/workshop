@@ -72,8 +72,7 @@
 				<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id, array('class'=>'link') ) }}</p>
 			</div>
 		@else
-			<p>No customer added.</p>
-			{{ link_to_route('jobs.editcustomer', 'Assign Customer', $job->id, array('class'=>'button')) }}
+			<p>No Customer Selected</p>
 		@endif
 	</div>
 
@@ -91,7 +90,7 @@
 			@endforeach
 			<div class="row"></div>
 		@else
-			<p>No Items to display.</p>
+			<p>No Items To Display.</p>
 		@endif
 	</div>
 
