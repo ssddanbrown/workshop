@@ -1,6 +1,4 @@
 
-{{ Form::hidden('customer_id') }}
-
 <div class="row-4">
 	<div class="row subheader">
 		<h3>Details</h3>
@@ -29,25 +27,64 @@
 		<div class="row subheader">
 		<h3>Customer</h3>
 	</div>
+	{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
 	@if( isset($customer) )
-		<div class="detail">
-			<div>NAME</div>
-			<p>{{ $customer->name() }}</p>
-		</div>
-		<div class="detail">
-			<div>EMAIL</div>
-			<p>{{ $customer->email }}</p>
-		</div>
-		<div class="detail">
-			<div>PHONE</div>
-			<p>{{ $customer->phone }}</p>
+		<div id="customer-current">
+			{{ $customer->name() }} <br>
+			{{ $customer->email }} <br>
+			{{ $customer->phone }}
 		</div>
 	@else
-		<p>No customer Set</p>
+		<div id="customer-current">No Customer Selected</div>
 	@endif
-	@if( isset($job) )
-		{{ link_to_route('jobs.editcustomer', 'Change Customer', $job->id, array('class'=>'button')) }}
-	@endif
+	<input id="customer-search-input" type="text" name="customer-search">
+	<div id="customer-search-button" class="button">Search</div>
+	<div id="customer-display"></div>
+	<script>
+	$(document).ready(function(){
+
+		// Main AJAX search function
+		function search(){
+			var input = $('#customer-search-input').val();
+			var display = $('#customer-display');
+			display.empty();
+			var request = $.ajax({
+				url: '/customers/search',
+				type: 'post',
+				data: { term: input},
+				dataType: 'json'
+			});
+			// ADD STATUS INDICATOR
+			request.done( function( data ){
+				$.each( data, function(index, customer){
+					var inner = '<div class="customer-result" data-id="' + customer.id +'">';
+					inner += customer.first_name + ' ' + customer.last_name + '<br>';
+					inner += customer.email + '<br>';
+					inner += customer.phone + '</div>'
+					display.append( inner );
+				});
+			});
+		}
+
+		// Search on button click or enter press
+		$('#customer-search-button').click(search);
+		$('#customer-search-input').keypress(function (e){
+			if ( e.which == 13 ) {
+				search();
+				return false;
+			};
+		});
+
+		// Search results click event
+		$('#customer-display').on('click', '.customer-result', function(){
+			var display = $('#customer-current');
+			var id = $(this).data('id');
+			$('#customer-id').val(id);
+			display.html($(this).html());
+		});
+
+	});
+	</script>
 </div>
 
 <div class="row-4">

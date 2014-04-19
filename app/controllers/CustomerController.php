@@ -74,7 +74,7 @@ class CustomerController extends \BaseController {
 	public function search(){
 
 		$term = Input::get('term');
-		$customers = $this->customer->where('first_name', 'LIKE', $term)->orWhere('last_name', 'LIKE', $term)->get();
+		$customers = $this->customer->where('first_name', 'LIKE', '%'.$term.'%')->orWhere('last_name', 'LIKE', '%'.$term.'%')->get();
 
 		return Response::json($customers);
 	}
