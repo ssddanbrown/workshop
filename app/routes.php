@@ -19,7 +19,10 @@ Route::get('/', function()
 
 // Customer Routes
 Route::resource('customers', 'CustomerController');
-
+Route::post('customers/search', array(
+	'uses' => 'CustomerController@search',
+	'as' => 'customers.search'
+	));
 
 // Job Routes
 Route::post('jobs/create', array(

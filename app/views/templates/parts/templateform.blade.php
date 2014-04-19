@@ -18,7 +18,7 @@
 
 <div class="row-6">
 	<div class="row subheader">
-		<h3>Time</h3>
+		<h3>Typical Time Taken</h3>
 	</div>
 	<div class="detail">
 		<p>Enter the typical time it takes to complete this job.</p>

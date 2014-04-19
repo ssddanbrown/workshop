@@ -71,4 +71,12 @@ class CustomerController extends \BaseController {
 		return Redirect::route('customers.index');
 	}
 
+	public function search(){
+
+		$term = Input::get('term');
+		$customers = $this->customer->where('first_name', 'LIKE', $term)->orWhere('last_name', 'LIKE', $term)->get();
+
+		return Response::json($customers);
+	}
+
 }
