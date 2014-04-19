@@ -24,23 +24,8 @@ Route::post('customers/search', array(
 	'as' => 'customers.search'
 	));
 
+
 // Job Routes
-Route::post('jobs/create', array(
-	'uses'=>'JobController@customerToJob',
-	'as'=>'jobs.customertojob'
-	));
-Route::get('jobs/create/job', array(
-	'uses' => 'JobController@createJob',
-	'as'	=>	'jobs.createjob'
-	));
-Route::get('jobs/{jobs}/edit/customer', array(
-	'uses' =>'JobController@editCustomer',
-	'as' => 'jobs.editcustomer'
-	));
-Route::put('jobs/{jobs}/edit/customer', array(
-	'uses' => 'JobController@updateCustomer',
-	'as' => 'jobs.update.customer'
-	));
 Route::get('jobs/archive', array(
 	'uses' => 'JobController@archiveIndex',
 	'as' => 'jobs.archive'
@@ -52,7 +37,7 @@ Route::post('jobs/{jobs}/status', array(
 Route::resource('jobs', 'JobController');
 
 
-//Template Routes
+// Template Routes
 Route::resource('templates', 'TemplateController');
 
 

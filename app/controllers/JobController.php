@@ -25,19 +25,7 @@ class JobController extends \BaseController {
 
 	public function create()
 	{
-		$customers = $this->customerList();
-		return View::make('jobs.createcustomer', ['customers' => $customers]);
-	}
-	public function customerToJob()
-	{
-		Input::flashOnly('customer_id');
-		return Redirect::route('jobs.createjob');
-	}
-	public function createJob()
-	{
-		$customer = Customer::find(Input::old('customer_id'));
-		Session::reflash(Input::old('customer_id'));
-		return View::make('jobs.create', ['customer' => $customer]);
+		return View::make('jobs.create');
 	}
 
 
@@ -107,13 +95,6 @@ class JobController extends \BaseController {
 		return View::make('jobs.edit', ['job' => $job, 'customer' => $customer]);
 	}
 
-	public function editCustomer($id)
-	{
-		$job = $this->job->find($id);
-		$customers = $this->customerList();
-		return View::make('jobs.editcustomer', ['job' => $job ,'customers' => $customers]);
-	}
-
 
 	public function update($id)
 	{
@@ -177,16 +158,6 @@ class JobController extends \BaseController {
 
 	}
 
-	public function updateCustomer($id)
-	{
-		$this->job = $this->job->find($id);
-		$customer_id = Input::get('customer_id');
-		$this->job->customer_id = $customer_id;
-		$this->job->save();
-		return Redirect::route('jobs.show', $this->job->id);
-	}
-
-
 	public function destroy($id)
 	{
 		$job = $this->job->find($id);
@@ -211,9 +182,5 @@ class JobController extends \BaseController {
 		return Redirect::back();
 	}
 
-	private function customerList()
-	{
-		return Customer::orderBy('last_name')->paginate(5);
-	}
 
 }
