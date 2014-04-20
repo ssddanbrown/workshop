@@ -52,26 +52,24 @@ class JobController extends \BaseController {
 
 		$items = array();
 		foreach (Input::get('items') as $input) {
-			if ( empty($input['item_title']) && empty($input['item_text']) ) {
-				break;
+			if ( !empty($input['item_title']) || !empty($input['item_text']) ) {
+				$new_item = new Item;
+				if ( !$new_item->fill($input)->isValid() ){
+					(!$errors) ? $errors = $new_item->errors : $errors->merge($new_item->errors->getMessages());
+				}
+				array_push($items, $new_item);
 			}
-			$new_item = new Item;
-			if ( !$new_item->fill($input)->isValid() ){
-				(!$errors) ? $errors = $new_item->errors : $errors->merge($new_item->errors->getMessages());
-			}
-			array_push($items, $new_item);
 		}
 
 		$costs = array();
 		foreach (Input::get('costs') as $key => $input) {
-			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
-				break;
+			if ( !empty($input['cost_qty']) || !empty($input['cost_text']) || !empty($input['cost_price']) ) {
+				$new_cost = new Cost;
+				if ( !$new_cost->fill($input)->isValid() ) {
+					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
+				}
+				array_push($costs, $new_cost);
 			}
-			$new_cost = new Cost;
-			if ( !$new_cost->fill($input)->isValid() ) {
-				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-			}
-			array_push($costs, $new_cost);
 		}
 
 		if ($errors != null) {
@@ -117,17 +115,17 @@ class JobController extends \BaseController {
 		foreach (Input::get('items') as $key => $input) {
 			if ( empty($input['item_title']) && empty($input['item_text']) ) {
 				$item = Item::find($key);
-				if ($item != null) {
+				if ($item != null && $item->job_id == $this->job->id) {
 					array_push($items_delete, $item);
 				}
-				break;
+			} else {
+				$new_item = new Item;
+				if(Item::find($key) != null && Item::find($key)->job_id == $this->job->id) $new_item = Item::find($key);
+				if ( !$new_item->fill($input)->isValid() ){
+					(!$errors) ? $errors = $new_item->errors : $errors->merge($new_item->errors->getMessages());
+				}
+				array_push($items, $new_item);
 			}
-			$new_item = new Item;
-			if(Item::find($key) != null) $new_item = Item::find($key);
-			if ( !$new_item->fill($input)->isValid() ){
-				(!$errors) ? $errors = $new_item->errors : $errors->merge($new_item->errors->getMessages());
-			}
-			array_push($items, $new_item);
 		}
 
 		$costs = array();
@@ -135,17 +133,18 @@ class JobController extends \BaseController {
 		foreach (Input::get('costs') as $key => $input) {
 			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
 				$cost = Cost::find($key);
-				if ($cost != null) {
+				if ($cost != null && $cost->job_id == $this->job->id) {
 					array_push($costs_delete, $cost);
 				}
-				break;
+			} else {
+				$new_cost = new Cost;
+				if (Cost::find($key) != null && Cost::find($key)->job_id == $this->job->id) $new_cost = Cost::find($key);
+				if ( !$new_cost->fill($input)->isValid() ) {
+					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
+				}
+				array_push($costs, $new_cost);
 			}
-			$new_cost = new Cost;
-			if (Cost::find($key) != null) $new_cost = Cost::find($key);
-			if ( !$new_cost->fill($input)->isValid() ) {
-				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-			}
-			array_push($costs, $new_cost);
+
 		}
 
 		if ($errors != null) {

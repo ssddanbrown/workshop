@@ -37,14 +37,13 @@ class TemplateController extends \BaseController {
 
 		$costs = array();
 		foreach (Input::get('costs') as $key => $input) {
-			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
-				break;
+			if ( !empty($input['cost_qty']) || !empty($input['cost_text']) || !!empty($input['cost_price']) ) {
+				$new_cost = new Cost;
+				if ( !$new_cost->fill($input)->isValid() ) {
+					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
+				}
+				array_push($costs, $new_cost);
 			}
-			$new_cost = new Cost;
-			if ( !$new_cost->fill($input)->isValid() ) {
-				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-			}
-			array_push($costs, $new_cost);
 		}
 
 		if ($errors != null) {
@@ -90,14 +89,14 @@ class TemplateController extends \BaseController {
 				if ($cost != null) {
 					array_push($costs_delete, $cost);
 				}
-				break;
+			} else {
+				$new_cost = new Cost;
+				if (Cost::find($key) != null) $new_cost = Cost::find($key);
+				if ( !$new_cost->fill($input)->isValid() ) {
+					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
+				}
+				array_push($costs, $new_cost);
 			}
-			$new_cost = new Cost;
-			if (Cost::find($key) != null) $new_cost = Cost::find($key);
-			if ( !$new_cost->fill($input)->isValid() ) {
-				(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-			}
-			array_push($costs, $new_cost);
 		}
 
 		if ($errors != null) {
