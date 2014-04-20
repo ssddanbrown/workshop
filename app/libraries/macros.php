@@ -7,7 +7,7 @@ Form::macro('delete', function($route, $text = 'Delete', $route_var, $classes = 
 		'route' => array($route, $route_var),
 		'class' => $classes
 		) )
-		. Form::submit($text, array('class'=>'button'))
+		. Form::submit($text, array('class'=>'button neg'))
 		. Form::close();
 });
 

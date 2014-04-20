@@ -5,7 +5,7 @@
 	<div class="row-12 header">
 		<h1>Customers</h1>
 		<div class="buttons">
-			{{ link_to_route('customers.create', 'New Customer',null, array('class'=>'button right') ) }}
+			{{ link_to_route('customers.create', 'New Customer',null, array('class'=>'button pos right') ) }}
 		</div>	
 	</div>
 

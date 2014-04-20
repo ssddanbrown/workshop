@@ -132,7 +132,7 @@
 		@endif
 	</div>
 
-	<div class="row-8">
+	<div class="row-6">
 		<div class="row subheader">
 			<h3>Notes</h3>
 		</div>
@@ -154,7 +154,7 @@
 			<p>No notes added</p>
 		@endif
 	</div>
-	<div class="row-4">
+	<div class="row-6">
 		{{ Form::open( array('route' => 'notes.store') ) }}
 		<div class="row subheader">
 			<h3>Add Note</h3>
@@ -163,7 +163,8 @@
 		<div class="detail">
 			{{ Form::label('text', 'Note Text') }}
 			{{ Form::textarea('text') }}
-			{{ Form::submit('Save Note', array('class'=>'button right') ) }}
+			<div class="clear"></div>
+			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
 		</div>
 		{{ Form::close() }}
 	</div>

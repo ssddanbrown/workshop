@@ -117,7 +117,11 @@ class TemplateController extends \BaseController {
 
 	public function destroy($id)
 	{
-		//
+		$this->template = $this->template->find( $id );
+		$this->template->costs()->delete();
+		$this->template->delete();
+
+		return Redirect::route('templates.index');
 	}
 
 }

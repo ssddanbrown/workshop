@@ -1,0 +1,22 @@
+
+.table-grid{
+	width: 100%;
+	border: 1px solid #EEE;
+	border-radius: 5px;
+	td, th{
+		padding: $-s $-m;
+		border-bottom: 1px solid #EEE;
+		.button{
+			margin: 0;
+		}
+	}
+	thead tr{
+		background-color: #EEEEEE;
+	}
+	tbody tr:nth-child(2n) {
+		background-color: #FCFCFC;
+	}
+	tbody tr:hover{
+		background-color: #EEEEEE;
+	}
+}

@@ -13,15 +13,25 @@ $-xxl: 32px;
 $-xl: 24px;
 $-l: 16px;
 $-m: 12px;
-$-s: 6px;
+$-s: 8px;
+$-xs: 6px;
 
 
 // Font Sizes
 $fs-m: 16px;
 
 // Fonts 
-$sans: 'Open Sans', sans-serif;
-$serif:'Lily Script One', cursive;
+$sans: 'Roboto', sans-serif;
 
 // Colors
-$second: #09F;
+$blue: #28ACDA;
+$blue-light: #28B7E9;
+$blue-dark: #1F94BD;
+
+$green: #5cb85c;
+$green-light: #65CA65;
+$green-dark: #4EA24E;
+
+$red: #d9534f;
+$red-light: #E45955;
+$red-dark: #C54C48;

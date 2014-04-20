@@ -7,7 +7,7 @@
 		<div class="row-12 header">
 			<h1>New Job</h1>
 			<div class="buttons">
-				{{ Form::submit('Add Job', array('class'=>'button') ) }}
+				{{ Form::submit('Save Job', array('class'=>'button pos') ) }}
 			</div>
 		</div>
 

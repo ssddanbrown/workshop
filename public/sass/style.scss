@@ -1,3 +1,4 @@
+
 @import "jeet/index";
 @import "compass/reset";
 @import "compass/css3";
@@ -5,39 +6,9 @@
 @import "mixins";
 @import "structure";
 @import "html-elements";
+@import "buttons";
+@import "tables";
 
-.table-grid{
-	width: 100%;
-	border: 1px solid #DDD;
-	border-collapse: separate;
-	border-radius: 4px;
-	th{
-		padding: $-s $-m;
-		border-bottom: 1px solid #BBB;
-	}
-	td{
-		padding: $-s $-m;
-		border-bottom: 1px solid #DDD;
-		.button{
-			margin: 0;
-		}
-	}
-	thead tr{
-		background-color: #EEEEEE;
-	}
-	tr:hover{
-		background-color: #EEEEEE;
-		td, th{
-			border-bottom: 1px solid #BBB;
-		}
-	}
-	tbody tr:nth-child(2n) {
-		background-color: #F5F5F5;
-		&:hover{
-			background-color: #EEEEEE;
-		}
-	}
-}
 
 .detail{
 	padding: $-m 0;
@@ -59,17 +30,17 @@
 }
 
 .header{
-	margin-top: 32px;
-	margin-bottom: 13px;
+	margin-top: $-l;
+	margin-bottom: $-l;
+	padding: $-m 0;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
 	h1{
-		float: left;
-		margin: 0;
 		display: inline-block;
 		margin-right: 10px;
 	}
 	.buttons{
 		float: right;
-		margin-top: 13px;
 		display: inline-block;
 	}
 }
@@ -84,52 +55,6 @@
 		margin: 3px 0 0 0;
 	}
 	padding: $-s 0;
-}
-
-.button-template{
-	display: inline-block;
-	font-size: 0.8em;
-	margin: $-m 0;
-	line-height: 1.45;
-	outline: none;
-	padding: $-s $-m;
-	cursor: pointer;
-	border-radius: 4px;
-	&:active, &.active{
-		@include box-shadow(inset 0 1px 1px 0 #BBB);
-	}
-	&:hover{
-		text-decoration: none;
-	}
-}
-
-.button{
-	@extend .button-template;
-	border: 1px solid #BBB;
-	display: inline-block;
-	color: #333;
-	font-weight: bold;
-	background-repeat: repeat-x;
-	@include background-image(linear-gradient(#EEE, #DDD));
-	@include text-shadow(0 1px 0 rgba(255,255,255,0.9));
-	&:hover{
-		@include background-image(linear-gradient(#EDEDED, #CDCDCD));
-	}
-
-}
-
-.link{
-	@extend .button-template;
-	font-size: 0.8em;
-	color: $second;
-	border: 1px solid $second;
-	&:after{
-		content: ' >';
-	}
-	&:hover{
-		background-color: $second;
-		color: #FFFFFF;
-	}
 }
 
 .radio{

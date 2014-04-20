@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700' rel='stylesheet' type='text/css'>
 	<meta charset="UTF-8">
 	<title>Workshop</title>
 	{{ HTML::style('css/style.css') }}
