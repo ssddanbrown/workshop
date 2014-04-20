@@ -34,6 +34,10 @@ Route::post('jobs/{jobs}/status', array(
 	'uses' 	=> 'JobController@toggleStatus',
 	'as'	=>	'jobs.toggle'
 	));
+Route::get('jobs/create/template/{templates}', array(
+	'uses' => 'JobController@createFromTemplate',
+	'as' =>	'jobs.createfromtemplate'
+	));
 Route::resource('jobs', 'JobController');
 
 

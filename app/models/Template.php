@@ -29,6 +29,19 @@ class Template extends Eloquent {
 		return $time;
 	}
 
+	public function toJob()
+	{
+		$job = new Job;
+		$job->title = $this->title;
+		$job->text = $this->text;
+
+		$due = time() + $this->mergeTimes();
+		$job->due = date('Y-m-d H:i:s', $due);
+
+		$job->costs = $this->costs;
+		return $job;
+	}
+
 	public function setTotal($costs = null)
 	{
 		if(is_null($costs)){

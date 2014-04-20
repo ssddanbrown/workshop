@@ -28,6 +28,13 @@ class JobController extends \BaseController {
 		return View::make('jobs.create');
 	}
 
+	public function createFromTemplate( $id )
+	{
+		$template = Template::find( $id );
+		$this->job = $template->toJob();
+		return View::make('jobs.createfromtemplate', ['job' => $this->job, 'template' => $template]);
+	}
+
 
 	public function store()
 	{

@@ -2,7 +2,7 @@
 
 class Job extends Eloquent {
 
-	protected $fillable = ['title', 'text', 'finished', 'due', 'customer_id'];
+	protected $fillable = ['title', 'text', 'due', 'customer_id'];
 
 	public static $rules = [
 		'title' => 'required'

@@ -15,6 +15,7 @@
 				<h2>{{ $template->title }}</h2>
 				<p>{{ $template->text }}</p>
 				{{ link_to_route('templates.edit', 'Edit', $template->id, array('class' => 'link') ) }}
+				{{ link_to_route('jobs.createfromtemplate', 'New Job', $template->id, array('class' => 'link') ) }}
 			</div>
 		@endforeach
 	@else
