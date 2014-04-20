@@ -69,6 +69,12 @@ blockquote {
   	border-left: 2px dotted #DDD;
 }
 
+button{
+	background-color: #FFF;
+	cursor: pointer;
+	outline: none;
+}
+
 input[type=text],input[type=datetime], textarea, select{
 	font-family: $sans;
 	padding: $-s;

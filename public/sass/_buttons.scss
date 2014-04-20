@@ -14,7 +14,7 @@
 	}
 }
 
-.button, button{
+button.button, .button{
 	@extend .button-template;
 	display: inline-block;
 	color: #FFF;
@@ -45,6 +45,25 @@
 			background-color: $red-dark;
 		}
 	}
+}
+
+.delete-row{
+	visibility: hidden;
+	color: $red;
+	height: 20px;
+	width: 20px;
+	font-size: 0.6em;
+	line-height: 1.2em;
+	border-radius: 10px;
+	margin-left: 3px;
+	border: 1px solid $red;
+	&:hover{
+		background-color: $red;
+		color: #FFF;
+	}
+}
+.table-row:hover .delete-row{
+	visibility: visible;
 }
 
 .link{

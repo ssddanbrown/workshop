@@ -39,7 +39,7 @@
 			<div id="customer-current">No Customer Selected</div>
 		@endif
 		<input id="customer-search-input" type="text" name="customer-search">
-		<div id="customer-search-button" class="button">Search</div>
+		<button class="button" type="button" id="customer-search-button">Search</button>
 		<div id="customer-display"></div>
 		<script>
 		$(document).ready(function(){

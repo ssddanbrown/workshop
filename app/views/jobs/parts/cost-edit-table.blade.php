@@ -10,17 +10,19 @@
 			<th>{{ Form::label('costs[][cost_text]', 'Description') }}</th>
 			<th>{{ Form::label('costs[][cost_price]', 'Price') }}</th>
 			<th>{{ Form::label('costs[][discount]', 'Discount') }}</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody id="cost-container">
 		@if( count(Form::old('costs')) > 0 )
 
 			@foreach(Form::old('costs') as $key => $cost)
-				<tr data-index="{{ $key }}">
+				<tr class="table-row"  data-index="{{ $key }}">
 					<td>{{ Form::text('costs['.$key.'][cost_qty]')  }}</td>
 					<td>{{ Form::text('costs['.$key.'][cost_text]') }}</td>
 					<td>{{ Form::text('costs['.$key.'][cost_price]') }}</td>
 					<td>{{ Form::text('costs['.$key.'][discount]') }}</td>
+					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
 			
@@ -28,11 +30,12 @@
 			
 			<!-- Section repeated below -->
 			@foreach( $job->costs as $cost )
-				<tr data-index="{{ $cost->id }}">
+				<tr class="table-row"  data-index="{{ $cost->id }}">
 					<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
+					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
 
@@ -40,21 +43,23 @@
 			
 			<!-- Repeats section above -->
 			@foreach( $template->costs as $cost )
-				<tr data-index="{{ $cost->id }}">
+				<tr class="table-row"  data-index="{{ $cost->id }}">
 					<td>{{ Form::text('costs['.$cost->id.'][cost_qty]', $cost->cost_qty)  }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
+					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
 
 		@else
 
-			<tr data-index="1">
+			<tr class="table-row" data-index="1">
 				<td>{{ Form::text('costs[1][cost_qty]')  }}</td>
 				<td>{{ Form::text('costs[1][cost_text]') }}</td>
 				<td>{{ Form::text('costs[1][cost_price]') }}</td>
 				<td>{{ Form::text('costs[1][discount]') }}</td>
+				<td><button type="button" class="delete-row">X</button></td>
 			</tr>
 
 		@endif
