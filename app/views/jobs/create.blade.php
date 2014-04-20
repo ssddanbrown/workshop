@@ -4,7 +4,7 @@
 
 	{{ Form::open(array('route' => 'jobs.store')) }}
 
-		<div class="row-12 header">
+		<div class="header">
 			<h1>New Job</h1>
 			<div class="buttons">
 				{{ Form::submit('Save Job', array('class'=>'button pos') ) }}

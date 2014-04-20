@@ -12,8 +12,7 @@
 //@include edit();
 
 .detail{
-	padding: $-m 0;
-	border-bottom: 1px solid #DDD;
+	padding: $-s 0;
 	label, div{
 		display: block;
 		font-size: 0.8em;
@@ -83,6 +82,11 @@
 	border-bottom: 1px solid #DDD;
 	.detail{
 		border-bottom: none;
+		@include col(3/4, $cycle: 2);
+	}
+	.buttons{
+		@include col(1/4, $cycle: 2);
+		@include cf();
 	}
 	&:hover .button{
 		visibility: visible;

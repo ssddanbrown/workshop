@@ -4,7 +4,7 @@
 	
 	{{ Form::model( $job, array( 'method' => 'PUT', 'route' => array('jobs.update', $job->id) ) ) }}
 
-		<div class="row-12 header">
+		<div class="header">
 			<h1>Edit Job</h1>
 			<div class="buttons">
 				{{ Form::submit('Save Job', array('class'=>'button') ) }}

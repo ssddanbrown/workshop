@@ -1,5 +1,4 @@
 
-
 *{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -16,99 +15,22 @@
 .inline{
 	display: inline-block;
 }
-// Containers
-.container{
-	display: block;
-	width: 100%;
-	clear: both;
-	overflow: hidden;
-	position: relative;
+.clear, section{
+	@include cf();
 }
+
+// Containers
 .row{
 	@include center($xxl);
 	padding: 0 2%;
 }
-.row-center{
-	@extend .row;
-	text-align: center;
-	p{
-		max-width: 620px;
-		margin: 0 auto;
-	}
-}
-.row-12{
-	@extend .row-sub;
-	width: 100%;
-}
-.row-11{
-	@extend .row-sub;
-	width: 91.65%;
-}
-.row-10{
-	@extend .row-sub;
-	width: 83.32%;
-}
-.row-9{
-	@extend .row-sub;
-	width: 74.98%;
-}
-.row-8{
-	@extend .row-sub;
-	width: 66.65%;
-}
-.row-7{
-	@extend .row-sub;
-	width: 58.32%;
-}
 
 .half{
 	@include col(1/2, $cycle: 2);
+	min-width: 200px;
 }
 
-
-.row-5{
-	@extend .row-sub;
-	width: 41.65%;
-}
-.row-4{
-	@extend .row-sub;
-	width: 33%;
-}
-.row-3{
-	@extend .row-sub;
-	width: 25%;
-}
-.row-2{
-	@extend .row-sub;
-	width: 16.65%;
-}
-.row-1{
-	@extend .row-sub;
-	width: 8.32%;
-}
-.row-sub{
-	position: relative;
-	float: left;
-	text-align: left;
-	overflow: hidden;
-	padding: 0 $-m;
-	vertical-align: top;
-	@include respond-to(m) {
-		width: 100%;
-	}
-	p{
-		max-width: 620px;
-	}
-	a{
-		display: inline-block;
-	}
-	img{
-		max-width: 100%;
-		height: auto;
-		margin: 0.6em 0 0.2em;
-	}
-	&.fill{
-		padding-left: 0;
-		padding-right: 0;
-	}
+.third{
+	@include col(1/3, $cycle: 3);
+	min-width: 160px;
 }

@@ -4,7 +4,7 @@
 
 	{{ Form::model( $template, array( 'method' => 'PUT', 'route' => array('templates.update', $template->id ) ) ) }}
 
-		<div class="row-12 header">
+		<div class="header">
 			<h1>Edit Template</h1>
 			<div class="buttons">
 				{{ Form::submit('Save Template', array('class'=>'button')) }}

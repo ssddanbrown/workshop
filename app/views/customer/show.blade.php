@@ -2,7 +2,7 @@
 
 @section('content')
 	
-<div class="row-12 header">
+<div class="header">
 	<h1>Customer Record</h1>
 	<div class="buttons">
 		{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}

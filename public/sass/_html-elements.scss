@@ -9,7 +9,7 @@ body {
 }
 
 p {
-	margin-bottom: 1.3em;
+	margin-bottom: 1.0em;
 }
 
 a {
@@ -19,6 +19,10 @@ a {
 		color: #333;
 		text-decoration: underline;
 	}
+}
+
+b {
+	font-weight: bold;
 }
 
 h1, h2, h3, h4 {

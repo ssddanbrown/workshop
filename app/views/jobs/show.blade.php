@@ -11,92 +11,95 @@
 	</div>
 </div>
 
-<div class="half">
-	<div class="row subheader">
-		<h3>Details</h3>
-	</div>
-	<div class="row-5 fill">
-		<div class="detail">
-			<div>TITLE</div>
-			<p>{{ $job->title }}</p>
-		</div>
-		<div class="detail">
-			<div>NOTES</div>
-			<p>{{ $job->text }}</p>
-		</div>
-		<div class="detail">
-			<div>ID</div>
-			<p>{{ $job->id }}</p>
-		</div>
-		<div class="detail">
-			<div>STATUS</div>
-			<p>{{ $job->finished }}</p>
-		</div>
-	</div>
-	<div class="row-1 fill"><p></p></div>
-	<div class="row-5 fill">
-		<div class="detail">
-			<div>DATE ADDED</div>
-			<p>{{ Format::humanTime($job->created_at) }}</p>
-		</div>
-		<div class="detail">
-			<div>DATE DUE</div>
-			<p>{{ Format::humanTime($job->due) }}</p>
-		</div>
-		<div class="detail">
-			<div>LAST UPDATED</div>
-			<p>{{ Format::humanTime($job->updated_at) }}</p>
-		</div>
-	</div>
-</div>
 
-<div class="row-3">
-	<div class="row subheader">
-		<h3>Customer</h3>
-	</div>
-	@if($job->customer != null)
-		<div class="detail">
-			<div>NAME</div>
-			<p>{{ $job->customer->name() }}</p>
+<section>
+	<div class="half">
+		<div class="row subheader">
+			<h3>Details</h3>
 		</div>
-		<div class="detail">
-			<div>EMAIL</div>
-			<p>{{ $job->customer->email }}</p>
-		</div>
-		<div class="detail">
-			<div>PHONE</div>
-			<p>{{ $job->customer->phone }}</p>
-		</div>
-		<div class="detail">
-			<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id, array('class'=>'link') ) }}</p>
-		</div>
-	@else
-		<p>No Customer Selected</p>
-	@endif
-</div>
-
-<!-- List All Customer Items -->
-<div class="row-3">
-	<div class="row subheader">
-		<h3>Items</h3>
-	</div>
-	@if(count($job->items) > 0)
-		@foreach($job->items as $item)
-			<div class="detail">
-				<div>{{ $item->item_title }}</div>
-				<p>{{ $item->item_text }}</p>
+		<div>
+			<div class="half">
+				<div class="detail">
+					<div>TITLE</div>
+					<p>{{ $job->title }}</p>
+				</div>
+				<div class="detail">
+					<div>NOTES</div>
+					<p>{{ $job->text }}</p>
+				</div>
+				<div class="detail">
+					<div>ID</div>
+					<p>{{ $job->id }}</p>
+				</div>
+				<div class="detail">
+					<div>STATUS</div>
+					<p>{{ $job->finished }}</p>
+				</div>
 			</div>
-		@endforeach
-		<div class="row"></div>
-	@else
-		<p>No Items To Display.</p>
-	@endif
-</div>
+			<div class="half">
+				<div class="detail">
+					<div>DATE ADDED</div>
+					<p>{{ $job->created_at }}<br>{{ Format::humanTime($job->created_at) }}</p>
+				</div>
+				<div class="detail">
+					<div>DATE DUE</div>
+					<p>{{ $job->due }}<br>{{ Format::humanTime($job->due) }}</p>
+				</div>
+				<div class="detail">
+					<div>LAST UPDATED</div>
+					<p>{{ $job->updated_at }}<br>{{ Format::humanTime($job->updated_at) }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<div class="row"></div>
+	<div class="half">
+		<div class="half">
+			<div class="row subheader">
+				<h3>Customer</h3>
+			</div>
+			@if($job->customer != null)
+				<div class="detail">
+					<div>NAME</div>
+					<p>{{ $job->customer->name() }}</p>
+				</div>
+				<div class="detail">
+					<div>EMAIL</div>
+					<p>{{ $job->customer->email }}</p>
+				</div>
+				<div class="detail">
+					<div>PHONE</div>
+					<p>{{ $job->customer->phone }}</p>
+				</div>
+				<div class="detail">
+					<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id, array('class'=>'link') ) }}</p>
+				</div>
+			@else
+				<p>No Customer Selected</p>
+			@endif
+		</div>
+
+		<!-- List All Customer Items -->
+		<div class="half">
+			<div class="row subheader">
+				<h3>Items</h3>
+			</div>
+			@if(count($job->items) > 0)
+				@foreach($job->items as $item)
+					<div class="detail">
+						<div>{{ $item->item_title }}</div>
+						<p>{{ $item->item_text }}</p>
+					</div>
+				@endforeach
+			@else
+				<p>No Items To Display.</p>
+			@endif
+		</div>
+	</div>
+</section>
 
 <!-- List All Costs -->
-<div class="row-12">
+<section>
 	<div class="row subheader">
 		<h3>Costs</h3>
 	</div>
@@ -129,43 +132,45 @@
 	@else
 		<p>No Costs to display.</p>
 	@endif
-</div>
+</section>
 
-<div class="half">
-	<div class="row subheader">
-		<h3>Notes</h3>
-	</div>
-	@if( count($job->notes) > 0 )
-		@foreach( $job->notes as $note )
-			<div class="note">
-				<div class="row-9 fill detail">
-					<div>{{ Format::date($note->created_at) . ' - ' . Format::humanTime($note->created_at) }}</div>
-					<p>{{ $note->text }}</p>
+<section>
+	<div class="half">
+		<div class="row subheader">
+			<h3>Notes</h3>
+		</div>
+		@if( count($job->notes) > 0 )
+			@foreach( $job->notes as $note )
+				<div class="note clear">
+					<div class="detail">
+						<div>{{ Format::date($note->created_at) . ' - ' . Format::humanTime($note->created_at) }}</div>
+						<p>{{ $note->text }}</p>
+					</div>
+					<div class="buttons">
+						{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
+						{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
+					</div>
 				</div>
-				<div class="row-3 fill">
-					{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
-					{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
-				</div>
-				<div class="row"></div>
-			</div>
-		@endforeach
-	@else
-		<p>No notes added</p>
-	@endif
-</div>
-<div class="half">
-	{{ Form::open( array('route' => 'notes.store') ) }}
-	<div class="row subheader">
-		<h3>Add Note</h3>
+			@endforeach
+		@else
+			<p>No notes added</p>
+		@endif
 	</div>
-	{{ Form::hidden('job_id', $job->id) }}
-	<div class="detail">
-		{{ Form::label('text', 'Note Text') }}
-		{{ Form::textarea('text') }}
-		<div class="clear"></div>
-		{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
-	</div>
-	{{ Form::close() }}
-</div>
+	<div class="half">
+		{{ Form::open( array('route' => 'notes.store') ) }}
+		<div class="row subheader">
+			<h3>Add Note</h3>
+		</div>
+		{{ Form::hidden('job_id', $job->id) }}
+		<div class="detail">
+			{{ Form::label('text', 'Note Text') }}
+			{{ Form::textarea('text') }}
+			<div class="clear"></div>
+			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
+		</div>
+		{{ Form::close() }}
+	</div>	
+</section>
+
 
 @stop

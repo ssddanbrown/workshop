@@ -1,5 +1,5 @@
 
-<div class="row-12">
+<div>
 	<div class="row subheader">
 		<h3>Details</h3>
 	</div>
