@@ -1,6 +1,6 @@
 
 
-<div class="row-6">
+<div class="half">
 	<div class="row subheader">
 		<h3>Details</h3>
 	</div>
@@ -16,7 +16,7 @@
 	</div>
 </div>
 
-<div class="row-6">
+<div class="half">
 	<div class="row subheader">
 		<h3>Typical Time Taken</h3>
 	</div>

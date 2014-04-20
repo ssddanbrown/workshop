@@ -25,9 +25,8 @@
 	position: relative;
 }
 .row{
-	@extend .container;
-	max-width: $xxl;
-	margin: 0 auto;
+	@include center($xxl);
+	padding: 0 2%;
 }
 .row-center{
 	@extend .row;
@@ -61,10 +60,12 @@
 	@extend .row-sub;
 	width: 58.32%;
 }
-.row-6{
-	@extend .row-sub;
-	width: 50%;
+
+.half{
+	@include col(1/2, $cycle: 2);
 }
+
+
 .row-5{
 	@extend .row-sub;
 	width: 41.65%;

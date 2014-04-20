@@ -2,14 +2,14 @@
 
 @section('content')
 	
-	<div class="row-12 header">
+	<div class="header">
 		<h1>Outstanding Jobs</h1>
 		<div class="buttons">
 			{{ link_to_route('jobs.create', 'New Job', null, array('class'=>'button right pos') ) }}
 		</div>
 	</div>
 	
-	<div class="row-12">
+	<div>
 		@if ( count($jobs) > 0 )
 			@include('jobs.parts.jobtable')
 		@else
@@ -17,7 +17,7 @@
 		@endif
 	</div>
 
-	<div class="row-12">
+	<div>
 		{{ link_to_route('jobs.archive', 'Jobs Archive', null, array('class'=>'link') ) }}
 	</div>
 

@@ -15,7 +15,7 @@
 		<p>No Finished Jobs</p>
 	@endif
 
-	<div class="row">
+	<div>
 		{{ link_to_route('jobs.index', 'View Outstanding Jobs', null, array('class'=>'link') ) }}
 	</div>
 

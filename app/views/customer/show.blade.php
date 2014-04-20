@@ -2,16 +2,16 @@
 
 @section('content')
 	
-	<div class="row-12 header">
-		<h1>Customer Record</h1>
-		<div class="buttons">
-			{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
-			{{ Form::delete('customers.destroy', 'Delete Customer', $customer->id) }}
-		</div>
+<div class="row-12 header">
+	<h1>Customer Record</h1>
+	<div class="buttons">
+		{{ link_to_route('customers.edit', 'Edit Customer', $customer->id , array('class'=>'button') ) }}
+		{{ Form::delete('customers.destroy', 'Delete Customer', $customer->id) }}
 	</div>
+</div>
 
-	
-	<div class="row-6">
+<section>
+	<div class="half">
 		<div class="row subheader">
 			<h3>Details</h3>
 		</div>
@@ -32,7 +32,7 @@
 			<p>{{ $customer->id }}</p>
 		</div>
 	</div>
-	<div class="row-6">
+	<div class="half">
 		<div class="row subheader">
 			<h3>Jobs</h3>
 		</div>
@@ -61,5 +61,7 @@
 			@endif
 		</div>
 	</div>
+</section>
+
 	
 @stop

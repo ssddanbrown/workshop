@@ -9,6 +9,7 @@
 @import "buttons";
 @import "tables";
 
+//@include edit();
 
 .detail{
 	padding: $-m 0;
@@ -30,6 +31,7 @@
 }
 
 .header{
+	@include center();
 	margin-top: $-l;
 	margin-bottom: $-l;
 	padding: $-m 0;
