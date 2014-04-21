@@ -73,6 +73,11 @@ button{
 	background-color: #FFF;
 	cursor: pointer;
 	outline: none;
+	border: none;
+	font-style: $sans;
+	font-size: 14px;
+	color: #333;
+	line-height: 1.45em;
 }
 
 input[type=text],input[type=datetime], textarea, select{
@@ -86,6 +91,7 @@ select{
 }
 // Table Elements
 table{
+	max-width: 100%;
 	th{
 		font-weight: bold;
 	}
@@ -99,6 +105,11 @@ table{
 			font-weight: bold;
 			color: #555;
 		}
+		th, td{
+			padding: 0;
+		}
+	}
+	&.nopadding{
 		th, td{
 			padding: 0;
 		}

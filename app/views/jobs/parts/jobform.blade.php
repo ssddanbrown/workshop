@@ -10,11 +10,6 @@
 			{{ $errors->first('title') }}
 		</div>
 		<div class="detail">
-			{{ Form::label('text', 'Job Notes') }}
-			{{ Form::text('text') }}
-			{{ $errors->first('text') }}
-		</div>
-		<div class="detail">
 			{{ Form::label('due', 'Date Due') }}
 			@if( isset($job) )
 				{{ Form::input('datetime', 'due') }}
@@ -22,25 +17,44 @@
 				{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
 			@endif
 		</div>
+		<div class="detail">
+			{{ Form::label('text', 'Description') }}
+			{{ Form::textArea('text') }}
+			{{ $errors->first('text') }}
+		</div>
 	</div>
 
 	<div class="third">
 			<div class="row subheader">
 			<h3>Customer</h3>
 		</div>
+
 		{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
-		@if( isset($customer) )
-			<div id="customer-current">
-				{{ $customer->name() }} <br>
-				{{ $customer->email }} <br>
-				{{ $customer->phone }}
-			</div>
-		@else
-			<div id="customer-current">No Customer Selected</div>
-		@endif
+
+		<table class="nopadding">
+			<tbody>
+				<td>
+					@if( isset($customer) )
+						<div id="customer-current">
+							{{ $customer->name() }} <br>
+							{{ $customer->email }} <br>
+							{{ $customer->phone }}
+						</div>
+					@else
+						<div id="customer-current">No Customer Selected</div>
+					@endif
+				</td>
+				<td>
+					<button id="remove-customer-button" type="button" class="delete-circle">X</button>
+				</td>
+			</tbody>
+		</table>
+
 		<input id="customer-search-input" type="text" name="customer-search">
 		<button class="button" type="button" id="customer-search-button">Search</button>
-		<div id="customer-display"></div>
+		<div id="customer-display-wrapper">
+			<div id="customer-display"></div>
+		</div>
 		<script>
 		$(document).ready(function(){
 
@@ -58,10 +72,10 @@
 				// ADD STATUS INDICATOR
 				request.done( function( data ){
 					$.each( data, function(index, customer){
-						var inner = '<div class="customer-result" data-id="' + customer.id +'">';
+						var inner = '<button type="button" class="customer-result" data-id="' + customer.id +'">';
 						inner += customer.first_name + ' ' + customer.last_name + '<br>';
 						inner += customer.email + '<br>';
-						inner += customer.phone + '</div>'
+						inner += customer.phone + '</button type="button">'
 						display.append( inner );
 					});
 				});
@@ -82,7 +96,20 @@
 				var id = $(this).data('id');
 				$('#customer-id').val(id);
 				display.html($(this).html());
+				$('#remove-customer-button').show();
 			});
+
+			// Remove customer button
+			$('#remove-customer-button').click(function(){
+				var display = $('#customer-current');
+				$('#customer-id').val(0);
+				display.html('No Customer Selected');
+				$(this).hide();
+			});
+			// Hide on load if customer not set
+			if( $('#customer-id').val() ==  0){
+				$('#remove-customer-button').hide();
+			}
 
 		});
 		</script>
