@@ -1,9 +1,15 @@
 #datepicker{
-	position: absolute;
+	position: relative;
 	width: 400px;
 	height: 400px;
 }
 .datepicker-date{
 	@include col(1/7, $cycle:7);
 	min-height: 1em;
+	text-align: center;
+	padding: $-xs 0;
+	&.current{
+		background-color: $blue-light;
+		color: #FFF;
+	}
 }
