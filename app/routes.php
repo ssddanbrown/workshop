@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return Redirect::to('/jobs');
+	return View::make('common.test');
 });
 
 
