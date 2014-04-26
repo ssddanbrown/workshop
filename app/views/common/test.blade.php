@@ -21,8 +21,10 @@ $(document).ready(function(){
 
 		this.set = function(){};
 		this.set.month = 3;
-		this.set.day = 20;
+		this.set.day = 26;
 		this.set.year = 2014;
+		this.set.hour = 20;
+		this.set.min = 50;
 
 		this.monthRow = $(document.createElement('div'));
 		this.monthDisplay = $(document.createElement('span'));
@@ -38,13 +40,17 @@ $(document).ready(function(){
 
 		this.setup = function(){
 			var context = this;
+
+			// Add Months header
 			this.monthRow.attr('class', 'clear datepicker-monthrow');
 			this.monthRow.append('<button type="button" class="datepicker-prev"><</button>');
 			this.monthRow.append(context.monthDisplay);
 			this.monthRow.append('<button type="button" class="datepicker-next">></button>');
 			this.canvas.append(context.monthRow);
+
+			// Add header showing days
 			var dayRow = document.createElement('div');
-			dayRow.className = 'clear';
+			dayRow.className = 'clear datepicker-days';
 			dayRow.innerHTML = '<div class="datepicker-date">MON</div>'
 				+	'<div class="datepicker-date">TUE</div>'
 				+	'<div class="datepicker-date">WED</div>'
@@ -57,10 +63,34 @@ $(document).ready(function(){
 			this.datesArea.attr('class', 'datepicker-dates clear');
 			this.canvas.append(this.datesArea);
 
+			// Add time buttons to widget
+			var timeRow = document.createElement('div');
+			timeRow.className = 'datepicker-times';
+			var times = '';
+			times += '<div class="datepicker-header">Hour</div><div class="clear">';
+			for( var i = 0; i < 24; i++){
+				if (i == this.set.hour){
+					times += '<button type="button" class="datepicker-time-hour current" data-hour="'+i+'" >'+i+'</button>';
+				}else{
+					times += '<button type="button" class="datepicker-time-hour" data-hour="'+i+'" >'+i+'</button>';
+				}
+			}
+			times += '</div><div class="datepicker-header">Minute</div><div class="clear">';
+			for( var i = 0; i<60; i=i+5){
+				if (i == this.set.min){
+					times += '<button type="button" class="datepicker-time-min current" data-min="'+i+'" >'+i+'</button>';
+				}else{
+					times += '<button type="button" class="datepicker-time-min" data-min="'+i+'" >'+i+'</button>';
+				}
+			}
+			times += '</div>'
+			timeRow.innerHTML = times;
+			this.canvas.append(timeRow);
+
 			// Show dates for current month
 			this.refreshDates();
 
-			// Click Events
+			// Month & Day Click Events
 			this.canvas.on('click', '.datepicker-next', function(){
 				context.nextMonth();
 			});
@@ -71,7 +101,19 @@ $(document).ready(function(){
 				context.set.year = context.year;
 				context.set.month = context.month;
 				context.set.day = $(this).data('day');
-				context.canvas.find('.current').removeClass('current');
+				context.canvas.find('.datepicker-date.current').removeClass('current');
+				$(this).addClass('current');
+			});
+
+			// Time Click Events
+			this.canvas.on('click', 'button.datepicker-time-hour', function(){
+				context.set.hour = $(this).data('hour');
+				context.canvas.find('.datepicker-time-hour.current').removeClass('current');
+				$(this).addClass('current');
+			});
+			this.canvas.on('click', 'button.datepicker-time-min', function(){
+				context.set.min = $(this).data('min');
+				context.canvas.find('.datepicker-time-min.current').removeClass('current');
 				$(this).addClass('current');
 			});
 		}
@@ -116,7 +158,6 @@ $(document).ready(function(){
 				}
 			}
 		}
-
 
 	}
 
