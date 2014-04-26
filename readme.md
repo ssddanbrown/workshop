@@ -9,3 +9,7 @@ Workshop is designed as a workshop managment system, built using laravel.
 **Jeet** - CSS grid system
 
 [Homepage](http://jeet.gs/) - [Github](https://github.com/mojotech/jeet)
+
+**Jquery** - Easier and quicker javascript
+
+[Homepage](http://jquery.com/) - [API](http://api.jquery.com/)
