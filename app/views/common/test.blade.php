@@ -9,20 +9,25 @@ $(document).ready(function(){
 
 	function dateTimePicker(dateInput){
 
+		// Get date input area and create canvas div
 		this.dateInput = dateInput; 
 		this.canvas = $(document.createElement('div'));
 		this.canvas.attr('id', 'datepicker');
-
+		// Append canvas to input
 		dateInput.after(this.canvas);
 
+		// Names arrays for months and days
 		this.months = ['January', 'February', 'March', 'April', 'May', 'June',
 		'July', 'August', 'September', 'October', 'November', 'December'];
 		this.days = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT'];
+		
+		// Set inital values to track WHAT IS SEEN
 		this.inputDate = dateInput.val();
 		this.date = new Date(); // Change to get from input
 		this.month = this.date.getMonth();
 		this.year = this.date.getFullYear();
 
+		// Set initial values for WHAT DATE IS SELECTED
 		this.set = function(){};
 		this.set.month = this.month;
 		this.set.day = this.date.getDay();
@@ -30,6 +35,7 @@ $(document).ready(function(){
 		this.set.hour =this.date.getHours();
 		this.set.min = 5 * Math.round(this.date.getMinutes()/5);
 
+		// Function to update the input/user display
 		this.updateInput = function(){
 			if(this.set.min > 55){
 				this.set.min = 0;
@@ -47,21 +53,21 @@ $(document).ready(function(){
 			// 	);
 		}
 
+		// Create elements that require global access
 		this.monthRow = $(document.createElement('div'));
 		this.monthDisplay = $(document.createElement('span'));
 		this.datesArea = $(document.createElement('div'));
 
+		// Utility function for repeating strings
 		this.repeat = function( string, num ){
 	    	return new Array( num + 1 ).join( string );
 		}
 
-		this.getSetDate = function(){
-			return new Date(this.set.year, this.set.month, this.set.day);
-		}
-
 		this.setup = function(){
 			var context = this;
+			// Sync input and set value (Rounds to nearest 5 mins)
 			context.updateInput();
+			
 			// Add Months header
 			this.monthRow.attr('class', 'clear datepicker-monthrow');
 			this.monthRow.append('<button type="button" class="datepicker-prev"><</button>');
@@ -104,7 +110,7 @@ $(document).ready(function(){
 					times += '<button type="button" class="datepicker-time-min" data-min="'+i+'" >'+i+'</button>';
 				}
 			}
-			times += '</div>'
+			times += '</div>';
 			timeRow.innerHTML = times;
 			this.canvas.append(timeRow);
 
@@ -138,7 +144,8 @@ $(document).ready(function(){
 				$(this).addClass('current');
 			});
 		}
-
+		
+		// Finds and sets the next month for the VIEW
 		this.nextMonth = function(){
 			if ( this.month < 11 ) {
 				this.month ++;
@@ -148,6 +155,7 @@ $(document).ready(function(){
 			};
 			this.refreshDates();
 		}
+		//Finds and sets previous month for the VIEW
 		this.previousMonth = function(){
 			if( this.month == 0 ){
 				this.year --;
@@ -158,12 +166,14 @@ $(document).ready(function(){
 			this.refreshDates();
 		}
 
+		// Emptys the calander section and reloads it with the currently set VIEW variables
 		this.refreshDates = function(){
 			var context = this;
 			this.monthDisplay.html(context.months[context.month] + ' - ' + context.year);
 			this.datesArea.empty();
 			var daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
 			for(var i = 0; i<daysInMonth; i++){
+				// If its the first item pad spaces to make day sit in the correct column
 				if(i==0){
 					var dayInWeek = new Date(this.year, this.month, i+1).getDay();
 					if( dayInWeek != 1){
@@ -172,6 +182,7 @@ $(document).ready(function(){
 						this.datesArea.html(this.repeat('<div class="datepicker-date"></div>', diff));
 					}
 				}
+				// Add button and set as selected if it eaquals SET values
 				if( this.set.year == this.year && this.set.month == this.month && this.set.day == i+1 ){
 					this.datesArea.append('<button type="button" data-day="'+ (i+1) +'" class="datepicker-date current">' + (i+1) +'</button>');
 				} else {
