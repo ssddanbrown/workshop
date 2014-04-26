@@ -7,7 +7,8 @@
 		<div class="row-12 header">
 			<h1>Edit Note</h1>
 			<div class="buttons">
-				{{ Form::submit('Save', array('class'=>'button') ) }}
+				{{ Form::delete('notes.destroy', 'Delete Note', $note->id) }} 
+				{{ Form::submit('Save', array('class'=>'button pos') ) }}
 			</div>
 		</div>
 
