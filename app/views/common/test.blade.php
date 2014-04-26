@@ -1,30 +1,51 @@
 @extends('common.main')
 
 @section('content')
-	
-<div id="datepicker">
-</div>
+
+<input type="text" class="testinput" value="{{ date('Y-m-d H:i:s' ,strtotime('now')) }}">
 
 <script>
 $(document).ready(function(){
 
-	function dateTimePicker(target){
+	function dateTimePicker(dateInput){
 
-		this.canvas = target;
+		this.dateInput = dateInput; 
+		this.canvas = $(document.createElement('div'));
+		this.canvas.attr('id', 'datepicker');
+
+		dateInput.after(this.canvas);
 
 		this.months = ['January', 'February', 'March', 'April', 'May', 'June',
 		'July', 'August', 'September', 'October', 'November', 'December'];
 		this.days = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT'];
+		this.inputDate = dateInput.val();
 		this.date = new Date(); // Change to get from input
 		this.month = this.date.getMonth();
 		this.year = this.date.getFullYear();
 
 		this.set = function(){};
-		this.set.month = 3;
-		this.set.day = 26;
-		this.set.year = 2014;
-		this.set.hour = 20;
-		this.set.min = 50;
+		this.set.month = this.month;
+		this.set.day = this.date.getDay();
+		this.set.year = this.year;
+		this.set.hour =this.date.getHours();
+		this.set.min = 5 * Math.round(this.date.getMinutes()/5);
+
+		this.updateInput = function(){
+			if(this.set.min > 55){
+				this.set.min = 0;
+			}
+			// var day = this.set.date;
+			// day = day.length < 2 ? '0' + day : day;
+			// var month = this.set.month;
+			// month = this.set.month
+			// this.dateInput.val(
+			// 	this.set.year + '-' +
+			// 	this.set.month + '-' +
+			// 	this.set.day + ' ' +
+			// 	this.set.hour + ':' +
+			// 	this.set.min + ':00'
+			// 	);
+		}
 
 		this.monthRow = $(document.createElement('div'));
 		this.monthDisplay = $(document.createElement('span'));
@@ -40,7 +61,7 @@ $(document).ready(function(){
 
 		this.setup = function(){
 			var context = this;
-
+			context.updateInput();
 			// Add Months header
 			this.monthRow.attr('class', 'clear datepicker-monthrow');
 			this.monthRow.append('<button type="button" class="datepicker-prev"><</button>');
@@ -161,7 +182,7 @@ $(document).ready(function(){
 
 	}
 
-	var instance = new dateTimePicker( $('#datepicker') );
+	var instance = new dateTimePicker( $('.testinput') );
 	instance.setup();
 
 });
