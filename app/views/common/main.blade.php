@@ -6,6 +6,7 @@
 	<title>Workshop</title>
 	{{ HTML::style('css/style.css') }}
 	{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
+	@yield('head')
 </head>
 <body>
 	
