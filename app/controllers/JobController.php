@@ -115,24 +115,21 @@ class JobController extends \BaseController {
 
 	public function destroy($id)
 	{
-		$job = $this->job->find($id);
-		$job->items()->delete();
-		$job->costs()->delete();
-		$job->notes()->delete();
-		$job->delete();
+		$this->job = $this->job->find($id);
+		$route = ($this->job->finished ? 'jobs.archive' : 'jobs.index');
+		$this->job->items()->delete();
+		$this->job->costs()->delete();
+		$this->job->notes()->delete();
+		$this->job->delete();
 
-		return Redirect::route('jobs.index');
+		return Redirect::route($route);
 	}
 
 	public function toggleStatus($id)
 	{
-		$job = $this->job->find($id);
-		if( $job->finished == false){
-			$job->finished = true;
-		} else {
-			$job->finished = false;
-		}
-		$job->save();
+		$this->job = $this->job->find($id);
+		$this->job->finished = !$this->job->finished;
+		$this->job->save();
 
 		return Redirect::back();
 	}

@@ -16,6 +16,10 @@ $(document).ready(function(){
 		// Append canvas to input
 		dateInput.after(this.canvas);
 
+		// Mouse tracking values
+		this.hovering = false;
+		this.focused = false;
+
 		// Names arrays for months and days
 		this.months = ['January', 'February', 'March', 'April', 'May', 'June',
 		'July', 'August', 'September', 'October', 'November', 'December'];
@@ -36,21 +40,17 @@ $(document).ready(function(){
 		this.set.min = 5 * Math.round(this.date.getMinutes()/5);
 
 		// Function to update the input/user display
-		this.updateInput = function(){
+		this.update = function(){
 			if(this.set.min > 55){
 				this.set.min = 0;
 			}
-			// var day = this.set.date;
-			// day = day.length < 2 ? '0' + day : day;
-			// var month = this.set.month;
-			// month = this.set.month
-			// this.dateInput.val(
-			// 	this.set.year + '-' +
-			// 	this.set.month + '-' +
-			// 	this.set.day + ' ' +
-			// 	this.set.hour + ':' +
-			// 	this.set.min + ':00'
-			// 	);
+			var formatDay = this.set.day < 10 ? '0'+this.set.day : this.set.day;
+			var formatMonth = this.set.month < 10 ? '0'+(this.set.month+1) : (this.set.month+1);
+			var formatHour = this.set.hour < 10 ? '0'+this.set.hour : this.set.hour;
+			var formatMin = this.set.min < 10 ? '0'+this.set.min : this.set.min;
+			var dateString = formatDay + '-' + formatMonth + '-' + this.set.year +
+					' ' + formatHour + ':' + formatMin;
+			this.dateInput.val(dateString);
 		}
 
 		// Create elements that require global access
@@ -66,7 +66,8 @@ $(document).ready(function(){
 		this.setup = function(){
 			var context = this;
 			// Sync input and set value (Rounds to nearest 5 mins)
-			context.updateInput();
+			context.update();
+			this.canvas.hide();
 			
 			// Add Months header
 			this.monthRow.attr('class', 'clear datepicker-monthrow');
@@ -117,6 +118,24 @@ $(document).ready(function(){
 			// Show dates for current month
 			this.refreshDates();
 
+			// Show datepicker on input focus
+			this.dateInput.focus(function(){
+				context.canvas.show();
+				context.focused = true;
+			});
+			this.dateInput.blur(function(){
+				context.focused = false;
+				if( !context.focused && !context.hovering) context.canvas.hide();
+			});
+			this.canvas.mouseenter(function(){
+				context.hovering = true;
+			});
+			// Hide datepicker on unhover of popup
+			this.canvas.mouseleave(function(){
+				context.hovering = false;
+				if( !context.focused && !context.hovering) context.canvas.hide();
+			});
+
 			// Month & Day Click Events
 			this.canvas.on('click', '.datepicker-next', function(){
 				context.nextMonth();
@@ -130,6 +149,7 @@ $(document).ready(function(){
 				context.set.day = $(this).data('day');
 				context.canvas.find('.datepicker-date.current').removeClass('current');
 				$(this).addClass('current');
+				context.update();
 			});
 
 			// Time Click Events
@@ -137,11 +157,13 @@ $(document).ready(function(){
 				context.set.hour = $(this).data('hour');
 				context.canvas.find('.datepicker-time-hour.current').removeClass('current');
 				$(this).addClass('current');
+				context.update();
 			});
 			this.canvas.on('click', 'button.datepicker-time-min', function(){
 				context.set.min = $(this).data('min');
 				context.canvas.find('.datepicker-time-min.current').removeClass('current');
 				$(this).addClass('current');
+				context.update();
 			});
 		}
 		
