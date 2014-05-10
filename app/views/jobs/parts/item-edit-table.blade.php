@@ -8,6 +8,13 @@
 		</tr>
 	</thead>
 	<tbody id="item-container">
+
+		<tr class="table-row model" style="display:none;" data-index="-1" >
+			<td>{{ Form::text('items[-1][item_title]')  }}</td>
+			<td>{{ Form::text('items[-1][item_text]') }}</td>
+			<td><button type="button" class="delete-row">X</button></td>
+		</tr>
+
 		@if( count(Form::old('items')) > 0 )
 
 			@foreach(Form::old('items') as $key => $item)
@@ -28,13 +35,14 @@
 				</tr>
 			@endforeach
 
-		@else
-			<tr class="table-row" data-index="1" >
-				<td>{{ Form::text('items[1][item_title]')  }}</td>
-				<td>{{ Form::text('items[1][item_text]') }}</td>
-				<td><button type="button" class="delete-row">X</button></td>
-			</tr>
 		@endif
+
+		<tr class="table-row" data-index="0" >
+			<td>{{ Form::text('items[0][item_title]')  }}</td>
+			<td>{{ Form::text('items[0][item_text]') }}</td>
+			<td><button type="button" class="delete-row">X</button></td>
+		</tr>
+
 	</tbody>
 </table>
-<button type="button" onclick="addForm('item');" class="button">Add Item</button>
+<button type="button" id="button-add-item" class="button">Add Item</button>

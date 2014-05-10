@@ -14,6 +14,15 @@
 		</tr>
 	</thead>
 	<tbody id="cost-container">
+
+		<tr class="table-row model" style="display: none;" data-index="-1">
+			<td>{{ Form::text('costs[-1][cost_qty]')  }}</td>
+			<td>{{ Form::text('costs[-1][cost_text]') }}</td>
+			<td>{{ Form::text('costs[-1][cost_price]') }}</td>
+			<td>{{ Form::text('costs[-1][discount]') }}</td>
+			<td><button type="button" class="delete-row">X</button></td>
+		</tr>
+
 		@if( count(Form::old('costs')) > 0 )
 
 			@foreach(Form::old('costs') as $key => $cost)
@@ -52,17 +61,16 @@
 				</tr>
 			@endforeach
 
-		@else
-
-			<tr class="table-row" data-index="1">
-				<td>{{ Form::text('costs[1][cost_qty]')  }}</td>
-				<td>{{ Form::text('costs[1][cost_text]') }}</td>
-				<td>{{ Form::text('costs[1][cost_price]') }}</td>
-				<td>{{ Form::text('costs[1][discount]') }}</td>
-				<td><button type="button" class="delete-row">X</button></td>
-			</tr>
-
 		@endif
+
+		<tr class="table-row" data-index="0">
+			<td>{{ Form::text('costs[0][cost_qty]')  }}</td>
+			<td>{{ Form::text('costs[0][cost_text]') }}</td>
+			<td>{{ Form::text('costs[0][cost_price]') }}</td>
+			<td>{{ Form::text('costs[0][discount]') }}</td>
+			<td><button type="button" class="delete-row">X</button></td>
+		</tr>
+
 	</tbody>
 </table>
-<a href="javascript:addForm('cost');" class="button">Add Cost</a>
+<button type="button" id="button-add-cost" class="button">Add Cost</button>
