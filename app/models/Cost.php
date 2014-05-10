@@ -31,4 +31,17 @@ class Cost extends Eloquent {
 		return false;
 	}
 
+	public static function manyFromInput( $inputs, $errors)
+	{
+		$costs = array();
+		foreach( $inputs as $input ){
+			if ( !empty($input['cost_qty']) || !empty($input['cost_text']) || !empty($input['cost_price']) ) {
+				$cost = new static();
+				if ( !$cost->fill($input)->isValid() ) $errors->merge($cost->errors->getMessages());
+				array_push($costs, $cost);
+			}
+		}
+		return $costs;
+	}
+
 }

@@ -23,4 +23,19 @@ class Item extends Eloquent {
 		return false;
 	}
 
+	public static function manyFromInput( $inputs, $errors )
+	{
+		$items = array();
+		foreach( $inputs as $input ){
+			if ( !empty($input['item_title']) || !empty($input['item_text']) ) {
+				$item = new static();
+				if( !$item->fill($input)->isValid() ) $errors->merge( $item->errors->getMessages());
+				array_push($items, $item);
+			}
+		}
+		return $items;
+	}
+
+
+
 }
