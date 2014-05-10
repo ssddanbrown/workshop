@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class TemplateController extends \BaseController {
 
 	protected $template;
@@ -25,44 +27,30 @@ class TemplateController extends \BaseController {
 
 	public function store()
 	{
-		$errors = null;
-
+		$errors = new MessageBag;
 		$template_input = Input::only('title', 'text', 'days', 'hours', 'mins');
 
 		if( !$this->template->fill($template_input)->isValid() ){
 			$errors = $this->template->errors;
 		}
-		
-		$this->template->mergeTimes();
 
-		$costs = array();
-		foreach (Input::get('costs') as $key => $input) {
-			if ( !empty($input['cost_qty']) || !empty($input['cost_text']) || !!empty($input['cost_price']) ) {
-				$new_cost = new Cost;
-				if ( !$new_cost->fill($input)->isValid() ) {
-					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-				}
-				array_push($costs, $new_cost);
-			}
-		}
+		$costs = Cost::manyFromInput( Input::get('costs'), $errors );
 
-		if ($errors != null) {
+		if ( $errors->count() > 0 ) {
 			return Redirect::back()->withInput()->withErrors($errors);
 		} else {
-			//If everything is okay save and return to index page
+			// Save Template and Costs is no errors
 			$this->template->setTotal($costs);
 			$this->template->save();
-			foreach ($costs as $cost) { $this->template->costs()->save($cost); }
+			$this->template->costs()->saveMany($costs);
 			return Redirect::route('templates.index');
 		}
 	}
-
 
 	public function show($id)
 	{
 		//
 	}
-
 
 	public function edit($id)
 	{
@@ -74,42 +62,23 @@ class TemplateController extends \BaseController {
 	public function update($id)
 	{
 		$this->template = $this->template->find($id);
-		$errors = null;
+		$errors = new MessageBag;
 		$template_input = Input::only('title', 'text', 'days', 'hours', 'mins');
 
 		if ( !$this->template->fill($template_input)->isValid() ) {
 			$errors = $this->template->errors;
 		}
 
-		$costs = array();
-		$costs_delete = array();
-		foreach (Input::get('costs') as $key => $input) {
-			if ( empty($input['cost_qty']) && empty($input['cost_text']) && empty($input['cost_price']) ) {
-				$cost = Cost::find($key);
-				if ($cost != null) {
-					array_push($costs_delete, $cost);
-				}
-			} else {
-				$new_cost = new Cost;
-				if (Cost::find($key) != null) $new_cost = Cost::find($key);
-				if ( !$new_cost->fill($input)->isValid() ) {
-					(!$errors) ? $errors = $new_cost->errors : $errors->merge($new_cost->errors->getMessages());
-				}
-				array_push($costs, $new_cost);
-			}
-		}
+		$costs = Cost::manyFromInput( Input::get('costs'), $errors );
 
-		if ($errors != null) {
+		if ( $errors->count() > 0 ) {
 			return Redirect::back()->withInput()->withErrors($errors);
 		} else {
-			//If everything is okay save and returtn to index page
-			foreach ($costs as $cost) { $this->template->costs()->save($cost); }
-			foreach ($costs_delete as $cost) { $cost->delete(); }
-			// Change to update model event
+			$this->template->costs()->delete();
+			$this->template->costs()->saveMany($costs);
 			$this->template->setTotal();
-			///////////////////////////////
 			$this->template->save();
-			return Redirect::route('templates.index', $this->template->id);
+			return Redirect::route('templates.index');
 		}
 	}
 

@@ -16,10 +16,10 @@
 	<tbody id="cost-container">
 
 		<tr class="table-row model" style="display: none;" data-index="-1">
-			<td>{{ Form::text('costs[-1][cost_qty]')  }}</td>
-			<td>{{ Form::text('costs[-1][cost_text]') }}</td>
-			<td>{{ Form::text('costs[-1][cost_price]') }}</td>
-			<td>{{ Form::text('costs[-1][discount]') }}</td>
+			<td>{{ Form::text('costs[-1][cost_qty]', null, ['disabled'=>'true'])  }}</td>
+			<td>{{ Form::text('costs[-1][cost_text]', null, ['disabled'=>'true']) }}</td>
+			<td>{{ Form::text('costs[-1][cost_price]', null, ['disabled'=>'true']) }}</td>
+			<td>{{ Form::text('costs[-1][discount]', null, ['disabled'=>'true']) }}</td>
 			<td><button type="button" class="delete-row">X</button></td>
 		</tr>
 
@@ -63,13 +63,15 @@
 
 		@endif
 
-		<tr class="table-row" data-index="0">
-			<td>{{ Form::text('costs[0][cost_qty]')  }}</td>
-			<td>{{ Form::text('costs[0][cost_text]') }}</td>
-			<td>{{ Form::text('costs[0][cost_price]') }}</td>
-			<td>{{ Form::text('costs[0][discount]') }}</td>
-			<td><button type="button" class="delete-row">X</button></td>
-		</tr>
+		@if( count(Form::old('costs')) == 0 )
+			<tr class="table-row" data-index="0">
+				<td>{{ Form::text('costs[0][cost_qty]')  }}</td>
+				<td>{{ Form::text('costs[0][cost_text]') }}</td>
+				<td>{{ Form::text('costs[0][cost_price]') }}</td>
+				<td>{{ Form::text('costs[0][discount]') }}</td>
+				<td><button type="button" class="delete-row">X</button></td>
+			</tr>
+		@endif
 
 	</tbody>
 </table>

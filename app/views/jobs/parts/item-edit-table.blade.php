@@ -10,8 +10,8 @@
 	<tbody id="item-container">
 
 		<tr class="table-row model" style="display:none;" data-index="-1" >
-			<td>{{ Form::text('items[-1][item_title]')  }}</td>
-			<td>{{ Form::text('items[-1][item_text]') }}</td>
+			<td>{{ Form::text('items[-1][item_title]', null, ['disabled'=>'true'])  }}</td>
+			<td>{{ Form::text('items[-1][item_text]', null, ['disabled'=>'true']) }}</td>
 			<td><button type="button" class="delete-row">X</button></td>
 		</tr>
 
@@ -37,11 +37,13 @@
 
 		@endif
 
-		<tr class="table-row" data-index="0" >
-			<td>{{ Form::text('items[0][item_title]')  }}</td>
-			<td>{{ Form::text('items[0][item_text]') }}</td>
-			<td><button type="button" class="delete-row">X</button></td>
-		</tr>
+		@if( count(Form::old('items')) == 0 )
+			<tr class="table-row" data-index="0" >
+				<td>{{ Form::text('items[0][item_title]')  }}</td>
+				<td>{{ Form::text('items[0][item_text]') }}</td>
+				<td><button type="button" class="delete-row">X</button></td>
+			</tr>
+		@endif
 
 	</tbody>
 </table>

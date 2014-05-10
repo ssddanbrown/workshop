@@ -14,9 +14,10 @@ $(document).ready(function(){
 		});
 
 		// Create new row and change propeties
-		var newRow = model.clone().removeAttr('style');
+		var newRow = model.clone().removeAttr('style').removeClass('model');
 		newRow.attr('data-index', biggestIndex);
 		newRow.find('input').each(function(){
+			$(this).prop('disabled', false);
 			var name = $(this).attr('name');
 			$(this).attr( 'name', name.replace('[-1]', '['+biggestIndex+']') );
 		});
