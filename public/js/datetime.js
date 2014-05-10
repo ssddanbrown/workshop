@@ -161,23 +161,23 @@
 		
 		// Finds and sets the next month for the VIEW
 		var nextMonth = function(){
-			if ( this.month < 11 ) {
-				this.month ++;
+			if ( month < 11 ) {
+				month ++;
 			} else {
-				this.year ++;
-				this.month = 0;
+				year ++;
+				month = 0;
 			};
-			this.refreshDates();
+			refreshDates();
 		}
 		//Finds and sets previous month for the VIEW
 		var previousMonth = function(){
-			if( this.month == 0 ){
-				this.year --;
-				this.month = 11;
+			if( month == 0 ){
+				year --;
+				month = 11;
 			} else {
-				this.month--;
+				month--;
 			}
-			this.refreshDates();
+			refreshDates();
 		}
 
 		// Emptys the calander section and reloads it with the currently set VIEW variables
