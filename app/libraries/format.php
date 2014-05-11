@@ -25,11 +25,19 @@ Class Format {
 		$format = 'd-m-Y H:i';
 		return $timestamp->format($format);
 	}
+
+	public static function dateToDatabase($dateString)
+	{
+		$datetime = date_create_from_format('d-m-Y H:i', $dateString);
+		if (!$datetime || $datetime < new DateTime('1900-01-01')) { 
+			$datetime = date_create('now');
+		}
+		return $datetime->format('Y-m-d H:i:s');
+	}
 	
 	public static function humanTime( $from, $to = '' )
 	{
-		if ( empty( $to ) )
-		$to = time();
+		if ( empty( $to ) ) $to = time();
 
 		$from = date_create($from)->getTimestamp();
 

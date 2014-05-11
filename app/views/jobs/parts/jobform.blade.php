@@ -1,3 +1,6 @@
+@section('head')
+	{{ HTML::script('js/datetime.js')}}
+@stop
 
 <section>
 	<div class="third">
@@ -12,10 +15,11 @@
 		<div class="detail">
 			{{ Form::label('due', 'Date Due') }}
 			@if( isset($job) )
-				{{ Form::input('datetime', 'due') }}
+				{{ Form::text('due', Format::date($job->due), ['class'=>'datetime'] ) }}
 			@else
-				{{ Form::input('datetime', 'due', date("Y-m-d H:i:s")) }}
+				{{ Form::text('due', Format::date(), ['class'=>'datetime'] ) }}
 			@endif
+			{{ $errors->first('due') }}
 		</div>
 		<div class="detail">
 			{{ Form::label('text', 'Description') }}

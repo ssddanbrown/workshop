@@ -28,7 +28,8 @@ $(document).ready(function(){
 		// Set inital values to track WHAT IS SEEN
 		var inputDate = this.val();
 		var dateStrings = inputDate.split(/,| |:|-/);
-		var month = parseInt(dateStrings[1]);
+		console.log(dateStrings);
+		var month = parseInt(dateStrings[1]) -1;
 		var year = parseInt(dateStrings[2]);
 
 		// Set initial values for WHAT DATE IS SELECTED
@@ -45,7 +46,7 @@ $(document).ready(function(){
 				set.min = 0;
 			}
 			var formatDay = set.day < 10 ? '0'+set.day : set.day;
-			var formatMonth = set.month < 10 ? '0'+(set.month) : (set.month);
+			var formatMonth = set.month < 10 ? '0'+(set.month + 1) : (set.month + 1);
 			var formatHour = set.hour < 10 ? '0'+set.hour : set.hour;
 			var formatMin = set.min < 10 ? '0'+set.min : set.min;
 			var dateString = formatDay + '-' + formatMonth + '-' + set.year +

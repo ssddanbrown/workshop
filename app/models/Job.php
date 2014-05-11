@@ -5,10 +5,17 @@ class Job extends Eloquent {
 	protected $fillable = ['title', 'text', 'due', 'customer_id'];
 
 	public static $rules = [
-		'title' => 'required'
+		'title' => 'required',
+		'due'   => 'date'
 	];
 
 	public $errors;
+
+	// Accessors & Mutators
+	public function setDueAttribute($due)
+	{
+		$this->attributes['due'] = Format::dateToDatabase($due);
+	}
 
 	// Relationships
 	public function customer()

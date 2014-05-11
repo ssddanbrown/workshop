@@ -1,7 +1,7 @@
 @extends('common.main')
 
 @section('head')
-{{ HTML::script('js/datetime.js')}}
+	{{ HTML::script('js/datetime.js')}}
 @stop
 
 @section('content')
