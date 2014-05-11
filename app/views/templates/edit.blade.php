@@ -7,7 +7,7 @@
 		<div class="header">
 			<h1>Edit Template</h1>
 			<div class="buttons">
-				{{ Form::submit('Save Template', array('class'=>'button')) }}
+				{{ Form::submit('Save Template', array('class'=>'button pos')) }}
 			</div>
 		</div>
 

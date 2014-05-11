@@ -16,8 +16,7 @@ class NoteController extends \BaseController {
 		$this->note->fill($input);
 
 		if(Job::find(Input::get('job_id')) == null){
-			//TODO add custom validation with error messages
-			dd('cat');
+			return Redirect::back();
 		}
 
 		$this->note->save();
@@ -27,8 +26,8 @@ class NoteController extends \BaseController {
 
 	public function edit($id)
 	{
-		$note = $this->note->find($id);
-		return View::make('jobs.editnote', ['note' => $note]);
+		$this->note = $this->note->find($id);
+		return View::make('jobs.editnote', ['note' => $this->note]);
 	}
 
 
@@ -44,8 +43,8 @@ class NoteController extends \BaseController {
 
 	public function destroy($id)
 	{
-		$note = $this->note->find($id);
-		$note->delete();
+		$this->note = $this->note->find($id);
+		$this->note->delete();
 
 		return Redirect::back();
 	}

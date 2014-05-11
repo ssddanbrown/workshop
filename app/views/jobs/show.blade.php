@@ -39,15 +39,15 @@
 			<div class="half">
 				<div class="detail">
 					<div>DATE ADDED</div>
-					<p>{{ $job->created_at }}<br>{{ Format::humanTime($job->created_at) }}</p>
+					<p>{{ Format::date($job->created_at) }}<br>{{ Format::humanTime($job->created_at) }}</p>
 				</div>
 				<div class="detail">
 					<div>DATE DUE</div>
-					<p>{{ $job->due }}<br>{{ Format::humanTime($job->due) }}</p>
+					<p>{{ Format::date($job->due) }}<br>{{ Format::humanTime($job->due) }}</p>
 				</div>
 				<div class="detail">
 					<div>LAST UPDATED</div>
-					<p>{{ $job->updated_at }}<br>{{ Format::humanTime($job->updated_at) }}</p>
+					<p>{{ Format::date($job->updated_at) }}<br>{{ Format::humanTime($job->updated_at) }}</p>
 				</div>
 			</div>
 		</div>

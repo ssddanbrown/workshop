@@ -1,7 +1,6 @@
 #datepicker{
 	position: absolute;
 	width: 400px;
-	//border: 2px solid #DDD;
 	background-color: #FFF;
 	max-width: 400px;
 	padding: 0;
@@ -11,6 +10,7 @@
 	font-size: $fs-m;
 	font-weight: normal;
 	box-shadow: 0 0 5px 2px #BBB;
+	z-index: 99999;
 }
 button.datepicker-date, .datepicker-time-hour, .datepicker-time-min{
 	&:hover{

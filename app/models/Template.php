@@ -36,7 +36,7 @@ class Template extends Eloquent {
 		$job->text = $this->text;
 
 		$due = time() + $this->mergeTimes();
-		$job->due = date('Y-m-d H:i:s', $due);
+		$job->due = Format::date($due);
 
 		$job->costs = $this->costs;
 		return $job;

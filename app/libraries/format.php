@@ -19,6 +19,9 @@ Class Format {
 
 	public static function date( $timestamp = 'now' )
 	{
+		if( is_int($timestamp) ){
+			$timestamp = date_create_from_format('U', strval($timestamp));
+		}
 		if( !$timestamp instanceof DateTime ){
 			$timestamp = date_create($timestamp);
 		}

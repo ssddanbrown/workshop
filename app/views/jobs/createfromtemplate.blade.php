@@ -7,7 +7,7 @@
 		<div class="row-12 header">
 			<h1>New {{ $template->title }}</h1>
 			<div class="buttons">
-				{{ Form::submit('Save Job', array('class'=>'button') ) }}
+				{{ Form::submit('Save Job', array('class'=>'button pos') ) }}
 			</div>
 		</div>
 
