@@ -11,9 +11,15 @@ class NoteController extends \BaseController {
 
 	public function store()
 	{
-		$input = Input::all();
-
+		$input = Input::only('text', 'job_id');
 		$this->note->fill($input);
+
+		if ( Input::hasFile('media') ) {
+			$file = Input::file('media');
+			$name = time().'-'.$file->getClientOriginalName();
+			$file = $file->move( public_path().'/uploads/', $name );
+			$this->note->media = asset( 'uploads/'. $name );
+		}
 
 		if(Job::find(Input::get('job_id')) == null){
 			return Redirect::back();

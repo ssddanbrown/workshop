@@ -2,6 +2,7 @@
 /vendor
 public/.sass-cache
 public/css/
+public/uploads/
 
 composer.phar
 composer.lock

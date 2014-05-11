@@ -143,8 +143,11 @@
 			@foreach( $job->notes as $note )
 				<div class="note clear">
 					<div class="detail">
-						<div>{{ Format::date($note->created_at) . ' - ' . Format::humanTime($note->created_at) }}</div>
+						<div>{{ Format::humanTime($note->created_at) . ' - ' . Format::date($note->created_at) }}</div>
 						<p>{{ $note->text }}</p>
+						@if( $note->media != null)
+						<p><a class="link" href="{{ $note->media }}">Attachment</a></p>
+						@endif
 					</div>
 					<div class="buttons">
 						{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
@@ -157,7 +160,7 @@
 		@endif
 	</div>
 	<div class="half">
-		{{ Form::open( array('route' => 'notes.store') ) }}
+		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
 		<div class="row subheader">
 			<h3>Add Note</h3>
 		</div>
@@ -166,8 +169,12 @@
 			{{ Form::label('text', 'Note Text') }}
 			{{ Form::textarea('text') }}
 			<div class="clear"></div>
-			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
 		</div>
+		<div class="detail">
+			{{ Form::label('media', 'Attach File') }}
+			{{ Form::file('media', [ 'files'=>true ]) }}
+		</div>
+		{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
 		{{ Form::close() }}
 	</div>	
 </section>
