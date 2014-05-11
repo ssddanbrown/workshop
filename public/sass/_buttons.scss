@@ -1,4 +1,8 @@
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .button-template{
 	display: inline-block;
 	font-size: 14px;

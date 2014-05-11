@@ -1,11 +1,15 @@
 #datepicker{
-	position: relative;
+	position: absolute;
 	width: 400px;
 	border: 2px solid #DDD;
+	background-color: #FFF;
 }
-.datepicker-date, .datepicker-time-hour, .datepicker-time-min{
+button.datepicker-date, .datepicker-time-hour, .datepicker-time-min{
 	&:hover{
 		background-color: #EEE;
+	}
+	&:active{
+		outline: none;
 	}
 	&.current{
 		background-color: $blue-light;
@@ -27,9 +31,18 @@
 .datepicker-monthrow{
 	text-align: center;
 	background-color: $blue-light;
+	color: #FFF;
+	span{
+		padding: $-xs 0;
+		display: inline-block;
+	}
 	button{
 		background-color: $blue;
 		color: #FFF;
+		padding: $-xs $-s;
+		&:active{
+			background-color: $blue-dark;
+		}
 	}
 	.datepicker-next{
 		float: right;

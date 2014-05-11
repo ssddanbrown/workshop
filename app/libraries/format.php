@@ -17,10 +17,12 @@ Class Format {
 		return $currency . sprintf('%0.2f', $price);
 	}
 
-	public static function date( $timestamp )
+	public static function date( $timestamp = 'now' )
 	{
-		$timestamp = date_create($timestamp);
-		$format = 'j/m/y H:i';
+		if( !$timestamp instanceof DateTime ){
+			$timestamp = date_create($timestamp);
+		}
+		$format = 'd-m-Y H:i';
 		return $timestamp->format($format);
 	}
 	

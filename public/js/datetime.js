@@ -1,4 +1,12 @@
 
+// Auto assign plugin to inputs
+$(document).ready(function(){
+	$('.datetime').each(function(){
+		$(this).datetime();
+	});
+});
+
+// Main Jquery Function
 (function ( $ ) {
 	$.fn.datetime = function(){
 		// Get date input area and create canvas div
@@ -15,21 +23,21 @@
 		// Names arrays for months and days
 		var months = ['January', 'February', 'March', 'April', 'May', 'June',
 		'July', 'August', 'September', 'October', 'November', 'December'];
-		var days = ['SUN', 'MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT'];
+		var days = ['MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT', 'SUN'];
 		
 		// Set inital values to track WHAT IS SEEN
 		var inputDate = this.val();
-		var date = new Date(); // Change to get from input
-		var month = date.getMonth();
-		var year = date.getFullYear();
+		var dateStrings = inputDate.split(/,| |:|-/);
+		var month = parseInt(dateStrings[1]);
+		var year = parseInt(dateStrings[2]);
 
 		// Set initial values for WHAT DATE IS SELECTED
 		var set = function(){};
 		set.month = month;
-		set.day = date.getDay();
+		set.day = parseInt(dateStrings[0]);
 		set.year = year;
-		set.hour = date.getHours();
-		set.min = 5 * Math.round(date.getMinutes()/5);
+		set.hour = parseInt(dateStrings[3]);
+		set.min = 5 * Math.round(parseInt(dateStrings[4])/5);
 
 		// Function to update the input/user display
 		var update = function(){
@@ -37,7 +45,7 @@
 				set.min = 0;
 			}
 			var formatDay = set.day < 10 ? '0'+set.day : set.day;
-			var formatMonth = set.month < 10 ? '0'+(set.month+1) : (set.month+1);
+			var formatMonth = set.month < 10 ? '0'+(set.month) : (set.month);
 			var formatHour = set.hour < 10 ? '0'+set.hour : set.hour;
 			var formatMin = set.min < 10 ? '0'+set.min : set.min;
 			var dateString = formatDay + '-' + formatMonth + '-' + set.year +
@@ -71,13 +79,9 @@
 			// Add header showing days
 			var dayRow = document.createElement('div');
 			dayRow.className = 'clear datepicker-days';
-			dayRow.innerHTML = '<div class="datepicker-date">MON</div>'
-				+	'<div class="datepicker-date">TUE</div>'
-				+	'<div class="datepicker-date">WED</div>'
-				+	'<div class="datepicker-date">THUR</div>'
-				+	'<div class="datepicker-date">FRI</div>'
-				+	'<div class="datepicker-date">SAT</div>'
-				+	'<div class="datepicker-date">SUN</div>';
+			for (var i = 0; i < days.length; i++) {
+				dayRow.innerHTML += '<div class="datepicker-date">'+ days[i] +'</div>'
+			};
 			canvas.append(dayRow);
 
 			datesArea.attr('class', 'datepicker-dates clear');
