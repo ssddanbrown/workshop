@@ -10,6 +10,7 @@
 			<th>{{ Form::label('costs[][cost_text]', 'Description') }}</th>
 			<th>{{ Form::label('costs[][cost_price]', 'Price') }}</th>
 			<th>{{ Form::label('costs[][discount]', 'Discount') }}</th>
+			<th class="number">Total</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -20,6 +21,7 @@
 			<td>{{ Form::text('costs[-1][cost_text]', null, ['disabled'=>'true']) }}</td>
 			<td>{{ Form::text('costs[-1][cost_price]', null, ['disabled'=>'true']) }}</td>
 			<td>{{ Form::text('costs[-1][discount]', null, ['disabled'=>'true']) }}</td>
+			<td class="number"><span class="total">£0.00</span></td>
 			<td><button type="button" class="delete-row">X</button></td>
 		</tr>
 
@@ -31,6 +33,7 @@
 					<td>{{ Form::text('costs['.$key.'][cost_text]') }}</td>
 					<td>{{ Form::text('costs['.$key.'][cost_price]') }}</td>
 					<td>{{ Form::text('costs['.$key.'][discount]') }}</td>
+					<td class="number"><span class="total"></span></td>
 					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
@@ -44,6 +47,7 @@
 					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
+					<td class="number"><span class="total">{{ $cost->total(true) }}</span></td>
 					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
@@ -57,6 +61,7 @@
 					<td>{{ Form::text('costs['.$cost->id.'][cost_text]', $cost->cost_text) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][cost_price]', $cost->cost_price) }}</td>
 					<td>{{ Form::text('costs['.$cost->id.'][discount]', $cost->discount) }}</td>
+					<td class="number"><span class="total">{{ $cost->total(true) }}</span></td>
 					<td><button type="button" class="delete-row">X</button></td>
 				</tr>
 			@endforeach
@@ -69,6 +74,7 @@
 				<td>{{ Form::text('costs[0][cost_text]') }}</td>
 				<td>{{ Form::text('costs[0][cost_price]') }}</td>
 				<td>{{ Form::text('costs[0][discount]') }}</td>
+				<td class="number"><span class="total">£0.00</span></td>
 				<td><button type="button" class="delete-row">X</button></td>
 			</tr>
 		@endif
@@ -76,3 +82,22 @@
 	</tbody>
 </table>
 <button type="button" id="button-add-cost" class="button">Add Cost</button>
+
+<script>
+$(document).ready(function(){
+
+	// Live Cost Table Updater
+	$('#cost-container').on( 'input', '.table-row input', function(){
+		var inputs = $(this).parent().parent().find('input');
+		var quantity = parseFloat( inputs.eq(0).val() );
+		quantity = ( isNaN(quantity) ? 0 : quantity );
+		var price = parseFloat( inputs.eq(2).val() );
+		price = ( isNaN(price) ? 0 : price );
+		var discount = parseFloat( inputs.eq(3).val() );
+		discount = ( isNaN(discount) ? 0 : discount );
+		var total = (quantity * price) * ((100-discount)/100);
+		$(this).parent().parent().find('.total').text('£'+ total.toFixed(2));
+	});
+
+});
+</script>

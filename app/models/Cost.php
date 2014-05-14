@@ -15,8 +15,13 @@ class Cost extends Eloquent {
 
 	public function total($return_formatted = false)
 	{
-
-			return ($this->cost_qty * $this->cost_price) * ((100 - $this->discount)/100);
+		$total = ($this->cost_qty * $this->cost_price) * ((100 - $this->discount)/100);
+		
+		if ($return_formatted) {
+			return '£'.number_format((float)$total, 2, '.', '');
+		} else {
+			return $total;
+		} 
 	}
 
 	public function isValid()

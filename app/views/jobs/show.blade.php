@@ -118,7 +118,7 @@
 				<td>{{ $cost->cost_text }}</td>
 				<td>{{ Format::price($cost->cost_price) }}</td>
 				<td>{{ $cost->discount }}%</td>
-				<td>{{ Format::price($cost->total()) }}</td>
+				<td>{{ $cost->total(true) }}</td>
 			</tr>
 		@endforeach
 			<tr>

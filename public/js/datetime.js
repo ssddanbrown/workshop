@@ -28,7 +28,6 @@ $(document).ready(function(){
 		// Set inital values to track WHAT IS SEEN
 		var inputDate = this.val();
 		var dateStrings = inputDate.split(/,| |:|-/);
-		console.log(dateStrings);
 		var month = parseInt(dateStrings[1]) -1;
 		var year = parseInt(dateStrings[2]);
 

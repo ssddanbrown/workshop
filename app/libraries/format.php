@@ -11,6 +11,11 @@ function _n( $single, $plural, $var)
 
 Class Format {
 
+	/**
+	 * Format prices with decimal and money sign, NOT FOR ACCURATE ROUDNING
+	 * @param  Float(2dp) 	$price 
+	 * @return String       Formatted price
+	 */
 	public static function price( $price )
 	{
 		$currency = '£';
