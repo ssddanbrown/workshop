@@ -11,7 +11,20 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('StateTableSeeder');
+		$this->command->info('State table seeded!');
+	}
+
+}
+
+class StateTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('states')->delete();
+
+		State::create( ['name'=>'Outstanding', 'value'=>0] );
+		State::create( ['name'=>'Complete', 'value'=>12] );
 	}
 
 }

@@ -18,6 +18,11 @@ class Job extends Eloquent {
 	}
 
 	// Relationships
+	public function state()
+	{
+		return $this->belongsTo('State');
+	}
+
 	public function customer()
 	{
 		return $this->belongsTo('Customer');
@@ -50,7 +55,7 @@ class Job extends Eloquent {
 		return $total;
 	}
 
-	//Validation
+	// Validation
 	public function isValid()
 	{
 		$validation = Validator::make($this->attributes, static::$rules);

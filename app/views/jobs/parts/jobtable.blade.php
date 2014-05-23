@@ -6,6 +6,7 @@
 			<th>Customer</th>
 			<th>Due date</th>
 			<th>Date Added</th>
+			<th>Status</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -21,8 +22,8 @@
 				@endif
 				<td>{{ Format::humanTime($job->due) }}</td>
 				<td>{{ Format::humanTime($job->created_at) }}</td>
+				<td>{{ $job->state->name }}</td>
 				<td>
-					{{ Form::toggleFinished($job) }}
 					{{ link_to_route('jobs.edit', 'Edit', $job->id, array('class'=>'button') ) }}
 					{{ Form::delete('jobs.destroy', 'Delete', $job->id) }}
 				</td>

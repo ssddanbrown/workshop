@@ -37,25 +37,15 @@
 			<h3>Jobs</h3>
 		</div>
 		<div class="detail">
-			<div>OUTSTANDING</div>
-			@if( count($customer->jobs()->where('finished', '=', false)->get()) >= 1 )
+			<div>All Jobs Assigned To Customer</div>
+			@if( count($customer->jobs) > 0 )
 
-				@foreach( $customer->jobs()->where('finished', '=', false)->get() as $job )
+				@foreach( $customer->jobs as $job )
 					<p>{{ link_to_route('jobs.show', $job->title, $job->id, array('class'=>'link')) }}</p>
 				@endforeach
 
 			@else
-				<p>No oustanding jobs.</p>
-			@endif
-		</div>
-		<div class="detail">
-			<div>COMPLETE</div>
-			@if( count($customer->jobs()->where('finished', '=', true)->get()) >= 1 )
-				@foreach( $customer->jobs()->where('finished', '=', true)->get() as $job )
-						<p>{{ link_to_route('jobs.show', $job->title, $job->id, array('class'=>'link')) }}</p>
-				@endforeach
-			@else
-				<p>No complete jobs.</p>
+				<p>No jobs.</p>
 			@endif
 		</div>
 	</div>

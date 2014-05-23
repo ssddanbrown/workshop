@@ -17,8 +17,4 @@
 		@endif
 	</div>
 
-	<div>
-		{{ link_to_route('jobs.archive', 'Jobs Archive', null, array('class'=>'link') ) }}
-	</div>
-
 @stop

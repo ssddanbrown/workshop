@@ -5,7 +5,6 @@
 <div class="header">
 	<h1>Job Information</h1>
 	<div class="buttons">
-		{{ Form::toggleFinished($job) }}
 		{{ link_to_route( 'jobs.edit', 'Edit Job', $job->id, array('class'=>'button') ) }}
 		{{ Form::delete('jobs.destroy', 'Delete Job', $job->id) }}
 	</div>
@@ -32,8 +31,8 @@
 					<p>{{ $job->id }}</p>
 				</div>
 				<div class="detail">
-					<div>STATUS</div>
-					<p>{{ $job->finished }}</p>
+					<div>STATE - ID</div>
+					<p>{{ $job->state->name }} - {{ $job->state->id }}</p>
 				</div>
 			</div>
 			<div class="half">

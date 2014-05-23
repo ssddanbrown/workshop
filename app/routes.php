@@ -26,14 +26,6 @@ Route::post('customers/search', array(
 
 
 // Job Routes
-Route::get('jobs/archive', array(
-	'uses' => 'JobController@archiveIndex',
-	'as' => 'jobs.archive'
-	));
-Route::post('jobs/{jobs}/status', array(
-	'uses' 	=> 'JobController@toggleStatus',
-	'as'	=>	'jobs.toggle'
-	));
 Route::get('jobs/create/template/{templates}', array(
 	'uses' => 'JobController@createFromTemplate',
 	'as' =>	'jobs.createfromtemplate'

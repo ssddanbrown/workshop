@@ -11,19 +11,19 @@ Form::macro('delete', function($route, $text = 'Delete', $route_var, $classes = 
 		. Form::close();
 });
 
-Form::macro('toggleFinished', function($job, $text = ['Mark Complete', 'Mark Uncomplete'], $classes = 'inline'){
+// Form::macro('toggleFinished', function($job, $text = ['Mark Complete', 'Mark Uncomplete'], $classes = 'inline'){
 
-	if ( $job->finished ) {
-		$button_text = $text[1];
-	} else {
-		$button_text = $text[0];
-	}
+// 	if ( $job->finished ) {
+// 		$button_text = $text[1];
+// 	} else {
+// 		$button_text = $text[0];
+// 	}
 
-	return Form::open( array(
-		'method' => 'POST',
-		'route' => array('jobs.toggle', $job->id),
-		'class' => $classes
-		) )
-		.Form::submit($button_text, array('class'=>'button'))
-		.Form::close();
-});
+// 	return Form::open( array(
+// 		'method' => 'POST',
+// 		'route' => array('jobs.toggle', $job->id),
+// 		'class' => $classes
+// 		) )
+// 		.Form::submit($button_text, array('class'=>'button'))
+// 		.Form::close();
+// });

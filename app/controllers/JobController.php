@@ -14,14 +14,8 @@ class JobController extends \BaseController {
 
 	public function index()
 	{
-		$jobs = $this->job->whereFinished(false)->get();
+		$jobs = $this->job->all();
 		return View::make('jobs.index', ['jobs' => $jobs]);
-	}
-
-	public function archiveIndex()
-	{
-		$jobs = $this->job->whereFinished(true)->get();
-		return View::make('jobs.archive', ['jobs' => $jobs]);
 	}
 
 
@@ -29,6 +23,7 @@ class JobController extends \BaseController {
 	{
 		return View::make('jobs.create');
 	}
+
 
 	public function createFromTemplate( $id )
 	{
@@ -116,22 +111,12 @@ class JobController extends \BaseController {
 	public function destroy($id)
 	{
 		$this->job = $this->job->find($id);
-		$route = ($this->job->finished ? 'jobs.archive' : 'jobs.index');
 		$this->job->items()->delete();
 		$this->job->costs()->delete();
 		$this->job->notes()->delete();
 		$this->job->delete();
 
-		return Redirect::route($route);
-	}
-
-	public function toggleStatus($id)
-	{
-		$this->job = $this->job->find($id);
-		$this->job->finished = !$this->job->finished;
-		$this->job->save();
-
-		return Redirect::back();
+		return Redirect::route('jobs.index');
 	}
 
 
