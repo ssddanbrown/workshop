@@ -19,7 +19,7 @@ class NoteController extends \BaseController {
 			$original_name = $file->getClientOriginalName();
 			$name = time().'-'.$original_name;
 			$file = $file->move( public_path().'/uploads/', $name );
-			$this->note->media = asset( 'uploads/'. $name );
+			$this->note->media = '/uploads/'. $name;
 			$this->note->media_name = $original_name;
 		}
 
