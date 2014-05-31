@@ -8,7 +8,9 @@
 @import "html-elements";
 @import "buttons";
 @import "tables";
+@import "lists";
 @import "datepicker";
+@import "common";
 
 //@include edit();
 
@@ -36,8 +38,7 @@
 
 .header{
 	@include center();
-	margin-top: $-l;
-	margin-bottom: $-l;
+	margin: $-l 0;
 	padding: $-m 0;
 	border-top: 1px solid #DDD;
 	border-bottom: 1px solid #DDD;

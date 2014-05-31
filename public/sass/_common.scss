@@ -1,0 +1,27 @@
+
+#site-header {
+	padding-top: $-l;
+	.logo {
+		font-size: 3em;
+		float: left;
+		//font-weight: bold;
+		color: #333;
+		font-family: $serif;
+	}
+	ul {
+		float: right;
+		li {
+			padding: $-l $-m;
+			a {
+				color: #333;
+				padding: $-s $-m;
+				font-size: 1.2em;
+				&:hover {
+					border-radius: 3px;
+					background-color: #EEE;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
