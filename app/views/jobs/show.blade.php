@@ -145,7 +145,7 @@
 						<div>{{ Format::humanTime($note->created_at) . ' - ' . Format::date($note->created_at) }}</div>
 						<p>{{ $note->text }}</p>
 						@if( $note->media != null)
-						<p><a class="link" href="{{ $note->media }}">Attachment</a></p>
+						<p><a class="link" href="{{ $note->media }}">{{ $note->media_name }}</a></p>
 						@endif
 					</div>
 					<div class="buttons">

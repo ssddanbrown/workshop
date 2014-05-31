@@ -16,9 +16,11 @@ class NoteController extends \BaseController {
 
 		if ( Input::hasFile('media') ) {
 			$file = Input::file('media');
-			$name = time().'-'.$file->getClientOriginalName();
+			$original_name = $file->getClientOriginalName();
+			$name = time().'-'.$original_name;
 			$file = $file->move( public_path().'/uploads/', $name );
 			$this->note->media = asset( 'uploads/'. $name );
+			$this->note->media_name = $original_name;
 		}
 
 		if(Job::find(Input::get('job_id')) == null){
