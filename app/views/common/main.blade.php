@@ -12,7 +12,7 @@
 <body>
 	
 	<div class="row" id="site-header">
-		<div class="logo">Workshop</div>
+		{{ link_to_route('jobs.index', 'Workshop', null, ['class' => 'logo']) }}
 		<ul class="inline">
 			<li>{{ link_to_route('jobs.index', 'Jobs') }}</li>
 			<li>{{ link_to_route('customers.index', 'Customers') }}</li>
