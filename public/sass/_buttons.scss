@@ -5,9 +5,9 @@ button::-moz-focus-inner {
 
 .button-template{
 	display: inline-block;
-	font-size: 14px;
+	font: $button;
+	letter-spacing: normal;
 	margin: $-m 0;
-	line-height: 1.45;
 	outline: none;
 	padding: $-s $-m;
 	cursor: pointer;
@@ -16,6 +16,9 @@ button::-moz-focus-inner {
 	&:hover{
 		text-decoration: none;
 	}
+}
+input[type=submit] {
+	background-color: #FFF;
 }
 
 button.button, .button{
@@ -83,5 +86,29 @@ button.button, .button{
 	&:hover{
 		background-color: $blue;
 		color: #FFFFFF;
+	}
+}
+
+.states {
+	.state {
+		@extend .button-template;
+		color: #333;
+		margin-right: $-s;
+		background-color: #EFEFEF;
+		border: 1px solid #FFF;
+		&:hover {
+			border: 1px solid #DDDDDD;
+		}
+		&:active {
+			background-color: #DDDDDD;
+		}
+	}
+	.current{
+		background-color: $blue-shade;
+		cursor: default;
+		&:hover {
+			border: 1px solid #FFFFFF;
+			background-color: $blue-shade;
+		}
 	}
 }

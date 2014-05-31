@@ -119,5 +119,18 @@ class JobController extends \BaseController {
 		return Redirect::route('jobs.index');
 	}
 
+	public function changeState($id)
+	{
+		$this->job = $this->job->find($id);
+		$state = Input::get('state');
+		$this->job->state_id = $state;
+
+		if( $this->job->state != null ) {
+			$this->job->save();
+		}
+
+		return Redirect::back();
+	}
+
 
 }

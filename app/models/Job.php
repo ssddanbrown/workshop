@@ -67,6 +67,30 @@ class Job extends Eloquent {
 		$this->errors = $validation->messages();
 		return false;
 	}
+
+	// State Display
+	public function displayStates()
+	{
+		$states = State::all()->sortBy('value');
+		$output = '';
+
+		foreach( $states as $state ) {
+			if ($this->state_id == $state->id) {
+				$output .= '<div class="state current">'.$state->name.'</div>';
+			} else {
+				$output .= Form::open( array(
+					'method' => 'POST',
+					'route' => ['jobs.changestate', $this->id],
+					'class' => 'inline'
+				));
+				$output .= Form::hidden('state', $state->id);
+				$output .= Form::submit($state->name, ['class'=>'state']);
+				$output .= Form::close();
+			}
+		}
+
+		return $output;
+	}
 	
 
 }

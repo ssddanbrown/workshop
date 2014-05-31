@@ -27,3 +27,5 @@ Form::macro('delete', function($route, $text = 'Delete', $route_var, $classes = 
 // 		.Form::submit($button_text, array('class'=>'button'))
 // 		.Form::close();
 // });
+
+

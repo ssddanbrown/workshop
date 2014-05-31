@@ -30,6 +30,10 @@ Route::get('jobs/create/template/{templates}', array(
 	'uses' => 'JobController@createFromTemplate',
 	'as' =>	'jobs.createfromtemplate'
 	));
+Route::post('jobs/status/{job}', array(
+	'uses' => 'JobController@changeState',
+	'as' => 'jobs.changestate'
+));
 Route::resource('jobs', 'JobController');
 
 

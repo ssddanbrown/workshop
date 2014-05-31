@@ -10,6 +10,9 @@
 	</div>
 </div>
 
+<section class="states">
+	{{ $job->displayStates() }}
+</section>
 
 <section>
 	<div class="half">
