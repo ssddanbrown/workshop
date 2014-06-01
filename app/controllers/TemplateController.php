@@ -49,7 +49,7 @@ class TemplateController extends \BaseController {
 
 	public function show($id)
 	{
-		//
+		return View::make('templates.show', ['template' => $this->template->find($id)]);
 	}
 
 	public function edit($id)

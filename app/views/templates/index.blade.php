@@ -13,7 +13,7 @@
 		@if ( count($templates) > 0 )
 			@foreach($templates as $template)
 				<div class="third">
-					<h2>{{ $template->title }}</h2>
+					<h2>{{ link_to_route('templates.show', $template->title, $template->id) }}</h2>
 					<p>{{ $template->text }}</p>
 					{{ link_to_route('jobs.createfromtemplate', 'New Job', $template->id, array('class' => 'button pos') ) }}
 					{{ link_to_route('templates.edit', 'Edit', $template->id, array('class' => 'button') ) }}
