@@ -19,6 +19,12 @@ class State extends Eloquent {
 
 	public $errors;
 
+	public static function getInitialState()
+	{
+		$state = static::all()->sortBy('value')->first();
+		return $state->id;
+	}
+
 	// Relationships
 	public function jobs()
 	{

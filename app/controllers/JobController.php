@@ -53,6 +53,7 @@ class JobController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($errors);
 		} else {
 			// Save Job and relations if no errors
+			$this->job->state_id = State::getInitialState();
 			$this->job->setTotal($costs);
 			$this->job->save();
 			$this->job->items()->saveMany($items);
