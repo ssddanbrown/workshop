@@ -18,7 +18,7 @@
 				@if( $job->customer != null )
 					<td>{{ $job->customer->name() }}</td>
 				@else
-					<td>No Customer</td>
+					<td>None</td>
 				@endif
 				<td>{{ Format::humanTime($job->due) }}</td>
 				<td>{{ Format::humanTime($job->created_at) }}</td>

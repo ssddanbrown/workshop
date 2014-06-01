@@ -1,7 +1,7 @@
 
 <section>
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Details</h3>
 		</div>
 		<div class="detail">
@@ -16,8 +16,8 @@
 		</div>
 	</div>
 
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Typical Time Taken</h3>
 		</div>
 		<div class="detail">
@@ -42,8 +42,8 @@
 </section>
 
 
-<section>
-	<div class="row subheader">
+<section class="details">
+	<div class="subheader">
 		<h3>Costs</h3>
 	</div>
 	@include('jobs.parts.cost-edit-table')

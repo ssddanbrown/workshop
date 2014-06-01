@@ -13,7 +13,24 @@
 @import "common";
 
 //@include edit();
-
+.details {
+	border: 1px solid #EEE;
+	margin-bottom: $-l;
+	.subheader {
+		background-color: #EEE;
+		text-transform: uppercase;
+		h3 {
+			font-size: 1.2em;
+		}
+	}
+	>div, >form, >p {
+		padding: $-m;
+		@include cf();
+	}
+	>.table-grid {
+		border-top: 1px solid #DDD;
+	}
+}
 .detail{
 	padding: $-xs 0;
 	>label, >div{
@@ -129,6 +146,9 @@
 	.detail{
 		border-bottom: none;
 		@include col(3/4, $cycle: 2);
+		.link {
+			margin-bottom: 0;
+		}
 	}
 	.buttons{
 		@include col(1/4, $cycle: 2);

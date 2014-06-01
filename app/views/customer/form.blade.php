@@ -1,5 +1,5 @@
 
-<div>
+<div class="details">
 	<div class="row subheader">
 		<h3>Details</h3>
 	</div>

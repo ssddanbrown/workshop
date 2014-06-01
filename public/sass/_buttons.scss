@@ -93,7 +93,7 @@ button.button, .button{
 	.state {
 		@extend .button-template;
 		color: #333;
-		margin-right: $-s;
+		margin: 0 $-s $-l 0;
 		background-color: #EFEFEF;
 		border: 1px solid #FFF;
 		&:hover {

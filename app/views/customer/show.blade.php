@@ -11,8 +11,8 @@
 </div>
 
 <section>
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Details</h3>
 		</div>
 		<div class="detail">
@@ -32,8 +32,8 @@
 			<p>{{ $customer->id }}</p>
 		</div>
 	</div>
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Jobs</h3>
 		</div>
 		<div class="detail">

@@ -28,6 +28,9 @@
 .half{
 	@include col(1/2, $cycle: 2);
 	min-width: 200px;
+	>.half{
+		@include col(1/2 1/2 ,$cycle: 2);
+	}
 }
 
 .third{

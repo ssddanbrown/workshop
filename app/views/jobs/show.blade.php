@@ -15,8 +15,8 @@
 </section>
 
 <section>
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Details</h3>
 		</div>
 		<div>
@@ -29,80 +29,69 @@
 					<div>NOTES</div>
 					<p>{{ $job->text }}</p>
 				</div>
-				<div class="detail">
-					<div>ID</div>
-					<p>{{ $job->id }}</p>
-				</div>
-				<div class="detail">
-					<div>STATE - ID</div>
-					<p>{{ $job->state->name }} - {{ $job->state->id }}</p>
-				</div>
 			</div>
 			<div class="half">
 				<div class="detail">
-					<div>DATE ADDED</div>
-					<p>{{ Format::date($job->created_at) }}<br>{{ Format::humanTime($job->created_at) }}</p>
-				</div>
-				<div class="detail">
 					<div>DATE DUE</div>
-					<p>{{ Format::date($job->due) }}<br>{{ Format::humanTime($job->due) }}</p>
+					<p>{{ Format::humanTime($job->due) }} - {{ Format::date($job->due) }}</p>
 				</div>
 				<div class="detail">
-					<div>LAST UPDATED</div>
-					<p>{{ Format::date($job->updated_at) }}<br>{{ Format::humanTime($job->updated_at) }}</p>
+					<div>DATE ADDED</div>
+					<p>{{ Format::humanTime($job->created_at) }} - {{ Format::date($job->created_at) }}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="half">
-		<div class="half">
-			<div class="row subheader">
+		<div class="half details">
+			<div class="subheader">
 				<h3>Customer</h3>
 			</div>
-			@if($job->customer != null)
-				<div class="detail">
-					<div>NAME</div>
-					<p>{{ $job->customer->name() }}</p>
-				</div>
-				<div class="detail">
-					<div>EMAIL</div>
-					<p>{{ $job->customer->email }}</p>
-				</div>
-				<div class="detail">
-					<div>PHONE</div>
-					<p>{{ $job->customer->phone }}</p>
-				</div>
-				<div class="detail">
-					<p>{{ link_to_route('customers.show', 'View customer record', $job->customer->id, array('class'=>'link') ) }}</p>
-				</div>
-			@else
-				<p>No Customer Selected</p>
-			@endif
+			<div>
+				@if($job->customer != null)
+					<div class="detail">
+						<div>NAME</div>
+						<p>{{ link_to_route('customers.show', $job->customer->name(), $job->customer->id) }}</p>
+					</div>
+					<div class="detail">
+						<div>EMAIL</div>
+						<p>{{ $job->customer->email }}</p>
+					</div>
+					<div class="detail">
+						<div>PHONE</div>
+						<p>{{ $job->customer->phone }}</p>
+					</div>
+				@else
+					<p>No Customer Selected</p>
+				@endif
+			</div>
 		</div>
 
 		<!-- List All Customer Items -->
-		<div class="half">
-			<div class="row subheader">
+		<div class="half details">
+			<div class="subheader">
 				<h3>Items</h3>
 			</div>
-			@if(count($job->items) > 0)
-				@foreach($job->items as $item)
-					<div class="detail">
-						<div>{{ $item->item_title }}</div>
-						<p>{{ $item->item_text }}</p>
-					</div>
-				@endforeach
-			@else
-				<p>No Items To Display.</p>
-			@endif
+			<div>
+				@if(count($job->items) > 0)
+					@foreach($job->items as $item)
+						<div class="detail">
+							<div>{{ $item->item_title }}</div>
+							<p>{{ $item->item_text }}</p>
+						</div>
+					@endforeach
+				@else
+					<p>No Items To Display.</p>
+				@endif
+			</div>
 		</div>
 	</div>
 </section>
 
 <!-- List All Costs -->
-<section>
-	<div class="row subheader">
+<section class="details">
+	<div class="subheader">
 		<h3>Costs</h3>
 	</div>
 	@if(count($job->costs) > 0)
@@ -137,8 +126,8 @@
 </section>
 
 <section>
-	<div class="half">
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Notes</h3>
 		</div>
 		@if( count($job->notes) > 0 )
@@ -161,22 +150,22 @@
 			<p>No notes added</p>
 		@endif
 	</div>
-	<div class="half">
-		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
-		<div class="row subheader">
+	<div class="half details">
+		<div class="subheader">
 			<h3>Add Note</h3>
 		</div>
-		{{ Form::hidden('job_id', $job->id) }}
-		<div class="detail">
-			{{ Form::label('text', 'Note Text') }}
-			{{ Form::textarea('text') }}
-			<div class="clear"></div>
-		</div>
-		<div class="detail">
-			{{ Form::label('media', 'Attach File') }}
-			{{ Form::file('media', [ 'files'=>true ]) }}
-		</div>
-		{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
+		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
+			{{ Form::hidden('job_id', $job->id) }}
+			<div class="detail">
+				{{ Form::label('text', 'Note Text') }}
+				{{ Form::textarea('text') }}
+				<div class="clear"></div>
+			</div>
+			<div class="detail">
+				{{ Form::label('media', 'Attach File') }}
+				{{ Form::file('media', [ 'files'=>true ]) }}
+			</div>
+			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
 		{{ Form::close() }}
 	</div>	
 </section>

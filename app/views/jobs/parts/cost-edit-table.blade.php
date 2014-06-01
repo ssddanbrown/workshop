@@ -81,7 +81,10 @@
 
 	</tbody>
 </table>
-<button type="button" id="button-add-cost" class="button">Add Cost</button>
+<div>
+	<button type="button" id="button-add-cost" class="button">Add Cost</button>
+</div>
+
 
 <script>
 $(document).ready(function(){
