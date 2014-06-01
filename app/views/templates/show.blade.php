@@ -5,8 +5,9 @@
 <div class="header">
 	<h1>Template Information</h1>
 	<div class="buttons">
-<!-- 		{{ link_to_route( 'jobs.edit', 'Edit Job', $template->id, array('class'=>'button') ) }}
-		{{ Form::delete('jobs.destroy', 'Delete Job', $template->id) }} -->
+		{{ link_to_route('jobs.createfromtemplate', 'New Job', $template->id, array('class' => 'button pos') ) }}
+		{{ link_to_route( 'templates.edit', 'Edit', $template->id, array('class'=>'button') ) }}
+		{{ Form::delete('jobs.destroy', 'Delete', $template->id) }}
 	</div>
 </div>
 
