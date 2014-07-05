@@ -17,6 +17,7 @@
 			<li>{{ link_to_route('jobs.index', 'Jobs') }}</li>
 			<li>{{ link_to_route('customers.index', 'Customers') }}</li>
 			<li>{{ link_to_route('templates.index', 'Templates') }}</li>
+			<li>{{ link_to_route('settings.index', 'Settings') }}</li>
 		</ul>
 	</div>
 

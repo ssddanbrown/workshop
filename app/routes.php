@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
 
 Route::get('/', function()
 {
@@ -62,3 +52,23 @@ Route::group(array('prefix' => 'note'), function()
 	));
 });
 
+Route::get('settings', array(
+	'uses'	=> 'SettingsController@index',
+	'as'	=> 'settings.index'
+	));
+Route::get('settings/states', array(
+	'uses'	=> 'StateController@edit',
+	'as'	=> 'settings.states'
+	));
+Route::post('settings/states', array(
+	'uses'	=> 'StateController@save',
+	'as'	=> 'settings.states.save'
+	));
+Route::delete('settings/states/{id}', array(
+	'uses' 	=> 'StateController@delete',
+	'as'	=> 'settings.states.delete'
+	));
+Route::get('settings/states/{id}', array(
+	'uses'	=> 'StateController@deleteConfirmation',
+	'as'	=> 'settings.states.delete.confirmation'
+	));
