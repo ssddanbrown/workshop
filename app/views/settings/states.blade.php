@@ -7,7 +7,7 @@
 	<div class="header">
 		<h1>{{ link_to_route('settings.index', 'Settings')}} / Job Statuses</h1>
 		<div class="buttons">
-			<button id="add-status" type="button">Add Status</button>
+			<button id="add-status" class="button" type="button">Add Status</button>
 			{{ Form::submit('Save Statuses', array('class' => 'button pos')) }}
 		</div>
 	</div>
@@ -28,8 +28,8 @@
 				<td>{{ Form::text("state[{$state->id}][name]", $state->name, array('class'=>'hook-name')) }}</td>
 				<td class="hook-count">{{ $state->jobCount() }}</td>
 				<td>
-					<button type="button" class="hook-up">Move Up</button>
-					<button type="button" class="hook-down">Move Down</button>
+					<button type="button" class="button hook-up">Move Up</button>
+					<button type="button" class="button hook-down">Move Down</button>
 					{{ link_to_route('settings.states.delete.confirmation','Delete', $state->id, array('class'=>'button neg hook-delete')) }}
 				</td>
 			</tr>

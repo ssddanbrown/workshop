@@ -21,7 +21,7 @@ input[type=submit] {
 	background-color: #FFF;
 }
 
-button, .button{
+button.button, .button{
 	@extend .button-template;
 	display: inline-block;
 	color: #FFF;
