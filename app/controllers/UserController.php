@@ -15,6 +15,12 @@ class UserController extends \BaseController {
 		return View::make('settings.users.index', ['users' => $users]);
 	}
 
+	public function show($id)
+	{
+		$this->user = $this->user->find($id);
+		return View::make('settings.users.show', ['user' => $this->user]);
+	}
+
 	public function create()
 	{
 		return View::make('settings.users.create');
@@ -26,8 +32,8 @@ class UserController extends \BaseController {
 
 		if ( Input::get('password') != Input::get('password_check') ) {
 			return Redirect::back()->withInput()->withErrors(array('password_check' => 'Passwords are not the same'));
-		} elseif ( ctype_space(Input::get('password')) ) {
-			return Redirect::back()->withInput()->withErrors(array('password' => 'Password cannot contain spaces'));
+		} elseif ( ctype_space(Input::get('password')) || Input::get('password') == '' ) {
+			return Redirect::back()->withInput()->withErrors(array('password' => 'Password cannot contain spaces or be blank'));
 		}
 		
 		$this->user->password =  Hash::make(Input::get('password'));
@@ -37,6 +43,42 @@ class UserController extends \BaseController {
 		}
 
 		$this->user->save();
+		return Redirect::route('settings.users');
+	}
+
+	public function edit($id)
+	{
+		$this->user = $this->user->find($id);
+		return View::make('settings.users.edit', ['user' => $this->user]);
+	}
+
+	public function update($id)
+	{
+		$this->user = $this->user->find($id);
+
+		$password = Input::get('password');
+		if ( $password != '') {
+			if ( $password != Input::get('password_check') ) {
+				return Redirect::back()->withInput()->withErrors(array('password_check' => 'Passwords are not the same'));
+			} elseif ( ctype_space($password) ) {
+				return Redirect::back()->withInput()->withErrors(array('password' => 'Password cannot contain spaces'));
+			}
+			$this->user->password = Hash::make($password);
+		}
+		
+		if ( !$this->user->fill(Input::all())->isValid() ) {
+			return Redirect::back()->withInput()->withErrors($this->user->errors);
+		}
+
+
+		$this->user->save();
+		return Redirect::route('settings.users.show', $this->user->id);
+	}
+
+	public function destroy($id)
+	{
+		$this->user = $this->user->find($id);
+		$this->user->delete();
 		return Redirect::route('settings.users');
 	}
 	

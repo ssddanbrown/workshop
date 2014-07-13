@@ -13,13 +13,6 @@
 	
 	<div class="row" id="site-header">
 		{{ link_to_route('jobs.index', 'Workshop', null, ['class' => 'logo']) }}
-		<ul class="inline">
-			<li>{{ link_to_route('jobs.index', 'Jobs') }}</li>
-			<li>{{ link_to_route('customers.index', 'Customers') }}</li>
-			<li>{{ link_to_route('templates.index', 'Templates') }}</li>
-			<li>{{ link_to_route('settings.index', 'Settings') }}</li>
-			<li>{{ link_to_route('login.logout', 'Logout') }}</li>
-		</ul>
 	</div>
 
 	<div class="row">

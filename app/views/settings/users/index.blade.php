@@ -13,6 +13,7 @@
 		<table class="table-grid">
 			<thead>
 				<tr>
+					<th>Username</th>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Actions</th>
@@ -22,9 +23,13 @@
 				@foreach( $users as $user )
 					
 					<tr>
+						<td>{{ link_to_route('settings.users.show', $user->username, $user->id) }}</td>
 						<td>{{ $user->name() }}</td>
 						<td>{{ $user->email }}</td>
-						<td></td>
+						<td>
+							{{ link_to_route('settings.users.edit', 'Edit User', $user->id, array('class' => 'button')) }}
+							{{ Form::delete('settings.users.destroy','Delete User', $user->id) }}
+						</td>
 					</tr>
 
 				@endforeach
