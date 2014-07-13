@@ -83,7 +83,7 @@ button{
 	line-height: 1.45em;
 }
 
-input[type=text],input[type=datetime], textarea, select{
+input[type=text],input[type=datetime],input[type=password], textarea, select{
 	font-family: $sans;
 	padding: $-s;
 	border-radius: 3px;

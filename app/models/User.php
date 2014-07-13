@@ -3,50 +3,37 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
+
 	protected $table = 'users';
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
+	protected $fillable = ['first_name', 'last_name', 'email'];
+
 	protected $hidden = array('password');
 
-	/**
-	 * Get the unique identifier for the user.
-	 *
-	 * @return mixed
-	 */
-	public function getAuthIdentifier()
+	public static $rules = [
+		'last_name' => 'required',
+		'password'	=> 'required'
+	];
+
+	public $errors;
+
+	public function name()
 	{
-		return $this->getKey();
+		return $this->first_name . ' ' . $this->last_name;
 	}
 
-	/**
-	 * Get the password for the user.
-	 *
-	 * @return string
-	 */
-	public function getAuthPassword()
+	public function isValid()
 	{
-		return $this->password;
-	}
+		$validation = Validator::make($this->attributes, static::$rules);
 
-	/**
-	 * Get the e-mail address where password reminders are sent.
-	 *
-	 * @return string
-	 */
-	public function getReminderEmail()
-	{
-		return $this->email;
+		if ($validation->passes()) {
+			return true;
+		}
+
+		$this->errors = $validation->messages();
+		return false;
 	}
 
 }

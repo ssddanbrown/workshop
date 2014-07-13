@@ -9,5 +9,8 @@
 	<p>
 		{{ link_to_route('settings.states', 'Edit Job Statuses') }}
 	</p>
+	<p>
+		{{ link_to_route('settings.users', 'Manage Users') }}
+	</p>
 
 @stop

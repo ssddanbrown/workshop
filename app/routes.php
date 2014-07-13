@@ -72,3 +72,15 @@ Route::get('settings/states/{id}', array(
 	'uses'	=> 'StateController@deleteConfirmation',
 	'as'	=> 'settings.states.delete.confirmation'
 	));
+Route::get('settings/users', array(
+	'uses' => 'UserController@index',
+	'as'   => 'settings.users'
+	));
+Route::get('settings/users/create', array(
+	'uses' => 'UserController@create',
+	'as'	=> 'settings.users.create'
+	));
+Route::post('settings/users/create', array(
+	'uses'	=> 'UserController@store',
+	'as'	=> 'settings.users.store'
+	));

@@ -13,7 +13,7 @@ class StateController extends \BaseController {
 	public function edit()
 	{
 		$states = State::all()->sortBy('value');
-		return View::make('settings.states', ['states' => $states]);
+		return View::make('settings.states.index', ['states' => $states]);
 	}
 
 	public function save()
