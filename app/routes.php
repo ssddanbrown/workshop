@@ -113,5 +113,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::delete('settings/users/{id}', array(
 		'uses'	=> 'UserController@destroy',
 		'as'	=> 'settings.users.destroy'
-		));   
+		));
+	Route::get('users/search', array(
+		'uses' => 'UserController@search',
+		'as' => 'users.search'
+		));
 });

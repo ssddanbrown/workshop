@@ -26,7 +26,7 @@
 					<p>{{ $job->title }}</p>
 				</div>
 				<div class="detail">
-					<div>NOTES</div>
+					<div>DETAILS</div>
 					<p>{{ $job->text }}</p>
 				</div>
 			</div>
@@ -130,6 +130,19 @@
 		<div class="subheader">
 			<h3>Notes</h3>
 		</div>
+		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
+			{{ Form::hidden('job_id', $job->id) }}
+			<div class="detail">
+				{{ Form::label('text', 'Note Text') }}
+				{{ Form::textarea('text') }}
+				<div class="clear"></div>
+			</div>
+			<div class="detail">
+				{{ Form::label('media', 'Attach File') }}
+				{{ Form::file('media', [ 'files'=>true ]) }}
+			</div>
+			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
+		{{ Form::close() }}
 		@if( count($job->notes) > 0 )
 			@foreach( $job->notes as $note )
 				<div class="note clear">
@@ -150,25 +163,37 @@
 			<p>No notes added</p>
 		@endif
 	</div>
+
 	<div class="half details">
 		<div class="subheader">
-			<h3>Add Note</h3>
+			<h3>Assigned Users</h3>
 		</div>
-		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
-			{{ Form::hidden('job_id', $job->id) }}
-			<div class="detail">
-				{{ Form::label('text', 'Note Text') }}
-				{{ Form::textarea('text') }}
-				<div class="clear"></div>
-			</div>
-			<div class="detail">
-				{{ Form::label('media', 'Attach File') }}
-				{{ Form::file('media', [ 'files'=>true ]) }}
-			</div>
-			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
-		{{ Form::close() }}
+		<div class="detail">
+			<label for="user-search">Search for user to assign</label>
+			<p>
+				<input type="text" id="user-search" name="user-search">
+			</p>
+		</div>
 	</div>	
-</section>
 
+</section>
+<script>
+$(document).ready(function(){
+
+	// Auto Complete
+	$('#user-search').autocomplete({
+		source: '/users/search',
+		select: function( event, ui ) {
+			// On select option
+			// recieved json is ui.item.{array item}
+		}
+	}).autocomplete("instance")._renderItem = function( ul, item ) {
+		return $("<li>")
+		.append("<a>" + item.username + "</a>")
+		.appendTo( ul );
+	};
+
+});
+</script>
 
 @stop

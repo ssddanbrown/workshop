@@ -81,6 +81,13 @@ class UserController extends \BaseController {
 		$this->user->delete();
 		return Redirect::route('settings.users');
 	}
+
+	public function search()
+	{
+		$term = Input::get('term');
+		$users = $this->user->where('username', 'LIKE', '%'.$term.'%')->get();
+		return Response::json($users);
+	}
 	
 
 }
