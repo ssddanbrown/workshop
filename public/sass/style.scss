@@ -90,45 +90,8 @@
 		display: inline-block;
 	}
 }
-#customer-display-wrapper{
-	height: 150px;
-}
 #customer-current{
 	margin-right: $-s;
-}
-#customer-display{
-	position: relative;
-	max-height: 200px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	background-color: #F5F5F5;
-	border: 2px solid #EEE;
-	@include transition(max-height 0.4s ease);
-	.customer-result{
-		display: block;
-		text-align: left;
-		background-color: #FFF;
-		cursor: pointer;
-		margin: 2%;
-		padding: $-s;
-		width: 96%;
-		max-width: 100%;
-		border-bottom: 1px solid #DDD;
-		&:hover{
-			background-color: $blue;
-			color: #FFF;
-		}
-		&:active{
-			background-color: $blue-dark;
-			color: #FFF;
-		}
-	}
-	&:hover{
-		max-height: 450px;
-	}
-	&:empty{
-		border: none;
-	}
 }
 
 .pagination{

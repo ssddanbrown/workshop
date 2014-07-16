@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+	{{ HTML::style('http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700') }}
+	{{ HTML::style('http://fonts.googleapis.com/css?family=Lily+Script+One') }}
+	{{ HTML::style('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css') }}
 	<meta charset="UTF-8">
 	<title>Workshop</title>
 	{{ HTML::style('css/style.css') }}
 	{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}
+	{{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js') }}
 	@yield('head')
 </head>
 <body>

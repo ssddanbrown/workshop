@@ -57,52 +57,24 @@
 
 			<input id="customer-search-input" type="text" name="customer-search">
 			<button class="button" type="button" id="customer-search-button">Search</button>
-			<div id="customer-display-wrapper">
-				<div id="customer-display"></div>
-			</div>
 			<script>
 			$(document).ready(function(){
 
-				// Main AJAX search function
-				function search(){
-					var input = $('#customer-search-input').val();
-					var display = $('#customer-display');
-					display.empty();
-					var request = $.ajax({
-						url: '/customers/search',
-						type: 'post',
-						data: { term: input},
-						dataType: 'json'
-					});
-					// ADD STATUS INDICATOR
-					request.done( function( data ){
-						$.each( data, function(index, customer){
-							var inner = '<button type="button" class="customer-result" data-id="' + customer.id +'">';
-							inner += customer.first_name + ' ' + customer.last_name + '<br>';
-							inner += customer.email + '<br>';
-							inner += customer.phone + '</button type="button">'
-							display.append( inner );
-						});
-					});
-				}
-
-				// Search on button click or enter press
-				$('#customer-search-button').click(search);
-				$('#customer-search-input').keypress(function (e){
-					if ( e.which == 13 ) {
-						search();
-						return false;
-					};
-				});
-
-				// Search results click event
-				$('#customer-display').on('click', '.customer-result', function(){
-					var display = $('#customer-current');
-					var id = $(this).data('id');
-					$('#customer-id').val(id);
-					display.html($(this).html());
-					$('#remove-customer-button').show();
-				});
+				// Auto Complete
+				$('#customer-search-input').autocomplete({
+					source: '/customers/search',
+					select: function( event, ui ) {
+						$('#customer-id').val(ui.item.id);
+						$('#customer-current').html(
+							ui.item.first_name + ' ' + ui.item.last_name + '<br>' +
+							ui.item.email + '<br>' + ui.item.phone
+						);
+					}
+				}).autocomplete( "instance" )._renderItem = function( ul, item ) {
+				    return $( "<li>" )
+				    .append( "<a>" + item.first_name + ' ' + item.last_name + "<br>" + item.email + "<br>" + item.phone + "</a>" )
+				    .appendTo( ul );
+				};
 
 				// Remove customer button
 				$('#remove-customer-button').click(function(){

@@ -19,14 +19,15 @@ Route::get('/logout', array(
 	'as'	=> 'login.logout'
 	));
 
+	Route::get('customers/search', array(
+		'uses' => 'CustomerController@search',
+		'as' => 'customers.search'
+		));
+
 Route::group(array('before' => 'auth'), function()
 {
 	// Customer Routes
 	Route::resource('customers', 'CustomerController');
-	Route::post('customers/search', array(
-		'uses' => 'CustomerController@search',
-		'as' => 'customers.search'
-		));
 
 
 	// Job Routes
