@@ -88,6 +88,26 @@ class UserController extends \BaseController {
 		$users = $this->user->where('username', 'LIKE', '%'.$term.'%')->get();
 		return Response::json($users);
 	}
+
+	public function assign()
+	{
+		$this->user = $this->user->find(Input::get('user'));
+		$job_id = Input::get('job');
+
+		if (!$this->user->jobs->contains($job_id)) {
+			$this->user->jobs()->attach($job_id);
+			return Response::json('Success', 200);	
+		}
+
+		return Response::json(array('message' => 'User already assigned'), 400);
+	}
+
+	public function unassign()
+	{
+		$this->user = $this->user->find(Input::get('user'));
+		$this->user->jobs()->detach(Input::get('job'));
+		return Response::json('Success', 200);
+	}
 	
 
 }

@@ -115,7 +115,15 @@ Route::group(array('before' => 'auth'), function()
 		'as'	=> 'settings.users.destroy'
 		));
 	Route::get('users/search', array(
-		'uses' => 'UserController@search',
-		'as' => 'users.search'
+		'uses' 	=> 'UserController@search',
+		'as' 	=> 'users.search'
+		));
+	Route::post('users/assign', array(
+		'uses'	=> 'UserController@assign',
+		'as'	=> 'users.assign'
+		));
+	Route::post('users/unassign', array(
+		'uses'	=> 'UserController@unassign',
+		'as'	=>	'users.unassign'
 		));
 });

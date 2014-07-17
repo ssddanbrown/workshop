@@ -172,7 +172,25 @@
 			<label for="user-search">Search for user to assign</label>
 			<p>
 				<input type="text" id="user-search" name="user-search">
+				<span id="message"></span>
 			</p>
+		</div>
+		<div class="detail">
+			<div>Users</div>
+			<section id='users'>
+				<ul>
+				@if(count($job->users) > 0)
+					@foreach($job->users as $user)
+						<li data-userid="{{ $user->id }}">
+							{{ $user->username }}
+							<button type="button" class="delete-circle remove-user">X</button>
+						</li>
+					@endforeach
+				@else
+					<li class="none">No users assigned.</li>
+				@endif
+				</ul>
+			</section>
 		</div>
 	</div>	
 
@@ -184,14 +202,47 @@ $(document).ready(function(){
 	$('#user-search').autocomplete({
 		source: '/users/search',
 		select: function( event, ui ) {
-			// On select option
-			// recieved json is ui.item.{array item}
+			addUserToJob(ui.item);
 		}
 	}).autocomplete("instance")._renderItem = function( ul, item ) {
 		return $("<li>")
 		.append("<a>" + item.username + "</a>")
 		.appendTo( ul );
 	};
+
+	function addUserToJob( user ) {
+		$.post(
+			'/users/assign',
+			{ job: {{$job->id}}, user: user.id },
+			function(data) {
+				var users = $('#users');
+				users.find('.none').remove();
+				users.find('ul').append(
+					'<li data-userid="'+ user.id +'">' + user.username + '<button type="button" class="delete-circle remove-user">X</button>' + '</li>' 
+				);
+			}
+		).fail(function( jqXHR, textStatus, errorThrown ) {
+			$('#message').text(jqXHR.responseJSON.message);
+		});
+	}
+
+	// Remove user button click action
+	$('#users').on('click', '.remove-user', function(){
+		var listItem = $(this).closest('li');
+		var userid = listItem.data('userid');
+		$.post(
+			'/users/unassign',
+			{ job: {{$job->id}}, user: userid },
+			function(data) {
+				var userCount = listItem.closest('ul').find('li').length;
+				console.log(userCount);
+				if (userCount == 1) {
+					listItem.closest('ul').append('<li class="none">No users assigned</li>');
+				};
+				listItem.remove();
+			}
+		);
+	});
 
 });
 </script>

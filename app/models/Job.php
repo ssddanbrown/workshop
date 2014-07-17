@@ -27,6 +27,10 @@ class Job extends Eloquent {
 	{
 		return $this->belongsTo('Customer');
 	}
+	public function users()
+	{
+		return $this->belongsToMany('User');
+	}
 	public function items()
 	{
 		return $this->hasMany('Item');
