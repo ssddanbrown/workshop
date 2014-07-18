@@ -1,12 +1,12 @@
 <table class="table-grid" >
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th>Job</th>
-			<th>Customer</th>
-			<th>Due date</th>
-			<th>Date Added</th>
-			<th>Status</th>
+			<th><a href="?order=id">ID</a></th>
+			<th><a href="?order=title">Job</a></th>
+			<th><a href="?order=customer_id">Customer</a></th>
+			<th><a href="?order=due">Due date</a></th>
+			<th><a href="?order=created_at">Date Added</a></th>
+			<th><a href="?order=state_id">Status</a></th>
 			<th>Actions</th>
 		</tr>
 	</thead>

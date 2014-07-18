@@ -14,7 +14,9 @@ class JobController extends \BaseController {
 
 	public function index()
 	{
-		$jobs = $this->job->all();
+		$order = (Input::has('order')) ? Input::get('order') : 'title';
+		// todo: Add sort order (ASC/DESC)
+		$jobs = $this->job->orderBy($order)->get();
 		return View::make('jobs.index', ['jobs' => $jobs]);
 	}
 
