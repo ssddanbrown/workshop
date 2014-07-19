@@ -1,5 +1,10 @@
 <?php
 
+
+Route::get('/', array(
+	'uses'	=> 'PublicController@index',
+	'as'	=> 'public.index'
+	));
 Route::get('/test', function()
 {
 	return View::make('common.test');

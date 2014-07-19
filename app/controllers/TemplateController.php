@@ -28,7 +28,7 @@ class TemplateController extends \BaseController {
 	public function store()
 	{
 		$errors = new MessageBag;
-		$template_input = Input::only('title', 'text', 'days', 'hours', 'mins');
+		$template_input = Input::only('title','public', 'text', 'days', 'hours', 'mins');
 
 		if( !$this->template->fill($template_input)->isValid() ){
 			$errors = $this->template->errors;
@@ -63,7 +63,7 @@ class TemplateController extends \BaseController {
 	{
 		$this->template = $this->template->find($id);
 		$errors = new MessageBag;
-		$template_input = Input::only('title', 'text', 'days', 'hours', 'mins');
+		$template_input = Input::only('title', 'public', 'text', 'days', 'hours', 'mins');
 
 		if ( !$this->template->fill($template_input)->isValid() ) {
 			$errors = $this->template->errors;

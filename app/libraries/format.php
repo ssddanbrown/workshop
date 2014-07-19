@@ -104,4 +104,9 @@ Class Format {
 		return $var == 1 ? $single : $plural;
 	}
 
+	public static function boolean($boolean)
+	{
+		return $boolean ? 'Yes' : 'No';
+	}
+
 }

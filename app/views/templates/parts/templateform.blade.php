@@ -10,6 +10,10 @@
 			{{ $errors->first('title') }}
 		</div>
 		<div class="detail">
+			{{ Form::label('public', 'Visible to Public') }}
+			{{ Form::checkbox('public', true) }}
+		</div>
+		<div class="detail">
 			{{ Form::label('text', 'Description') }}
 			{{ Form::textarea('text') }}
 			{{ $errors->first('text') }}

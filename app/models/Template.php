@@ -2,7 +2,7 @@
 
 class Template extends Eloquent {
 
-	protected $fillable = ['title', 'text', 'days', 'hours', 'mins'];
+	protected $fillable = ['title','public', 'text', 'days', 'hours', 'mins'];
 
 	public static $rules = [
 		'title' => 'required',
@@ -12,6 +12,11 @@ class Template extends Eloquent {
 	];
 
 	public $errors;
+
+	public static function getPublic()
+	{
+		return static::where('public', '=', true)->get();
+	}
 
 	// Relationships
 	public function costs()

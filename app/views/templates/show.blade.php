@@ -22,6 +22,10 @@
 				<p>{{ $template->title }}</p>
 			</div>
 			<div class="detail">
+				<div>Visible to Public</div>
+				<p>{{ Format::boolean($template->public) }}</p>
+			</div>
+			<div class="detail">
 				<div>Description</div>
 				<p>{{ $template->text }}</p>
 			</div>

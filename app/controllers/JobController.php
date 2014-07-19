@@ -14,10 +14,10 @@ class JobController extends \BaseController {
 
 	public function index()
 	{
-		$order = (Input::has('order')) ? Input::get('order') : 'title';
-		// todo: Add sort order (ASC/DESC)
-		$jobs = $this->job->where('state_id', '<>', State::getCompleteState())->orderBy($order)->get();
-		return View::make('jobs.index', ['jobs' => $jobs]);
+		$sort = (Input::has('sort')) ? Input::get('sort') : 'title';
+		$order = (Input::get('order') == 'desc') ? 'asc' : 'desc';
+		$jobs = $this->job->where('state_id', '<>', State::getCompleteState())->orderBy($sort, $order)->get();
+		return View::make('jobs.index', ['jobs' => $jobs, 'order' => $order]);
 	}
 
 
