@@ -3,13 +3,17 @@
 @section('content')
 
 	<h1>Available Jobs</h1>
-
-	@foreach($templates as $template)
-		<div class="third">
-			<h4>{{ $template->title }}</h4>
-			<p>{{ $template->text }}</p>
-			<p><strong>{{ Format::price($template->total) }}</strong></p>
-		</div>
-	@endforeach
+	
+	@if(count($templates) > 0)
+		@foreach($templates as $template)
+			<div class="third">
+				<h4>{{ $template->title }}</h4>
+				<p>{{ $template->text }}</p>
+				<p><strong>{{ Format::price($template->total) }}</strong></p>
+			</div>
+		@endforeach
+	@else
+		<p>There are no jobs available at the moment</p>
+	@endif
 
 @stop

@@ -13,7 +13,7 @@
 <body>
 	
 	<div class="row" id="site-header">
-		<a class="logo" href="{{ route('jobs.index') }}"><img src="images/logo.png" alt="Workshop Logo"></a>
+		<a class="logo" href="{{ route('jobs.index') }}">{{ HTML::image('images/logo.png', 'Logo') }}</a>
 		<ul class="inline">
 			<li>{{ link_to_route('jobs.index', 'Jobs') }}</li>
 			<li>{{ link_to_route('customers.index', 'Customers') }}</li>
