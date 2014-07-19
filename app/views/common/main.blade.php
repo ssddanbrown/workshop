@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	{{ HTML::style('http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700') }}
-	{{ HTML::style('http://fonts.googleapis.com/css?family=Lily+Script+One') }}
 	{{ HTML::style('//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css') }}
 	<meta charset="UTF-8">
 	<title>Workshop</title>
@@ -14,7 +13,7 @@
 <body>
 	
 	<div class="row" id="site-header">
-		{{ link_to_route('jobs.index', 'Workshop', null, ['class' => 'logo']) }}
+		<a class="logo" href="{{ route('jobs.index') }}"><img src="images/logo.png" alt="Workshop Logo"></a>
 		<ul class="inline">
 			<li>{{ link_to_route('jobs.index', 'Jobs') }}</li>
 			<li>{{ link_to_route('customers.index', 'Customers') }}</li>
