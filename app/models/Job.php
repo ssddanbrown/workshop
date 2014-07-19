@@ -75,7 +75,7 @@ class Job extends Eloquent {
 	// State Display
 	public function displayStates()
 	{
-		$states = State::all()->sortBy('value');
+		$states = State::byValue();
 		$output = '';
 
 		foreach( $states as $state ) {

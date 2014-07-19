@@ -12,7 +12,7 @@ class StateController extends \BaseController {
 
 	public function edit()
 	{
-		$states = State::all()->sortBy('value');
+		$states = State::byValue();
 		return View::make('settings.states.index', ['states' => $states]);
 	}
 
@@ -29,6 +29,7 @@ class StateController extends \BaseController {
 			$state->value = $input['value'];
 			$state->save();
 		}
+		State::clearCache();
 		return Redirect::route('settings.index');
 	}
 
