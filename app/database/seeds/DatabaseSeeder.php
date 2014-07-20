@@ -30,7 +30,7 @@ class StateTableSeeder extends Seeder {
 			'username' => 'admin',
 			'email' => 'admin@admin.com',
 			'first_name' => 'Mister',
-			'last_name'	=> 'Admin'
+			'last_name'	=> 'Admin',
 			'password' => Hash::make('admin')
 			] );
 	}

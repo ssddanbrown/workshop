@@ -95,7 +95,7 @@
 	</div>
 	<div class="third details">
 		<div class="subheader">
-			<h3>Items</h3>
+			<h3>{{ Setting::get('item_names') }}</h3>
 		</div>
 		<div>
 			@include('jobs.parts.item-edit-table')

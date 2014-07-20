@@ -71,7 +71,7 @@
 		<!-- List All Customer Items -->
 		<div class="half details">
 			<div class="subheader">
-				<h3>Items</h3>
+				<h3>{{ Setting::get('item_names') }}</h3>
 			</div>
 			<div>
 				@if(count($job->items) > 0)
@@ -82,7 +82,7 @@
 						</div>
 					@endforeach
 				@else
-					<p>No Items To Display.</p>
+					<p>No {{ Setting::get('item_names') }} to display.</p>
 				@endif
 			</div>
 		</div>

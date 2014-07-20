@@ -4,20 +4,19 @@ class Setting extends Eloquent {
 
 	protected $table = 'settings';
 
-	public $errors;
+	public $timestamps = false;
 
+	private static $defaults = array(
+		'item_name'		=>	'bike',
+		'item_names'	=>	'bikes',
+		'item_prop1'	=>	'Title',
+		'item_prop2'	=>	'Description',
+	);
 
-
-	public function isValid()
+	public static function get($key)
 	{
-		$validation = Validator::make($this->attributes, static::$rules);
-
-		if ($validation->passes()) {
-			return true;
-		}
-
-		$this->errors = $validation->messages();
-		return false;
+		return static::$defaults[$key];
 	}
+
 
 }

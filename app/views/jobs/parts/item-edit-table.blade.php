@@ -2,8 +2,8 @@
 <table class="edit">
 	<thead>
 		<tr class="table-row">
-			<th>{{ Form::label('items[][item_title]', 'Item Title') }}</th>
-			<th>{{ Form::label('items[][item_text]', 'Item Description') }}</th>
+			<th>{{ Form::label('items[][item_title]', Setting::get('item_prop1')) }}</th>
+			<th>{{ Form::label('items[][item_text]', Setting::get('item_prop2')) }}</th>
 			<th></th>
 		</tr>
 	</thead>
