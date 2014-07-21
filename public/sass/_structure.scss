@@ -18,6 +18,9 @@
 .clear, section {
 	@include cf();
 }
+.hidden {
+	display: none;
+}
 
 // Containers
 .row {

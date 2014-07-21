@@ -40,6 +40,13 @@ class JobController extends \BaseController {
 		$errors = new MessageBag;
 		$job_input = Input::only('title', 'text', 'due', 'customer_id');
 
+		/////////////////////////////////////////////////////
+		// Test code to ensure customer is in input data //
+		/////////////////////////////////////////////////////
+		$customer = Input::get('customer');
+		dd($customer);
+		////////////////////////////////////////////////////
+
 		if ( !$this->job->fill($job_input)->isValid() ) {
 			$errors = $this->job->errors;
 		}
