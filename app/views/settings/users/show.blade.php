@@ -14,9 +14,7 @@
 
 <section>
 	<div class="details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div class="detail">
 			<div>First Name</div>
 			<p>{{ $user->first_name }}</p>

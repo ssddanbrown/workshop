@@ -12,9 +12,7 @@
 
 <section>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div class="detail">
 			<div>NAME</div>
 			<p>{{ $customer->name() }}</p>
@@ -33,9 +31,7 @@
 		</div>
 	</div>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Jobs</h3>
-		</div>
+		<h3>Jobs</h3>
 		<div class="detail">
 			<div>All Jobs Assigned To Customer</div>
 			@if( count($customer->jobs) > 0 )

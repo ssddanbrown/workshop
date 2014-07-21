@@ -1,8 +1,6 @@
 
 <div class="details">
-	<div class="row subheader">
-		<h3>Details</h3>
-	</div>
+	<h3>Details</h3>
 	<div class="detail">
 		{{ Form::label('first_name', 'First Name') }}
 		{{ Form::text('first_name') }}

@@ -81,7 +81,7 @@
 
 	</tbody>
 </table>
-<div>
+<div class="padded">
 	<button type="button" id="button-add-cost" class="button">Add Cost</button>
 </div>
 

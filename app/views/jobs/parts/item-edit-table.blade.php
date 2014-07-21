@@ -1,5 +1,5 @@
 {{ $errors->first('item_title') }}
-<table class="edit">
+<table class="edit padded">
 	<thead>
 		<tr class="table-row">
 			<th>{{ Form::label('items[][item_title]', Setting::get('item_prop1')) }}</th>
@@ -47,4 +47,6 @@
 
 	</tbody>
 </table>
-<button type="button" id="button-add-item" class="button">Add Item</button>
+<div class="padded">
+	<button type="button" id="button-add-item" class="button">Add Item</button>
+</div>

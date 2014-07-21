@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-		@include('customer.form')
+	@include('customer.form')
 
 	{{ Form::close() }}
 

@@ -4,9 +4,7 @@
 
 <section>
 	<div class="third details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div class="detail">
 			{{ Form::label('title', 'Title') }}
 			{{ Form::text('title') }}
@@ -29,9 +27,7 @@
 	</div>
 
 	<div class="third details">
-		<div class="subheader">
-			<h3>Customer</h3>
-		</div>
+		<h3>Customer</h3>
 
 		<div>
 			{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
@@ -40,13 +36,13 @@
 				<tbody>
 					<td>
 						@if( isset($customer) )
-							<div id="customer-current">
+							<div id="customer-current" class="padded">
 								{{ $customer->name() }} <br>
 								{{ $customer->email }} <br>
 								{{ $customer->phone }}
 							</div>
 						@else
-							<div id="customer-current">No Customer Selected</div>
+							<div id="customer-current" class="padded">No Customer Selected</div>
 						@endif
 					</td>
 					<td>
@@ -54,14 +50,15 @@
 					</td>
 				</tbody>
 			</table>
-
-			<input id="customer-search-input" type="text" name="customer-search">
-			<button class="button" type="button" id="customer-search-button">Search</button>
+			<div class="detail">
+				<label for="customer-search">Search For Customer</label>
+				<input id="customer-search" type="text" name="customer-search">
+			</div>
 			<script>
 			$(document).ready(function(){
 
 				// Auto Complete
-				$('#customer-search-input').autocomplete({
+				$('#customer-search').autocomplete({
 					source: '/customers/search',
 					select: function( event, ui ) {
 						$('#customer-id').val(ui.item.id);
@@ -89,14 +86,35 @@
 				}
 
 			});
-			</script>	
+			</script>
 		</div>
+
+		<section id="create-customer">
+			<div class="detail">
+				<label for="">First Name</label>
+				<input id="" type="text">
+				<span class="error"></span>
+			</div>
+			<div class="detail">
+				<label for="">Last Name</label>
+				<input type="text">
+				<span class="error"></span>
+			</div>
+			<div class="detail">
+				<label for="">Email</label>
+				<input type="text">
+				<span class="error"></span>
+			</div>
+			<div class="detail">
+				<label for="">Phone</label>
+				<input type="text">
+				<span class="error"></span>
+			</div>
+		</section>
 
 	</div>
 	<div class="third details">
-		<div class="subheader">
-			<h3>{{ Setting::get('item_names') }}</h3>
-		</div>
+		<h3>{{ Setting::get('item_names') }}</h3>
 		<div>
 			@include('jobs.parts.item-edit-table')
 		</div>
@@ -105,8 +123,6 @@
 
 
 <section class="clear details">
-	<div class="subheader">
-		<h3>Costs</h3>
-	</div>
+	<h3>Costs</h3>
 	@include('jobs.parts.cost-edit-table')
 </section>

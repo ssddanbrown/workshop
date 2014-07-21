@@ -1,9 +1,7 @@
 
 <section>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div class="detail">
 			{{ Form::label('title', 'Title') }}
 			{{ Form::text('title') }}
@@ -21,9 +19,7 @@
 	</div>
 
 	<div class="half details">
-		<div class="subheader">
-			<h3>Typical Time Taken</h3>
-		</div>
+		<h3>Typical Time Taken</h3>
 		<div class="detail">
 			<p>Enter the typical time it takes to complete this job.</p>
 		</div>
@@ -47,8 +43,6 @@
 
 
 <section class="details">
-	<div class="subheader">
-		<h3>Costs</h3>
-	</div>
+	<h3>Costs</h3>
 	@include('jobs.parts.cost-edit-table')
 </section>

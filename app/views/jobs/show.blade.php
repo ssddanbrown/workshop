@@ -16,9 +16,7 @@
 
 <section>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div>
 			<div class="half">
 				<div class="detail">
@@ -45,9 +43,7 @@
 
 	<div class="half">
 		<div class="half details">
-			<div class="subheader">
-				<h3>Customer</h3>
-			</div>
+			<h3>Customer</h3>
 			<div>
 				@if($job->customer != null)
 					<div class="detail">
@@ -70,9 +66,7 @@
 
 		<!-- List All Customer Items -->
 		<div class="half details">
-			<div class="subheader">
-				<h3>{{ Setting::get('item_names') }}</h3>
-			</div>
+			<h3>{{ Setting::get('item_names') }}</h3>
 			<div>
 				@if(count($job->items) > 0)
 					@foreach($job->items as $item)
@@ -91,9 +85,7 @@
 
 <!-- List All Costs -->
 <section class="details">
-	<div class="subheader">
-		<h3>Costs</h3>
-	</div>
+	<h3>Costs</h3>
 	@if(count($job->costs) > 0)
 		<table class="table-grid">
 			<thead>
@@ -127,9 +119,7 @@
 
 <section>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Notes</h3>
-		</div>
+		<h3>Notes</h3>
 		{{ Form::open( array('route' => 'notes.store', 'files' => true) ) }}
 			{{ Form::hidden('job_id', $job->id) }}
 			<div class="detail">
@@ -141,33 +131,35 @@
 				{{ Form::label('media', 'Attach File') }}
 				{{ Form::file('media', [ 'files'=>true ]) }}
 			</div>
-			{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
+			<div class="padded">
+				{{ Form::submit('Save Note', array('class'=>'button pos') ) }}
+			</div>
 		{{ Form::close() }}
-		@if( count($job->notes) > 0 )
-			@foreach( $job->notes as $note )
-				<div class="note clear">
-					<div class="detail">
-						<div>{{ Format::humanTime($note->created_at) . ' - ' . Format::date($note->created_at) }}</div>
-						<p>{{ $note->text }}</p>
-						@if( $note->media != null)
-						<p><a class="link" href="{{ $note->media }}">{{ $note->media_name }}</a></p>
-						@endif
+		<section class="padded">
+			@if( count($job->notes) > 0 )
+				@foreach( $job->notes as $note )
+					<div class="note clear">
+						<div class="detail">
+							<div>{{ Format::humanTime($note->created_at) . ' - ' . Format::date($note->created_at) }}</div>
+							<p>{{ $note->text }}</p>
+							@if( $note->media != null)
+							<p><a class="link" href="{{ $note->media }}">{{ $note->media_name }}</a></p>
+							@endif
+						</div>
+						<div class="buttons">
+							{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
+							{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
+						</div>
 					</div>
-					<div class="buttons">
-						{{ link_to_route('notes.edit', 'Edit', $note->id, array('class'=>'button') ) }}
-						{{ Form::delete('notes.destroy', 'Delete', $note->id) }}
-					</div>
-				</div>
-			@endforeach
-		@else
-			<p>No notes added</p>
-		@endif
+				@endforeach
+			@else
+				<p>No notes added</p>
+			@endif
+		</section>
 	</div>
 
 	<div class="half details">
-		<div class="subheader">
-			<h3>Assigned Users</h3>
-		</div>
+		<h3>Assigned Users</h3>
 		<div class="detail">
 			<label for="user-search">Search for user to assign</label>
 			<p>

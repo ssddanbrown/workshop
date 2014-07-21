@@ -13,9 +13,7 @@
 
 <section>
 	<div class="half details">
-		<div class="subheader">
-			<h3>Details</h3>
-		</div>
+		<h3>Details</h3>
 		<div>
 			<div class="detail">
 				<div>Title</div>
@@ -33,9 +31,7 @@
 	</div>
 
 	<div class="half details">
-		<div class="subheader">
-			<h3>Typical Time Taken</h3>
-		</div>
+		<h3>Typical Time Taken</h3>
 		<div>
 			<div class="detail">
 				<div>Days</div>
@@ -56,9 +52,7 @@
 
 <!-- List All Costs -->
 <section class="details">
-	<div class="subheader">
-		<h3>Costs</h3>
-	</div>
+	<h3>Costs</h3>
 	@if(count($template->costs) > 0)
 		<table class="table-grid">
 			<thead>

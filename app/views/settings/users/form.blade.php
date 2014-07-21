@@ -1,8 +1,6 @@
 <section>
 <div class="details half">
-	<div class="row subheader">
-		<h3>User Details</h3>
-	</div>
+	<h3>User Details</h3>
 	<div class="detail">
 		{{ Form::label('username', 'Username') }}
 		{{ Form::text('username') }}
@@ -25,12 +23,12 @@
 	</div>
 
 	@if(isset($user))
+
 </div>
 <div class="details half">
-	<div class="row subheader">
-		<h3>Password</h3>
-	</div>
-	<p>Leave password fields blank to keep password the same.</p>
+	<h3>Password</h3>
+	<p class="padded">Leave password fields blank to keep password the same.</p>
+	
 	@endif
 
 	<div class="detail">
