@@ -32,7 +32,7 @@
 		<div id="customer-search">
 			{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
 
-			<table class="nopadding">
+			<table class="nopadding" >
 				<tbody>
 					<td>
 						@if( isset($customer) )
@@ -88,58 +88,6 @@
 			});
 			</script>
 		</div>
-
-		@if(!isset($job))
-			<section id="create-customer" class="hidden">
-				<div class="detail">
-					{{ Form::label('customer[first_name]', 'First Name') }}
-					{{ Form::text('customer[first_name]') }}
-					{{ $errors->first('customer[first_name]') }}
-				</div>
-				<div class="detail">
-					{{ Form::label('customer[last_name]', 'Last Name') }}
-					{{ Form::text('customer[last_name]') }}
-					{{ $errors->first('customer[last_name]') }}
-				</div>
-				<div class="detail">
-					{{ Form::label('customer[email]', 'Email') }}
-					{{ Form::text('customer[email]') }}
-					{{ $errors->first('customer[email]') }}
-				</div>
-				<div class="detail">
-					{{ Form::label('customer[phone]', 'Phone') }}
-					{{ Form::text('customer[phone]') }}
-					{{ $errors->first('customer[phone]') }}
-				</div>
-			</section>
-			<div class="padded">
-				<button id="customer-button" type="button" data-search="true" class="button">Add New Customer</button>
-			</div>
-			<script>
-			$(document).ready(function(){
-				$('#customer-button').click(function(){
-					var create = $('#create-customer');
-					var search = $('#customer-search');
-					var customerID = $('#customer-id');
-					var button = $(this);
-					if(button.data('search') == true) {
-						// Show customer form
-						customerID.val(0);
-						create.show();
-						search.hide();
-						button.text('Search For Customer');
-						button.data('search', false);
-					} else {
-						// Show customer search
-						create.hide();
-						search.show();
-						button.text('Add New Customer');
-						button.data('search', true);
-					}
-				});
-			});
-			</script>
-		@endif
 
 	</div>
 	<div class="third details">

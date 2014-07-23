@@ -40,20 +40,15 @@ class JobController extends \BaseController {
 		$errors = new MessageBag;
 		$job_input = Input::only('title', 'text', 'due', 'customer_id');
 
-		/////////////////////////////////////////////////////
-		// Test code to ensure customer is in input data //
-		/////////////////////////////////////////////////////
-		$customer = Input::get('customer');
-		dd($customer);
-		////////////////////////////////////////////////////
-
 		if ( !$this->job->fill($job_input)->isValid() ) {
 			$errors = $this->job->errors;
 		}
+
 		// Check if customer is set in database
-		if( Customer::find($this->job->customer_id) == null ){
+		if ( $job_input['customer_id'] != 0 && Customer::find($this->job->customer_id) == null ) {
 			$this->job->customer_id = 0;
 		}
+
 		// Create Items and Costs, get any errors
 		$items = Item::manyFromInput( Input::get('items'), $errors );
 		$costs = Cost::manyFromInput( Input::get('costs'), $errors );
