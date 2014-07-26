@@ -28,10 +28,17 @@ class CustomerController extends \BaseController {
 		$input = Input::all();
 		
 		if ( !$this->customer->fill($input)->isValid() ) {
+			if (Request::ajax()) {
+				return Response::json(array('errors'=>$this->customer->errors));
+			}
 			return Redirect::back()->withInput()->withErrors($this->customer->errors);
 		}
 		
 		$this->customer->save();
+
+		if (Request::ajax()) {
+			return Response::json($this->customer);
+		}
 
 		return Redirect::route('customers.index');
 	}

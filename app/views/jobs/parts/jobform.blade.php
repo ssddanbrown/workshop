@@ -29,27 +29,27 @@
 	<div class="third details">
 		<h3>Customer</h3>
 
-		<div id="customer-search">
-			{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
+		{{ Form::hidden('customer_id', null, array('id'=>'customer-id')) }}
 
-			<table class="nopadding" >
-				<tbody>
-					<td>
-						@if( isset($customer) )
-							<div id="customer-current" class="padded">
-								{{ $customer->name() }} <br>
-								{{ $customer->email }} <br>
-								{{ $customer->phone }}
-							</div>
-						@else
-							<div id="customer-current" class="padded">No Customer Selected</div>
-						@endif
-					</td>
-					<td>
-						<button id="remove-customer-button" type="button" class="delete-circle">X</button>
-					</td>
-				</tbody>
-			</table>
+		<table class="nopadding" >
+			<tbody>
+				<td>
+					@if( isset($customer) )
+						<div id="customer-current" class="padded">
+							{{ $customer->name() }} <br>
+							{{ $customer->email }} <br>
+							{{ $customer->phone }}
+						</div>
+					@else
+						<div id="customer-current" class="padded">No Customer Selected</div>
+					@endif
+				</td>
+				<td>
+					<button id="remove-customer-button" type="button" class="delete-circle">X</button>
+				</td>
+			</tbody>
+		</table>
+		<section id="customer-search">
 			<div class="detail">
 				<label for="customer-search-input">Search For Customer</label>
 				<input id="customer-search-input" type="text" name="customer-search-input">
@@ -87,7 +87,86 @@
 
 			});
 			</script>
+		</section>
+		
+		<div class="detail">
+			<button type="button" id="hide-search" data-search="true" class="button">Add New Customer</button>
 		</div>
+		
+		<section id="customer-create" class="hidden">
+			<h3>Add New Customer</h3>
+			<div class="detail">
+				{{ Form::label('customer[first_name]', 'First Name') }}
+				{{ Form::text('customer[first_name]') }}
+				<span class="error" id="first_name"></span>
+			</div>
+			<div class="detail">
+				{{ Form::label('customer[last_name]', 'Last Name') }}
+				{{ Form::text('customer[last_name]') }}
+				<span class="error" id="last_name"></span>
+			</div>
+			<div class="detail">
+				{{ Form::label('customer[email]', 'Email') }}
+				{{ Form::text('customer[email]') }}
+				<span class="error" id="email"></span>
+			</div>
+			<div class="detail">
+				{{ Form::label('customer[phone]', 'Phone') }}
+				{{ Form::text('customer[phone]') }}
+				<span class="error" id="phone"></span>
+			</div>
+			<div class="detail">
+				<button type="button" id="customer-submit" class="button">Save Customer</button>
+			</div>
+			<script>
+			$(document).ready(function(){
+				// AJAX Customer submit
+				$('#customer-submit').click(function() {
+					var formData = {
+						first_name: $('#customer\\[first_name\\]').val(),
+						last_name: $('#customer\\[last_name\\]').val(),
+						email: $('#customer\\[email\\]').val(),
+						phone: $('#customer\\[phone\\]').val()
+					};
+					$.post('{{ route('customers.store') }}', formData, function(data){
+						if (data.errors) {
+							$.each(data.errors, function(key ,data){
+								$('#customer-create').find('#'+key).text(data);
+							});
+						} else {
+							$('#customer-current').html(
+								data.first_name + ' ' + data.last_name + '<br>' +
+								data.email + '<br>' + data.phone
+							);
+							switchSearch();
+						};
+					},
+					'json');
+				});
+				// Change view button
+				$('#hide-search').click(function() {
+					switchSearch();
+				});
+				// Switch search function
+				function switchSearch(){
+					var search = $('#customer-search');
+					var create = $('#customer-create');
+					var button = $('#hide-search');
+					if (button.data('search')) {
+						search.hide();
+						create.show();
+						button.text('Search For Customer');
+						button.data('search', false);
+					} else {
+						create.hide();
+						search.show();
+						button.text('Add New Customer');
+						button.data('search', true)
+					};
+				}
+			});
+			</script>	
+		</section>
 
 	</div>
 	<div class="third details">

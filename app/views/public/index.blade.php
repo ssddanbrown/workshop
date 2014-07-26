@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1>Available Jobs</h1>
+	<h1>Available Services</h1>
 	
 	<section>
 
