@@ -11,7 +11,7 @@
 <body class="public">
 	
 	<div class="row" id="site-header">
-		<a class="logo" href="{{ route('public.index') }}"><img src="images/logo.png" alt="Workshop Logo"></a>
+		<a class="logo" href="{{ route('public.index') }}"><img src="/images/logo.png" alt="Workshop Logo"></a>
 		<ul class="inline">
 			<li>{{ link_to_route('login.index', 'Admin Login') }}</li>
 		</ul>

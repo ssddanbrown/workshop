@@ -7,8 +7,8 @@ class Setting extends Eloquent {
 	public $timestamps = false;
 
 	private static $defaults = array(
-		'item_name'		=>	'bike',
-		'item_names'	=>	'bikes',
+		'item_name'		=>	'Item',
+		'item_names'	=>	'Items',
 		'item_prop1'	=>	'Title',
 		'item_prop2'	=>	'Description',
 	);

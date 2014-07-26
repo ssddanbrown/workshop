@@ -59,7 +59,7 @@
 						<p>{{ $job->customer->phone }}</p>
 					</div>
 				@else
-					<p>No Customer Selected</p>
+					<p class="padded">No Customer Selected</p>
 				@endif
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 						</div>
 					@endforeach
 				@else
-					<p>No {{ Setting::get('item_names') }} to display.</p>
+					<p class="padded">No {{ Setting::get('item_names') }} to display.</p>
 				@endif
 			</div>
 		</div>
@@ -113,7 +113,7 @@
 			</tr>
 		</table>
 	@else
-		<p>No Costs to display.</p>
+		<p class="padded">No Costs to display.</p>
 	@endif
 </section>
 

@@ -23,6 +23,15 @@ Route::get('/logout', array(
 	'uses'	=> 'LoginController@logout',
 	'as'	=> 'login.logout'
 	));
+// Customer Booking
+Route::get('/book/{template}', array(
+	'uses'	=> 'BookingController@create',
+	'as'	=> 'booking.create'
+	));
+Route::post('/book', array(
+	'uses'	=> 'BookingController@store',
+	'as'	=> 'booking.store'
+	));
 
 
 Route::group(array('before' => 'auth'), function()

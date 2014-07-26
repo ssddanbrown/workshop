@@ -85,6 +85,12 @@
 	padding: $-s 0;
 }
 
+h3.subtitle {
+	font-size: 1.2em;
+	margin: 0 0 $-m 0;
+	color: #888;
+}
+
 .radio{
 	@extend .button;
 	padding: 0;

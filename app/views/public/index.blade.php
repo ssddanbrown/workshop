@@ -11,7 +11,8 @@
 				<div class="third">
 					<h4>{{ $template->title }}</h4>
 					<p>{{ $template->text }}</p>
-					<p><strong>{{ Format::price($template->total) }}</strong></p>
+					<p><strong>Approximate Price: {{ Format::price($template->total) }}</strong></p>
+					<p>{{ link_to_route('booking.create', 'Book This Job', $template->id, array('class'=>'button')) }}</p>
 				</div>
 			@endforeach
 		@else

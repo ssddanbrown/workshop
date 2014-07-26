@@ -62,6 +62,25 @@ class Template extends Eloquent {
 		return $total;
 	}
 
+	public function humanTime()
+	{
+		$string = '';
+		if ($this->days > 0) $string .= $this->days . ' Days';
+		if ($this->hours > 0) {
+			if ($string!='') {
+				$string .= ', ';
+			}
+			$string .= $this->hours . ' Hours';
+		}
+		if ($this->mins > 0) {
+			if ($string!='') {
+				$string .= ', ';
+			}
+			$string = $this->mins . ' Minutes';
+		}
+		return $string;
+	}
+
 	//Validation
 	public function isValid()
 	{
