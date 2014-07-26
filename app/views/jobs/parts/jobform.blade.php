@@ -62,6 +62,7 @@
 					source: '/customers/search',
 					select: function( event, ui ) {
 						$('#customer-id').val(ui.item.id);
+						$('#remove-customer-button').show();
 						$('#customer-current').html(
 							ui.item.first_name + ' ' + ui.item.last_name + '<br>' +
 							ui.item.email + '<br>' + ui.item.phone
@@ -134,7 +135,10 @@
 								$('#customer-create').find('#'+key).text(data);
 							});
 						} else {
+							$('#customer-id').val(data.id);
+							$('#remove-customer-button').show();
 							$('#customer-current').html(
+								'<span class="success bold">Customer Successfully Added</span><br>' +
 								data.first_name + ' ' + data.last_name + '<br>' +
 								data.email + '<br>' + data.phone
 							);
