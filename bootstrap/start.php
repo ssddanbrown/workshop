@@ -24,11 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function(){
 
-	'local' => array('Dan-PC'),
-
-));
+	// Environment variable of 'CMS_ENV' can be set to select environment
+	return isset($_SERVER['CMS_ENV']) ? $_SERVER['CMS_ENV'] : 'production';
+});
 
 /*
 |--------------------------------------------------------------------------

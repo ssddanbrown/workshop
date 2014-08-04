@@ -3,6 +3,7 @@
 public/.sass-cache
 public/css/
 public/uploads/
+/app/config/dev/
 
 composer.phar
 composer.lock
